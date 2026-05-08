@@ -5,28 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#060B18">
 
-  <title>Skyloop — Création, gestion et maintenance de sites & outils web</title>
-  <meta name="description" content="Skyloop conçoit des sites web modernes et des outils métier sur mesure pour booster votre entreprise. Création, maintenance, hébergement.">
-  <meta name="keywords" content="création site web, maintenance site, outils métier, dashboard sur mesure, application web, Skyloop">
+  <!-- SEO -->
+  <title>Skyloop — Sites web et outils métier sur mesure pour entreprises</title>
+  <meta name="description" content="Skyloop conçoit, développe et maintient des sites web modernes et des outils métier sur mesure. Logistique, dashboards, applications web. Partenaire technique pour PME et grands comptes.">
+  <meta name="keywords" content="création site web, maintenance site, outils métier, dashboard sur mesure, application web, agence web France">
   <meta name="author" content="Skyloop">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vitrine.skyloop.fr/">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.skyloop.fr">
-  <meta property="og:title" content="Skyloop — Création, gestion et maintenance de sites & outils web">
-  <meta property="og:description" content="Skyloop conçoit des sites web modernes et des outils métier sur mesure pour booster votre entreprise.">
-  <meta property="og:image" content="assets/images/logoskyloop.png">
+  <meta property="og:url" content="https://vitrine.skyloop.fr/">
+  <meta property="og:title" content="Skyloop — Sites web et outils métier sur mesure">
+  <meta property="og:description" content="Création, gestion et maintenance de sites web et applications métier. Stack moderne, livraison rapide, support continu.">
+  <meta property="og:image" content="https://vitrine.skyloop.fr/assets/images/logoskyloop.png">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skyloop — Sites web et outils métier sur mesure">
+  <meta name="twitter:description" content="Création, gestion et maintenance de sites web et applications métier sur mesure.">
+  <meta name="twitter:image" content="https://vitrine.skyloop.fr/assets/images/logoskyloop.png">
+
+  <!-- Sécurité (headers via meta http-equiv) -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/logoskyloop.png">
+  <link rel="apple-touch-icon" href="assets/images/logoskyloop.png">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Style -->
+  <!-- Fonts (self-hosted, RGPD friendly) -->
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-500.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-700.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- JSON-LD Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Skyloop",
+    "url": "https://vitrine.skyloop.fr",
+    "logo": "https://vitrine.skyloop.fr/assets/images/logoskyloop.png",
+    "email": "contact@skyloop.fr",
+    "description": "Skyloop conçoit, développe et maintient des sites web modernes et des outils métier sur mesure pour les entreprises.",
+    "areaServed": "FR",
+    "sameAs": ["https://github.com/skypulsar"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Skyloop",
+    "url": "https://vitrine.skyloop.fr",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://vitrine.skyloop.fr/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -34,10 +74,9 @@
   <header class="header" id="header">
     <div class="container">
       <nav class="nav" aria-label="Navigation principale">
-        <a href="#hero" class="nav__logo" aria-label="Skyloop accueil">
-          <img src="assets/images/skyloop-fd-sombre.png" alt="Logo Skyloop">
+        <a href="#hero" class="nav__logo" aria-label="Skyloop — Accueil">
+          <img src="assets/images/skyloop-fd-sombre.png" alt="Logo Skyloop" width="160" height="35">
         </a>
-
         <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <line x1="3" y1="6" x2="21" y2="6"/>
@@ -45,13 +84,12 @@
             <line x1="3" y1="18" x2="21" y2="18"/>
           </svg>
         </button>
-
         <ul class="nav__menu" id="menu">
           <li><a href="#services">Services</a></li>
           <li><a href="#realisations">Réalisations</a></li>
           <li><a href="#process">Méthode</a></li>
-          <li><a href="#tarifs">Tarifs</a></li>
-          <li><a href="tarifs.html">+ détails</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact" class="nav__cta">Démarrer un projet</a></li>
         </ul>
       </nav>
@@ -62,143 +100,315 @@
 
     <!-- =================== HERO =================== -->
     <section class="hero" id="hero">
-      <div class="hero__grid"></div>
+      <div class="tech-grid"></div>
       <div class="container">
         <div class="hero__inner">
 
-          <div class="hero__content reveal">
-            <span class="hero__badge">Disponible pour de nouveaux projets</span>
-            <h1>
-              Sites web et <span class="gradient">outils sur mesure</span>
-              pour propulser votre entreprise.
-            </h1>
+          <div class="hero__content">
+            <span class="hero__badge"><span class="dot" aria-hidden="true"></span>Disponible — nouveaux projets ouverts</span>
+            <h1>Vos sites web<br>et outils métier,<br><span class="accent">conçus comme un produit.</span></h1>
             <p class="hero__lead">
-              Skyloop conçoit, déploie et maintient des sites web modernes et des outils métier
-              parfaitement adaptés à vos process. Performance, design et sécurité — sans compromis.
+              Skyloop conçoit, déploie et maintient des sites web modernes et des applications
+              métier sur mesure — avec le niveau d'exigence qu'on attend d'un produit, pas d'une
+              presta jetable.
             </p>
 
             <div class="hero__cta">
-              <a href="#contact" class="btn btn--primary btn--lg">Démarrer un projet</a>
+              <a href="#contact" class="btn btn--primary btn--lg">Démarrer un projet <span class="arrow" aria-hidden="true">→</span></a>
               <a href="#realisations" class="btn btn--ghost btn--lg">Voir les réalisations</a>
             </div>
 
-            <div class="hero__stats">
-              <div class="hero__stat">
+            <div class="hero__inline-stats">
+              <div class="hero__inline-stat">
                 <strong data-count="100" data-suffix="%">0%</strong>
                 <span>Sur mesure</span>
               </div>
-              <div class="hero__stat">
-                <strong data-count="24" data-suffix="h">0h</strong>
-                <span>Temps de réponse</span>
+              <div class="hero__inline-stat">
+                <strong>&lt; 24 h</strong>
+                <span>Réponse moyenne</span>
               </div>
-              <div class="hero__stat">
-                <strong>SSL</strong>
-                <span>Sites sécurisés</span>
+              <div class="hero__inline-stat">
+                <strong>99,9 %</strong>
+                <span>Uptime cible</span>
               </div>
             </div>
           </div>
 
-          <div class="hero__visual reveal" data-delay="2">
-            <div class="hero__orbit"></div>
-            <div class="hero__logo-wrap">
-              <img src="assets/images/skyloop-fd-sombre.png" alt="Skyloop" class="hero__logo">
+          <div class="hero__visual">
+            <!-- Dashboard mockup animé -->
+            <div class="dashboard" role="img" aria-label="Aperçu d'un dashboard métier construit par Skyloop">
+              <div class="dashboard__topbar">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="url">app.skyloop.fr/dashboard</span>
+              </div>
+              <div class="dashboard__body">
+                <aside class="dashboard__sidebar">
+                  <div class="dashboard__sidebar-item active"><span class="icn"></span>Vue d'ensemble</div>
+                  <div class="dashboard__sidebar-item"><span class="icn"></span>Navires</div>
+                  <div class="dashboard__sidebar-item"><span class="icn"></span>Équipes</div>
+                  <div class="dashboard__sidebar-item"><span class="icn"></span>Rapports</div>
+                  <div class="dashboard__sidebar-item"><span class="icn"></span>Réglages</div>
+                </aside>
+                <div class="dashboard__main">
+                  <div class="dashboard__kpi-row">
+                    <div class="dashboard__kpi">
+                      <div class="dashboard__kpi-label">Navires J</div>
+                      <div class="dashboard__kpi-value">12</div>
+                      <div class="dashboard__kpi-trend">↑ 8%</div>
+                    </div>
+                    <div class="dashboard__kpi">
+                      <div class="dashboard__kpi-label">Véhicules</div>
+                      <div class="dashboard__kpi-value">3 240</div>
+                      <div class="dashboard__kpi-trend">↑ 12%</div>
+                    </div>
+                    <div class="dashboard__kpi">
+                      <div class="dashboard__kpi-label">Anomalies</div>
+                      <div class="dashboard__kpi-value">3</div>
+                      <div class="dashboard__kpi-trend down">↓ 64%</div>
+                    </div>
+                  </div>
+                  <div class="dashboard__chart">
+                    <div class="dashboard__chart-head">
+                      <div class="dashboard__chart-title">Volume traité — 7 derniers jours</div>
+                      <span class="dashboard__chart-tag">● Live</span>
+                    </div>
+                    <svg class="dashboard__chart-svg" viewBox="0 0 320 90" preserveAspectRatio="none" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.4"/>
+                          <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+                        </linearGradient>
+                      </defs>
+                      <path class="fill" d="M0,68 L40,55 L80,60 L120,38 L160,45 L200,28 L240,35 L280,18 L320,28 L320,90 L0,90 Z"/>
+                      <path class="line" d="M0,68 L40,55 L80,60 L120,38 L160,45 L200,28 L240,35 L280,18 L320,28"/>
+                      <path class="line2" d="M0,76 L40,68 L80,72 L120,56 L160,60 L200,48 L240,55 L280,40 L320,48"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <div class="hero__chip hero__chip--1">
-              <i>⚡</i>
-              <span>Performance</span>
-            </div>
-            <div class="hero__chip hero__chip--2">
-              <i>🎨</i>
-              <span>Design moderne</span>
-            </div>
-            <div class="hero__chip hero__chip--3">
-              <i>🔒</i>
-              <span>Sécurité</span>
-            </div>
+            <div class="hero__annot hero__annot--1"><span class="dot"></span>Build OK · 8 s</div>
+            <div class="hero__annot hero__annot--2"><span class="dot"></span>+12% throughput</div>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- =================== SERVICES =================== -->
+    <!-- =================== LOGOS / SOCIAL PROOF =================== -->
+    <section class="logos">
+      <div class="container">
+        <p class="logos__label">Stack & écosystème</p>
+        <div class="logos__grid">
+          <span class="logos__item">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.83.58A12 12 0 0 0 12 0z"/></svg>
+            GitHub
+          </span>
+          <span class="logos__item">OVH<sub style="font-size:0.6em;opacity:0.6">Cloud</sub></span>
+          <span class="logos__item">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.479 9.883c-1.626-.604-2.512-1.067-2.512-1.803 0-.622.511-.977 1.423-.977 1.667 0 3.379.642 4.558 1.22l.665-4.111c-.935-.446-2.847-1.177-5.49-1.177-1.87 0-3.425.488-4.536 1.4-1.155.954-1.752 2.334-1.752 4.003 0 3.024 1.848 4.319 4.858 5.412 1.937.703 2.587 1.203 2.587 1.973 0 .746-.643 1.178-1.806 1.178-1.464 0-3.879-.717-5.464-1.638l-.674 4.155C5.737 19.32 7.961 20 10.273 20c1.972 0 3.616-.467 4.728-1.35 1.243-.984 1.886-2.439 1.886-4.347 0-3.094-1.889-4.382-4.408-5.42z"/></svg>
+            Stripe
+          </span>
+          <span class="logos__item">PHP 8</span>
+          <span class="logos__item">MySQL</span>
+          <span class="logos__item">Web3Forms</span>
+          <span class="logos__item">Let's Encrypt</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== METRICS BIG NUMBERS =================== -->
+    <section class="section section--tight">
+      <div class="container">
+        <div class="metrics reveal">
+          <div class="metric">
+            <div class="metric__value" data-count="6" data-suffix="+">0+</div>
+            <div class="metric__label">Projets en production</div>
+            <div class="metric__hint">depuis le démarrage</div>
+          </div>
+          <div class="metric">
+            <div class="metric__value" data-count="100" data-suffix="%">0%</div>
+            <div class="metric__label">Code propriétaire</div>
+            <div class="metric__hint">vous gardez tout</div>
+          </div>
+          <div class="metric">
+            <div class="metric__value">&lt; 24 h</div>
+            <div class="metric__label">Temps de réponse</div>
+            <div class="metric__hint">support inclus</div>
+          </div>
+          <div class="metric">
+            <div class="metric__value">99,9 %</div>
+            <div class="metric__label">Uptime cible</div>
+            <div class="metric__hint">monitoring 24/7</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== SERVICES — BENTO GRID =================== -->
     <section class="section" id="services">
       <div class="container">
-        <div class="section__head reveal">
-          <span class="section__eyebrow">Nos services</span>
-          <h2 class="section__title">Tout ce dont vous avez besoin pour <span class="gradient">briller en ligne</span></h2>
-          <p class="section__lead">
-            De la création de votre site vitrine à des outils internes complexes,
-            Skyloop est votre partenaire technique de A à Z.
+        <div class="section-head reveal">
+          <span class="section-eyebrow">Services</span>
+          <h2>Tout ce qu'il faut pour <span class="accent">bâtir et tenir dans le temps.</span></h2>
+          <p class="section-lead">
+            De la création d'un site vitrine à des outils métier complexes, on vous accompagne
+            sur l'ensemble du cycle de vie : design, dev, hébergement, support continu.
           </p>
         </div>
 
-        <div class="services">
+        <div class="bento">
 
-          <article class="service reveal">
-            <div class="service__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                <line x1="3" y1="9" x2="21" y2="9"/>
-                <line x1="9" y1="21" x2="9" y2="9"/>
-              </svg>
+          <article class="bento__card bento__card--lg reveal">
+            <div class="bento__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
             </div>
             <h3>Création de sites web</h3>
-            <p>Sites vitrines, e-commerce, landing pages : un design qui vous ressemble et qui convertit.</p>
-            <ul class="service__list">
-              <li>UX / UI design moderne</li>
-              <li>Responsive mobile / tablette</li>
-              <li>SEO et performance optimisés</li>
-              <li>Intégration CMS sur demande</li>
-            </ul>
+            <p>Sites vitrines, e-commerce, landing pages — un design qui vous ressemble, performant, et qui convertit.</p>
+            <div class="bento__tags">
+              <span class="bento__tag">UX/UI</span>
+              <span class="bento__tag">Responsive</span>
+              <span class="bento__tag">SEO</span>
+              <span class="bento__tag">CMS sur demande</span>
+            </div>
+            <div class="bento__viz" aria-hidden="true">
+              <svg viewBox="0 0 200 140" fill="none">
+                <rect x="20" y="20" width="160" height="100" rx="8" stroke="rgba(96,165,250,0.4)" stroke-width="1"/>
+                <rect x="30" y="30" width="40" height="6" rx="2" fill="#3B82F6" opacity="0.6"/>
+                <rect x="30" y="44" width="80" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+                <rect x="30" y="54" width="60" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
+                <rect x="30" y="74" width="50" height="30" rx="4" fill="rgba(59,130,246,0.15)" stroke="rgba(96,165,250,0.3)"/>
+                <rect x="90" y="74" width="50" height="30" rx="4" fill="rgba(255,107,71,0.12)" stroke="rgba(255,107,71,0.3)"/>
+              </svg>
+            </div>
           </article>
 
-          <article class="service reveal" data-delay="1">
-            <div class="service__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-              </svg>
+          <article class="bento__card bento__card--md bento__card--accent reveal" data-delay="1">
+            <div class="bento__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
             </div>
             <h3>Maintenance & hébergement</h3>
-            <p>Votre site reste en ligne, à jour et sécurisé. Vous vous concentrez sur votre métier.</p>
-            <ul class="service__list">
-              <li>Mises à jour de sécurité</li>
-              <li>Hébergement haute disponibilité</li>
-              <li>Sauvegardes automatiques</li>
-              <li>Support technique réactif</li>
-            </ul>
+            <p>Mises à jour, sauvegardes, monitoring. Vous restez en ligne, on s'occupe du reste.</p>
+            <div class="bento__tags">
+              <span class="bento__tag">Sécurité</span>
+              <span class="bento__tag">Backups</span>
+              <span class="bento__tag">Uptime 24/7</span>
+            </div>
           </article>
 
-          <article class="service reveal" data-delay="2">
-            <div class="service__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="16 18 22 12 16 6"/>
-                <polyline points="8 6 2 12 8 18"/>
-              </svg>
+          <article class="bento__card bento__card--md reveal" data-delay="2">
+            <div class="bento__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
             <h3>Outils métier sur mesure</h3>
-            <p>Dashboards, applications internes, automatisations : on construit ce qui n'existe pas (encore).</p>
-            <ul class="service__list">
-              <li>Applications web spécifiques</li>
-              <li>Tableaux de bord & KPI</li>
-              <li>Intégrations API & ERP</li>
-              <li>Automatisations de process</li>
-            </ul>
+            <p>Dashboards, applications internes, automatisations — on construit ce qui n'existe pas encore.</p>
+            <div class="bento__tags">
+              <span class="bento__tag">PHP</span>
+              <span class="bento__tag">API</span>
+              <span class="bento__tag">SaaS interne</span>
+            </div>
           </article>
 
+          <article class="bento__card bento__card--full reveal" data-delay="3" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center;">
+            <div>
+              <div class="bento__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              </div>
+              <h3>Intégration & migration</h3>
+              <p>Connexion à votre ERP, vos APIs, vos outils existants. Reprise de données depuis Excel, Access ou ancien système — sans perte ni interruption métier.</p>
+              <div class="bento__tags">
+                <span class="bento__tag">REST</span>
+                <span class="bento__tag">Webhooks</span>
+                <span class="bento__tag">ETL</span>
+                <span class="bento__tag">Migration données</span>
+              </div>
+            </div>
+            <div aria-hidden="true">
+              <svg viewBox="0 0 380 140" fill="none" style="width:100%;height:auto;">
+                <rect x="10" y="40" width="80" height="60" rx="10" fill="rgba(96,165,250,0.1)" stroke="rgba(96,165,250,0.4)"/>
+                <text x="50" y="76" text-anchor="middle" fill="#60A5FA" font-family="monospace" font-size="11" font-weight="500">Legacy</text>
+                <path d="M95 70 L155 70" stroke="rgba(255,255,255,0.2)" stroke-dasharray="3 2"/>
+                <circle cx="125" cy="70" r="3" fill="#60A5FA"/>
+                <rect x="155" y="20" width="80" height="100" rx="10" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.5)"/>
+                <text x="195" y="74" text-anchor="middle" fill="#93C5FD" font-family="sans-serif" font-size="13" font-weight="600">Skyloop</text>
+                <text x="195" y="90" text-anchor="middle" fill="rgba(147,197,253,0.6)" font-family="monospace" font-size="9">API gateway</text>
+                <path d="M240 50 L300 30" stroke="rgba(255,107,71,0.4)" stroke-dasharray="3 2"/>
+                <path d="M240 70 L300 70" stroke="rgba(255,107,71,0.4)" stroke-dasharray="3 2"/>
+                <path d="M240 90 L300 110" stroke="rgba(255,107,71,0.4)" stroke-dasharray="3 2"/>
+                <rect x="300" y="15" width="70" height="30" rx="6" fill="rgba(255,107,71,0.1)" stroke="rgba(255,107,71,0.4)"/>
+                <text x="335" y="34" text-anchor="middle" fill="#FF8E6B" font-family="monospace" font-size="10">CRM</text>
+                <rect x="300" y="55" width="70" height="30" rx="6" fill="rgba(255,107,71,0.1)" stroke="rgba(255,107,71,0.4)"/>
+                <text x="335" y="74" text-anchor="middle" fill="#FF8E6B" font-family="monospace" font-size="10">ERP</text>
+                <rect x="300" y="95" width="70" height="30" rx="6" fill="rgba(255,107,71,0.1)" stroke="rgba(255,107,71,0.4)"/>
+                <text x="335" y="114" text-anchor="middle" fill="#FF8E6B" font-family="monospace" font-size="10">Excel</text>
+              </svg>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== STORY 1 — Pourquoi Skyloop =================== -->
+    <section class="section">
+      <div class="container">
+        <div class="story reveal">
+          <div class="story__content">
+            <span class="story__eyebrow">Pourquoi Skyloop</span>
+            <h2>Vous ne payez pas une presta. Vous gagnez un partenaire technique.</h2>
+            <p>
+              Trop de projets web finissent dans un tiroir : livrés vite, jamais ajustés,
+              impossibles à faire évoluer. Skyloop fonctionne autrement : on s'engage
+              sur la durée, on documente tout, et le code reste à vous.
+            </p>
+            <ul class="story__list">
+              <li>Code source intégral livré et commenté — vous restez propriétaire à 100%</li>
+              <li>Choix technique justifié à chaque étape (pas de boîte noire)</li>
+              <li>Maintenance optionnelle après livraison — sans engagement long</li>
+              <li>Communication directe avec le développeur, pas un commercial intermédiaire</li>
+            </ul>
+          </div>
+          <div class="story__visual">
+            <svg viewBox="0 0 480 360" fill="none" style="width:100%; height:auto; max-width: 480px; margin: 0 auto; display: block;" aria-hidden="true">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="#FF6B47" stop-opacity="0.05"/>
+                </linearGradient>
+              </defs>
+              <rect x="40" y="40" width="400" height="280" rx="16" fill="url(#g1)" stroke="rgba(255,255,255,0.1)"/>
+
+              <!-- terminal-style code block -->
+              <rect x="60" y="60" width="360" height="40" rx="8" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.08)"/>
+              <circle cx="78" cy="80" r="4" fill="#FF6B47"/>
+              <circle cx="92" cy="80" r="4" fill="#F59E0B"/>
+              <circle cx="106" cy="80" r="4" fill="#22C55E"/>
+              <text x="130" y="84" fill="rgba(255,255,255,0.5)" font-family="monospace" font-size="11">~/projets/skyloop</text>
+
+              <text x="80" y="130" fill="#60A5FA" font-family="monospace" font-size="12" font-weight="500">$ git log --oneline</text>
+              <text x="80" y="152" fill="rgba(255,255,255,0.7)" font-family="monospace" font-size="11">a599bb5 feat: tableau navires</text>
+              <text x="80" y="170" fill="rgba(255,255,255,0.7)" font-family="monospace" font-size="11">7d38059 fix: export Excel UTF-8</text>
+              <text x="80" y="188" fill="rgba(255,255,255,0.7)" font-family="monospace" font-size="11">560ba43 feat: dashboard KPI</text>
+              <text x="80" y="206" fill="rgba(255,255,255,0.7)" font-family="monospace" font-size="11">4151703 docs: runbook ops</text>
+
+              <text x="80" y="240" fill="#FF8E6B" font-family="monospace" font-size="12" font-weight="500">$ skyloop status</text>
+              <text x="80" y="262" fill="rgba(255,255,255,0.7)" font-family="monospace" font-size="11">✓ all systems operational</text>
+              <text x="80" y="280" fill="rgba(255,255,255,0.7)" font-family="monospace" font-size="11">✓ uptime 99.97% (30d)</text>
+              <text x="80" y="298" fill="rgba(255,255,255,0.5)" font-family="monospace" font-size="11">→ next: review monthly KPI</text>
+            </svg>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- =================== RÉALISATIONS =================== -->
-    <section class="section" id="realisations" style="background: linear-gradient(180deg, transparent, rgba(15, 27, 48, 0.4), transparent);">
+    <section class="section" id="realisations">
       <div class="container">
-        <div class="section__head reveal">
-          <span class="section__eyebrow">Nos réalisations</span>
-          <h2 class="section__title">Des projets <span class="gradient">qui tournent en production</span></h2>
-          <p class="section__lead">
-            Quelques exemples de plateformes développées par Skyloop, en exploitation au quotidien.
+        <div class="section-head reveal">
+          <span class="section-eyebrow">Réalisations</span>
+          <h2>Des projets qui <span class="accent">tournent en production.</span></h2>
+          <p class="section-lead">
+            Trois exemples de plateformes Skyloop déployées et utilisées au quotidien dans des contextes B2B exigeants.
           </p>
         </div>
 
@@ -206,71 +416,105 @@
 
           <article class="work reveal">
             <div class="work__cover">
-              <div class="work__mockup">
-                <div class="work__mockup-content">
-                  <div class="work__mockup-bar"></div>
-                  <div class="work__mockup-bar"></div>
-                  <div class="work__mockup-bar"></div>
-                  <div class="work__mockup-bar"></div>
-                  <div class="work__mockup-bar"></div>
-                </div>
-              </div>
+              <svg viewBox="0 0 360 200" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <rect width="360" height="200" fill="#0A1124"/>
+                <rect x="0" y="0" width="360" height="28" fill="rgba(0,0,0,0.4)"/>
+                <circle cx="14" cy="14" r="4" fill="rgba(255,255,255,0.2)"/>
+                <circle cx="28" cy="14" r="4" fill="rgba(255,255,255,0.2)"/>
+                <circle cx="42" cy="14" r="4" fill="rgba(255,255,255,0.2)"/>
+                <rect x="20" y="44" width="60" height="140" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.07)"/>
+                <rect x="28" y="56" width="44" height="6" rx="2" fill="#3B82F6"/>
+                <rect x="28" y="72" width="40" height="3" rx="1" fill="rgba(255,255,255,0.18)"/>
+                <rect x="28" y="84" width="40" height="3" rx="1" fill="rgba(255,255,255,0.12)"/>
+                <rect x="28" y="96" width="40" height="3" rx="1" fill="rgba(255,255,255,0.12)"/>
+                <rect x="100" y="44" width="240" height="50" rx="6" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.25)"/>
+                <text x="116" y="64" fill="#60A5FA" font-family="monospace" font-size="9" font-weight="500">NAVIRES J</text>
+                <text x="116" y="84" fill="white" font-family="sans-serif" font-size="20" font-weight="700">12</text>
+                <text x="180" y="64" fill="#60A5FA" font-family="monospace" font-size="9" font-weight="500">VEHICULES</text>
+                <text x="180" y="84" fill="white" font-family="sans-serif" font-size="20" font-weight="700">3 240</text>
+                <text x="260" y="64" fill="#FF8E6B" font-family="monospace" font-size="9" font-weight="500">ANOMALIES</text>
+                <text x="260" y="84" fill="#FF8E6B" font-family="sans-serif" font-size="20" font-weight="700">3</text>
+                <rect x="100" y="104" width="240" height="80" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.07)"/>
+                <path d="M110 165 L140 145 L170 155 L200 130 L230 138 L260 125 L290 140 L320 122 L335 130" fill="none" stroke="#60A5FA" stroke-width="1.5"/>
+              </svg>
             </div>
             <div class="work__body">
               <div class="work__tags">
+                <span class="work__tag">PHP 8</span>
+                <span class="work__tag">MySQL</span>
                 <span class="work__tag">Logistique</span>
-                <span class="work__tag">PHP</span>
-                <span class="work__tag">Dashboard</span>
               </div>
               <h3>GestenProd</h3>
-              <p>Plateforme de gestion de production portuaire : suivi navires, équipes, KPI, exports Excel automatisés et alertes en temps réel.</p>
+              <p>Plateforme complète de gestion de production portuaire — suivi navires, équipes, parc véhicules, KPI consolidés et reporting Excel automatisé.</p>
               <a href="realisations.html#gestenprod" class="work__link">Voir le projet</a>
             </div>
           </article>
 
           <article class="work reveal" data-delay="1">
             <div class="work__cover">
-              <div class="work__mockup">
-                <div class="work__mockup-content">
-                  <div class="work__mockup-bar"></div>
-                  <div class="work__mockup-bar"></div>
-                  <div class="work__mockup-bar"></div>
-                  <div class="work__mockup-bar"></div>
-                  <div class="work__mockup-bar"></div>
-                </div>
-              </div>
+              <svg viewBox="0 0 360 200" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <rect width="360" height="200" fill="#0A1124"/>
+                <rect x="0" y="0" width="360" height="28" fill="rgba(0,0,0,0.4)"/>
+                <circle cx="14" cy="14" r="4" fill="rgba(255,255,255,0.2)"/>
+                <circle cx="28" cy="14" r="4" fill="rgba(255,255,255,0.2)"/>
+                <circle cx="42" cy="14" r="4" fill="rgba(255,255,255,0.2)"/>
+                <text x="20" y="55" fill="white" font-family="sans-serif" font-size="14" font-weight="600">Avaries — vue parc</text>
+                <text x="200" y="55" fill="#22C55E" font-family="monospace" font-size="9">● LIVE</text>
+                <defs>
+                  <linearGradient id="cv1" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.4"/>
+                    <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M20 165 L60 145 L100 152 L140 120 L180 135 L220 105 L260 120 L300 90 L340 105 L340 200 L20 200 Z" fill="url(#cv1)"/>
+                <path d="M20 165 L60 145 L100 152 L140 120 L180 135 L220 105 L260 120 L300 90 L340 105" stroke="#60A5FA" stroke-width="1.5" fill="none"/>
+                <path d="M20 175 L60 165 L100 168 L140 150 L180 158 L220 140 L260 150 L300 130 L340 138" stroke="#FF8E6B" stroke-width="1.2" fill="none" stroke-dasharray="3 2"/>
+              </svg>
             </div>
             <div class="work__body">
               <div class="work__tags">
-                <span class="work__tag">Compound</span>
                 <span class="work__tag">KPI</span>
                 <span class="work__tag">JSON API</span>
+                <span class="work__tag">Excel export</span>
               </div>
-              <h3>Module Compound & KPI</h3>
-              <p>Suivi de parc, gestion d'avaries, capacités d'expédition et tableaux de bord exportables. Données consolidées et accessibles via API.</p>
+              <h3>Compound & KPI</h3>
+              <p>Suivi du parc, gestion des avaries, capacités d'expédition et tableaux de bord exportables. Données consolidées et accessibles via API JSON.</p>
               <a href="realisations.html#compound" class="work__link">Voir le projet</a>
             </div>
           </article>
 
           <article class="work reveal" data-delay="2">
             <div class="work__cover">
-              <div class="work__mockup">
-                <div class="work__mockup-content">
-                  <div class="work__mockup-bar"></div>
-                  <div class="work__mockup-bar"></div>
-                  <div class="work__mockup-bar"></div>
-                  <div class="work__mockup-bar"></div>
-                  <div class="work__mockup-bar"></div>
-                </div>
-              </div>
+              <svg viewBox="0 0 360 200" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <rect width="360" height="200" fill="#0A1124"/>
+                <rect x="0" y="0" width="360" height="28" fill="rgba(0,0,0,0.4)"/>
+                <circle cx="14" cy="14" r="4" fill="rgba(255,255,255,0.2)"/>
+                <circle cx="28" cy="14" r="4" fill="rgba(255,255,255,0.2)"/>
+                <circle cx="42" cy="14" r="4" fill="rgba(255,255,255,0.2)"/>
+                <rect x="140" y="48" width="80" height="28" rx="6" fill="#3B82F6"/>
+                <text x="180" y="66" text-anchor="middle" fill="white" font-family="sans-serif" font-size="11" font-weight="600">Connexion</text>
+                <line x1="180" y1="76" x2="180" y2="96" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
+                <rect x="80" y="96" width="70" height="26" rx="6" fill="rgba(59,130,246,0.18)" stroke="rgba(96,165,250,0.4)"/>
+                <text x="115" y="112" text-anchor="middle" fill="#93C5FD" font-family="sans-serif" font-size="10" font-weight="500">Admin</text>
+                <rect x="160" y="96" width="70" height="26" rx="6" fill="rgba(255,107,71,0.18)" stroke="rgba(255,142,107,0.4)"/>
+                <text x="195" y="112" text-anchor="middle" fill="#FF8E6B" font-family="sans-serif" font-size="10" font-weight="500">Employé</text>
+                <rect x="240" y="96" width="70" height="26" rx="6" fill="rgba(34,197,94,0.18)" stroke="rgba(34,197,94,0.4)"/>
+                <text x="275" y="112" text-anchor="middle" fill="#4ADE80" font-family="sans-serif" font-size="10" font-weight="500">Compta</text>
+                <line x1="115" y1="122" x2="115" y2="142" stroke="rgba(255,255,255,0.2)" stroke-dasharray="3 2"/>
+                <line x1="195" y1="122" x2="195" y2="142" stroke="rgba(255,255,255,0.2)" stroke-dasharray="3 2"/>
+                <line x1="275" y1="122" x2="275" y2="142" stroke="rgba(255,255,255,0.2)" stroke-dasharray="3 2"/>
+                <rect x="60" y="142" width="240" height="32" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+                <text x="180" y="162" text-anchor="middle" fill="white" font-family="sans-serif" font-size="11" font-weight="500">Tableau de bord adapté</text>
+              </svg>
             </div>
             <div class="work__body">
               <div class="work__tags">
+                <span class="work__tag">UX</span>
                 <span class="work__tag">Documentation</span>
-                <span class="work__tag">Process</span>
+                <span class="work__tag">Onboarding</span>
               </div>
               <h3>Logigrammes interactifs</h3>
-              <p>Documentation visuelle des rôles et procédures internes, accessible en HTML et PDF. Compréhension immédiate des workflows pour chaque profil.</p>
+              <p>Documentation visuelle des rôles et procédures internes — HTML interactif et PDF imprimable. Compréhension immédiate des workflows par profil.</p>
               <a href="realisations.html#logigrammes" class="work__link">Voir le projet</a>
             </div>
           </article>
@@ -282,52 +526,102 @@
     <!-- =================== PROCESS =================== -->
     <section class="section" id="process">
       <div class="container">
-        <div class="section__head reveal">
-          <span class="section__eyebrow">Notre méthode</span>
-          <h2 class="section__title">Un cadre clair, <span class="gradient">des résultats prévisibles</span></h2>
-          <p class="section__lead">
-            Une démarche structurée pour livrer des projets web qui répondent vraiment à votre besoin.
+        <div class="section-head reveal">
+          <span class="section-eyebrow">Méthode</span>
+          <h2>Quatre étapes, <span class="accent">zéro surprise.</span></h2>
+          <p class="section-lead">
+            Une démarche structurée pour livrer des projets web qui répondent vraiment au besoin —
+            avec un budget et un calendrier qui ne dérapent pas.
           </p>
         </div>
 
-        <div class="process">
-          <article class="step reveal">
-            <h3>Cadrage</h3>
-            <p>On comprend votre métier, vos contraintes et vos objectifs. On définit le périmètre, le budget et les délais.</p>
-          </article>
-          <article class="step reveal" data-delay="1">
-            <h3>Design</h3>
-            <p>Maquettes interactives validées avant de coder. Vous voyez le résultat avant l'investissement technique.</p>
-          </article>
-          <article class="step reveal" data-delay="2">
-            <h3>Développement</h3>
-            <p>Code propre, sécurisé, documenté. Recettes intermédiaires pour rester aligné à chaque étape.</p>
-          </article>
-          <article class="step reveal" data-delay="3">
-            <h3>Suivi</h3>
-            <p>Mise en ligne, formation et maintenance continue. Votre projet évolue avec votre entreprise.</p>
-          </article>
+        <div class="process reveal">
+          <div class="process__line" aria-hidden="true"></div>
+          <div class="process__grid">
+            <div class="process__step process__step--active">
+              <div class="process__num">01</div>
+              <h3>Cadrage</h3>
+              <p>On comprend votre métier, vos contraintes, vos objectifs. Périmètre, budget, délais clarifiés.</p>
+            </div>
+            <div class="process__step">
+              <div class="process__num">02</div>
+              <h3>Design</h3>
+              <p>Maquettes interactives validées avant de coder. Vous voyez le résultat avant l'investissement technique.</p>
+            </div>
+            <div class="process__step">
+              <div class="process__num">03</div>
+              <h3>Développement</h3>
+              <p>Code propre, sécurisé, documenté. Recettes intermédiaires pour rester aligné à chaque étape.</p>
+            </div>
+            <div class="process__step">
+              <div class="process__num">04</div>
+              <h3>Suivi</h3>
+              <p>Mise en ligne, formation, maintenance continue. Votre projet évolue avec votre entreprise.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- =================== TARIFS =================== -->
-    <section class="section" id="tarifs" style="background: linear-gradient(180deg, transparent, rgba(15, 27, 48, 0.4), transparent);">
+    <!-- =================== STORY 2 — Reverse =================== -->
+    <section class="section">
       <div class="container">
-        <div class="section__head reveal">
-          <span class="section__eyebrow">Tarifs</span>
-          <h2 class="section__title">Une formule <span class="gradient">pour chaque ambition</span></h2>
-          <p class="section__lead">
-            Tarifs indicatifs, tout est ajustable. Devis détaillé sous 24h après votre demande.
+        <div class="story story--reverse reveal">
+          <div class="story__visual">
+            <svg viewBox="0 0 480 360" fill="none" style="width:100%; height:auto; max-width: 480px; margin: 0 auto; display: block;" aria-hidden="true">
+              <rect x="40" y="40" width="400" height="280" rx="16" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.08)"/>
+              <text x="60" y="80" fill="#A8B3CC" font-family="monospace" font-size="11" letter-spacing="0.05em">DEVIS DETAILLE</text>
+              <line x1="60" y1="92" x2="420" y2="92" stroke="rgba(255,255,255,0.08)"/>
+              <text x="60" y="120" fill="white" font-family="sans-serif" font-size="13" font-weight="500">Refonte site vitrine</text>
+              <text x="420" y="120" text-anchor="end" fill="white" font-family="monospace" font-size="13">1 890 €</text>
+              <text x="60" y="148" fill="white" font-family="sans-serif" font-size="13" font-weight="500">Espace client connecté</text>
+              <text x="420" y="148" text-anchor="end" fill="white" font-family="monospace" font-size="13">2 400 €</text>
+              <text x="60" y="176" fill="white" font-family="sans-serif" font-size="13" font-weight="500">Hébergement + SSL (12m)</text>
+              <text x="420" y="176" text-anchor="end" fill="white" font-family="monospace" font-size="13">588 €</text>
+              <text x="60" y="204" fill="white" font-family="sans-serif" font-size="13" font-weight="500">Formation équipe (2h)</text>
+              <text x="420" y="204" text-anchor="end" fill="white" font-family="monospace" font-size="13">180 €</text>
+              <line x1="60" y1="224" x2="420" y2="224" stroke="rgba(255,255,255,0.15)"/>
+              <text x="60" y="256" fill="#A8B3CC" font-family="monospace" font-size="11">TOTAL HT</text>
+              <text x="420" y="256" text-anchor="end" fill="white" font-family="sans-serif" font-size="20" font-weight="700">5 058 €</text>
+              <rect x="60" y="280" width="360" height="36" rx="8" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.3)"/>
+              <text x="240" y="303" text-anchor="middle" fill="#4ADE80" font-family="sans-serif" font-size="12" font-weight="500">✓ Tarif fixe — pas de variation cachée</text>
+            </svg>
+          </div>
+          <div class="story__content">
+            <span class="story__eyebrow">Devis transparent</span>
+            <h2>Un prix fixe, pas de mauvaise surprise.</h2>
+            <p>
+              Notre devis détaille chaque ligne : développement, hébergement, formation, support.
+              Pas de TJM caché qui s'envole, pas d'option "obligatoire" annoncée à mi-projet.
+              Si le périmètre évolue, on en parle ensemble avant de coder.
+            </p>
+            <ul class="story__list">
+              <li>Acompte de 30% à la signature, solde à la livraison</li>
+              <li>Paiement sécurisé Stripe — CB, virement, échelonnement 3x</li>
+              <li>Avenant écrit avant tout changement de périmètre</li>
+              <li>Garantie 30 jours sur les bugs après mise en ligne</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== PRICING TEASER =================== -->
+    <section class="section" id="tarifs-teaser">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="section-eyebrow">Tarifs</span>
+          <h2>Une formule pour <span class="accent">chaque ambition.</span></h2>
+          <p class="section-lead" style="margin-left:auto;margin-right:auto;">
+            Tarifs HT, ajustables au projet. Devis personnalisé sous 24h.
           </p>
         </div>
 
         <div class="pricing">
-
           <div class="plan reveal">
             <h3>Site Vitrine</h3>
-            <p class="plan__sub">Idéal pour présenter votre activité</p>
-            <div class="plan__price"><strong>890€</strong><span>HT — projet</span></div>
+            <p class="plan__sub">Présenter votre activité simplement</p>
+            <div class="plan__price"><strong>890 €</strong><span>HT — projet</span></div>
             <ul>
               <li>Jusqu'à 5 pages personnalisées</li>
               <li>Design responsive mobile</li>
@@ -340,13 +634,13 @@
 
           <div class="plan plan--featured reveal" data-delay="1">
             <h3>Site Pro / E-commerce</h3>
-            <p class="plan__sub">Pour développer votre activité en ligne</p>
-            <div class="plan__price"><strong>2 490€</strong><span>HT — projet</span></div>
+            <p class="plan__sub">Développer votre activité en ligne</p>
+            <div class="plan__price"><strong>2 490 €</strong><span>HT — projet</span></div>
             <ul>
               <li>Pages illimitées + blog / actualités</li>
               <li>Boutique en ligne (Stripe / PayPal)</li>
               <li>Espace admin pour gérer vos contenus</li>
-              <li>SEO avancé + Google Analytics</li>
+              <li>SEO avancé + Analytics</li>
               <li>3 mois de maintenance inclus</li>
             </ul>
             <a href="#contact" class="btn btn--accent">Démarrer ce projet</a>
@@ -354,7 +648,7 @@
 
           <div class="plan reveal" data-delay="2">
             <h3>Outil sur mesure</h3>
-            <p class="plan__sub">Application métier dédiée à votre process</p>
+            <p class="plan__sub">Application métier dédiée</p>
             <div class="plan__price"><strong>Sur devis</strong></div>
             <ul>
               <li>Audit fonctionnel complet</li>
@@ -365,33 +659,102 @@
             </ul>
             <a href="#contact" class="btn btn--ghost">Discuter du projet</a>
           </div>
-
         </div>
 
-        <p style="text-align:center; color: var(--text-muted); margin-top: 32px; font-size: 0.9rem;">
-          Paiements sécurisés via <strong style="color: var(--text-secondary);">Stripe</strong> · Carte bancaire, virement, échelonnement possible · Acompte 30% à la signature
+        <p style="text-align:center; color:var(--ink-3); margin-top:32px; font-size:0.88rem;">
+          <a href="tarifs.html" style="color:var(--ink-2);">Voir tous les détails et l'option maintenance →</a>
         </p>
+      </div>
+    </section>
+
+    <!-- =================== FAQ =================== -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <span class="section-eyebrow">FAQ</span>
+          <h2>Les questions <span class="accent">qu'on nous pose souvent.</span></h2>
+        </div>
+
+        <div class="faq reveal">
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">
+              Combien de temps faut-il pour livrer un site ?
+              <span class="icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq__a">
+              Un site vitrine simple est livré en 2 à 3 semaines après validation du cadrage.
+              Un site e-commerce ou une application sur mesure prend 4 à 8 semaines selon le périmètre.
+              Vous avez le calendrier détaillé dans le devis.
+            </div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">
+              À qui appartient le code source ?
+              <span class="icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq__a">
+              À vous, à 100%. Le code source intégral est livré dans un repository Git que vous possédez.
+              Aucune licence, aucun verrou propriétaire — vous pouvez en faire ce que vous voulez,
+              y compris le confier à un autre prestataire si vous le souhaitez.
+            </div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">
+              Puis-je continuer la maintenance avec un autre prestataire ?
+              <span class="icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq__a">
+              Bien sûr. Le code est documenté, la stack est standard (PHP/MySQL/JS vanilla ou
+              frameworks reconnus), et un dossier de transmission est livré avec chaque projet.
+              Aucun engagement de maintenance, vous décidez à tout moment.
+            </div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">
+              Comment fonctionne la facturation ?
+              <span class="icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq__a">
+              30% d'acompte à la signature, 70% à la livraison. Paiement sécurisé via Stripe
+              (CB, Apple Pay, virement SEPA) ou virement bancaire classique. Échelonnement
+              en 3x sans frais possible sur les projets &gt; 2 000 € HT.
+            </div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">
+              Quel hébergement choisir ?
+              <span class="icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq__a">
+              On recommande OVH (France, RGPD-compatible) pour la majorité des projets.
+              Pour des besoins spécifiques (haute dispo, scalabilité), on peut déployer
+              sur AWS, Scaleway ou Cloudflare Pages. C'est analysé au cadrage.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- =================== CONTACT =================== -->
     <section class="section" id="contact">
       <div class="container">
-        <div class="section__head reveal">
-          <span class="section__eyebrow">Contact</span>
-          <h2 class="section__title">Parlons de <span class="gradient">votre projet</span></h2>
-          <p class="section__lead">
-            Décrivez votre besoin, on revient vers vous sous 24h avec un premier échange et une estimation.
+        <div class="section-head reveal">
+          <span class="section-eyebrow">Contact</span>
+          <h2>Parlons de <span class="accent">votre projet.</span></h2>
+          <p class="section-lead">
+            Décrivez votre besoin — premier échange sans engagement, audit gratuit
+            de votre situation actuelle, retour sous 24 h.
           </p>
         </div>
 
         <div class="contact">
 
           <div class="contact__info reveal">
-            <h3>Une idée ? Un besoin précis ?</h3>
-            <p>
-              Remplissez le formulaire ou contactez-nous directement. Premier échange sans engagement,
-              audit gratuit de votre situation actuelle.
+            <h3 style="font-size:1.3rem;">Comment ça se passe ?</h3>
+            <p style="color:var(--ink-2);">
+              Vous décrivez votre besoin. On vous envoie un premier retour avec une estimation
+              et 2 à 3 questions de cadrage. Si on continue, on planifie un appel
+              de 30 min pour valider la direction. Pas plus compliqué.
             </p>
 
             <ul class="contact__list">
@@ -410,7 +773,7 @@
                 </i>
                 <div>
                   <strong>Zone d'intervention</strong>
-                  <span>France entière (à distance)</span>
+                  <span>France entière — à distance</span>
                 </div>
               </li>
               <li>
@@ -419,16 +782,16 @@
                 </i>
                 <div>
                   <strong>Délai de réponse</strong>
-                  <span>Sous 24h ouvrées</span>
+                  <span>Sous 24 h ouvrées</span>
                 </div>
               </li>
               <li>
                 <i aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 </i>
                 <div>
                   <strong>Site web</strong>
-                  <span><a href="https://www.skyloop.fr" target="_blank" rel="noopener">www.skyloop.fr</a></span>
+                  <span><a href="https://vitrine.skyloop.fr">vitrine.skyloop.fr</a></span>
                 </div>
               </li>
             </ul>
@@ -438,22 +801,22 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Nom <span class="req">*</span></label>
-                <input type="text" id="name" name="name" required placeholder="Jean Dupont">
+                <input type="text" id="name" name="name" required placeholder="Jean Dupont" autocomplete="name">
               </div>
               <div class="form-group">
                 <label for="email">Email <span class="req">*</span></label>
-                <input type="email" id="email" name="email" required placeholder="contact@entreprise.fr">
+                <input type="email" id="email" name="email" required placeholder="contact@entreprise.fr" autocomplete="email">
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="company">Entreprise</label>
-                <input type="text" id="company" name="company" placeholder="Nom de votre société">
+                <input type="text" id="company" name="company" placeholder="Nom de votre société" autocomplete="organization">
               </div>
               <div class="form-group">
                 <label for="phone">Téléphone</label>
-                <input type="tel" id="phone" name="phone" placeholder="06 00 00 00 00">
+                <input type="tel" id="phone" name="phone" placeholder="06 00 00 00 00" autocomplete="tel">
               </div>
             </div>
 
@@ -475,25 +838,24 @@
               <textarea id="message" name="message" required placeholder="Décrivez votre projet, vos contraintes, votre budget approximatif..."></textarea>
             </div>
 
-            <!-- Anti-spam Web3Forms -->
             <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
 
             <button type="submit" class="btn btn--primary" style="width:100%;">
-              Envoyer ma demande
+              Envoyer ma demande <span class="arrow" aria-hidden="true">→</span>
             </button>
 
             <div class="form-status" role="status" aria-live="polite"></div>
 
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 16px 0 0; text-align: center;">
-              En soumettant ce formulaire, vous acceptez d'être contacté par Skyloop. Aucune donnée n'est revendue.
+            <p class="form-disclaimer">
+              En soumettant ce formulaire, vous acceptez d'être contacté par Skyloop.
+              Aucune donnée n'est revendue. Voir <a href="mentions-legales.html">mentions légales</a>.
             </p>
           </form>
-
         </div>
 
         <div class="cta-banner reveal">
-          <h2>Prêt à transformer votre présence en ligne ?</h2>
-          <p>Premier échange gratuit, sans engagement. On vous propose la solution la plus adaptée à votre besoin réel.</p>
+          <h2>Pas encore prêt à parler projet ?</h2>
+          <p>Écrivez-nous quand vous le voulez. Premier échange gratuit, sans engagement.</p>
           <a href="mailto:contact@skyloop.fr" class="btn btn--accent btn--lg">contact@skyloop.fr</a>
         </div>
 
@@ -508,8 +870,9 @@
 
       <div class="footer__grid">
         <div class="footer__col footer__brand">
-          <img src="assets/images/skyloop-fd-sombre.png" alt="Skyloop">
+          <img src="assets/images/skyloop-fd-sombre.png" alt="Skyloop" width="160" height="28">
           <p>Skyloop est votre partenaire pour des sites web modernes et des outils métier qui font vraiment la différence.</p>
+          <span class="footer__status"><span class="dot"></span>Tous les services opérationnels</span>
         </div>
 
         <div class="footer__col">
@@ -518,7 +881,7 @@
             <li><a href="#services">Création web</a></li>
             <li><a href="#services">Maintenance</a></li>
             <li><a href="#services">Outils sur mesure</a></li>
-            <li><a href="#tarifs">Tarifs</a></li>
+            <li><a href="#services">Intégration</a></li>
           </ul>
         </div>
 
@@ -527,8 +890,17 @@
           <ul>
             <li><a href="#realisations">Réalisations</a></li>
             <li><a href="#process">Méthode</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="tarifs.html">Tarifs</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Ressources</h4>
+          <ul>
             <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="mentions-legales.html#rgpd">RGPD</a></li>
+            <li><a href="https://github.com/skypulsar" target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         </div>
 
@@ -536,14 +908,14 @@
           <h4>Contact</h4>
           <ul>
             <li><a href="mailto:contact@skyloop.fr">contact@skyloop.fr</a></li>
-            <li><a href="https://www.skyloop.fr">www.skyloop.fr</a></li>
+            <li><a href="#contact">Démarrer un projet</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer__bottom">
         <span>© <span id="current-year"></span> Skyloop. Tous droits réservés.</span>
-        <span>Hébergé sur GitHub Pages · Powered by Skyloop</span>
+        <span>Self-hosted, RGPD-friendly · 0 cookie de tracking</span>
       </div>
 
     </div>
@@ -552,4 +924,3 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-                 
