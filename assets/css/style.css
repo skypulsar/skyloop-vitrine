@@ -1430,6 +1430,8 @@ code, kbd, samp, pre {
 }
 
 /* ============ INTRO OVERLAY ============ */
+/* Total ~3.0s desktop / ~2.4s mobile · easing soft · micro-moments */
+
 .intro-overlay {
   position: fixed;
   inset: 0;
@@ -1440,7 +1442,7 @@ code, kbd, samp, pre {
   justify-content: center;
   pointer-events: auto;
   opacity: 1;
-  animation: intro-fadeout 0.4s var(--ease-out) 1.0s forwards;
+  animation: intro-fadeout 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 2.4s forwards;
 }
 
 .intro-overlay__grid {
@@ -1453,7 +1455,7 @@ code, kbd, samp, pre {
   mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 0%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 0%, transparent 70%);
   opacity: 0;
-  animation: intro-grid-in 0.6s var(--ease-out) 0.2s forwards;
+  animation: intro-grid-in 1.0s cubic-bezier(0.25, 0.1, 0.25, 1) 0.2s forwards;
 }
 
 .intro-overlay__brand {
@@ -1463,14 +1465,16 @@ code, kbd, samp, pre {
   align-items: center;
   gap: 16px;
   opacity: 0;
-  animation: intro-brand-in 0.5s var(--ease-out) 0.1s forwards;
+  transform: translateY(12px);
+  animation: intro-brand-in 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.4s forwards;
 }
 
 .intro-overlay__logo {
   width: 220px;
   max-width: 60vw;
   height: auto;
-  filter: drop-shadow(0 0 30px rgba(59,130,246,0.4));
+  filter: drop-shadow(0 0 20px rgba(59,130,246,0.25));
+  animation: intro-logo-pulse 0.6s cubic-bezier(0.4, 0, 0.6, 1) 1.8s;
 }
 
 .intro-overlay__line {
@@ -1479,14 +1483,15 @@ code, kbd, samp, pre {
   height: 1px;
   position: relative;
   overflow: hidden;
+  background: rgba(255,255,255,0.06);
 }
 .intro-overlay__line::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 0%, var(--blue-2) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, var(--blue) 40%, var(--blue-2) 50%, var(--blue) 60%, transparent 100%);
   transform: translateX(-100%);
-  animation: intro-line-trace 0.7s var(--ease-out) 0.3s forwards;
+  animation: intro-line-trace 1.0s cubic-bezier(0.25, 0.1, 0.25, 1) 0.8s forwards;
 }
 
 .intro-overlay__caption {
@@ -1496,14 +1501,15 @@ code, kbd, samp, pre {
   text-transform: uppercase;
   letter-spacing: 0.18em;
   opacity: 0;
-  animation: intro-caption-in 0.4s var(--ease-out) 0.55s forwards;
+  animation: intro-caption-in 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) 1.2s forwards;
 }
 
 @keyframes intro-fadeout {
-  to { opacity: 0; visibility: hidden; }
+  from { opacity: 1; visibility: visible; }
+  to   { opacity: 0; visibility: hidden; }
 }
 @keyframes intro-brand-in {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes intro-grid-in {
@@ -1511,29 +1517,40 @@ code, kbd, samp, pre {
   to   { opacity: 1; }
 }
 @keyframes intro-line-trace {
-  to { transform: translateX(100%); }
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
 }
 @keyframes intro-caption-in {
-  from { opacity: 0; }
-  to   { opacity: 0.8; }
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 0.8; transform: translateY(0); }
+}
+@keyframes intro-logo-pulse {
+  0%   { filter: drop-shadow(0 0 20px rgba(59,130,246,0.25)); transform: scale(1); }
+  50%  { filter: drop-shadow(0 0 40px rgba(59,130,246,0.55)); transform: scale(1.015); }
+  100% { filter: drop-shadow(0 0 20px rgba(59,130,246,0.25)); transform: scale(1); }
 }
 
-/* Intro skip — état appliqué quand on saute */
+/* Skip — appelé sur clic/touche : compresse tout */
 .intro-overlay--skip {
-  animation: intro-fadeout 0.2s var(--ease-out) forwards !important;
+  animation: intro-fadeout 0.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards !important;
 }
-.intro-overlay--skip * {
+.intro-overlay--skip .intro-overlay__grid,
+.intro-overlay--skip .intro-overlay__brand,
+.intro-overlay--skip .intro-overlay__line::before,
+.intro-overlay--skip .intro-overlay__caption,
+.intro-overlay--skip .intro-overlay__logo {
   animation-duration: 0.1s !important;
+  animation-delay: 0s !important;
 }
 
-/* Mobile : raccourci -30% */
+/* Mobile : raccourci 20% (total ~2.4s) */
 @media (max-width: 720px) {
-  .intro-overlay { animation-delay: 0.7s; animation-duration: 0.3s; }
-  .intro-overlay__brand { animation-delay: 0.05s; animation-duration: 0.4s; }
-  .intro-overlay__grid { animation-delay: 0.15s; animation-duration: 0.5s; }
-  .intro-overlay__line::before { animation-delay: 0.2s; animation-duration: 0.5s; }
-  .intro-overlay__caption { animation-delay: 0.4s; animation-duration: 0.3s; }
-  .intro-overlay__logo { width: 180px; }
+  .intro-overlay { animation-delay: 1.92s; animation-duration: 0.48s; }
+  .intro-overlay__grid { animation-delay: 0.16s; animation-duration: 0.8s; }
+  .intro-overlay__brand { animation-delay: 0.32s; animation-duration: 0.48s; }
+  .intro-overlay__line::before { animation-delay: 0.64s; animation-duration: 0.8s; }
+  .intro-overlay__caption { animation-delay: 0.96s; animation-duration: 0.32s; }
+  .intro-overlay__logo { animation-delay: 1.44s; animation-duration: 0.48s; width: 180px; }
 }
 
 /* Reduced motion : skip total */
