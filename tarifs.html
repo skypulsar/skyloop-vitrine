@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#060B18">
+  <title>Tarifs — Skyloop</title>
+  <meta name="description" content="Découvrez les formules Skyloop : sites vitrines, e-commerce, outils sur mesure et maintenance. Paiement sécurisé via Stripe.">
+  <link rel="icon" type="image/png" href="assets/images/logoskyloop.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .tabs {
+      display: inline-flex;
+      gap: 4px;
+      padding: 4px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      margin-bottom: 40px;
+    }
+    .tab {
+      padding: 10px 22px;
+      border-radius: 100px;
+      background: transparent;
+      color: var(--text-secondary);
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    .tab.active {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: var(--shadow-glow);
+    }
+    .savings { color: var(--brand-coral); font-size: 0.75rem; margin-left: 6px; font-weight: 600; }
+
+    .maintenance-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .maintenance-table th, .maintenance-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .maintenance-table th {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .maintenance-table td { color: var(--text-secondary); font-size: 0.95rem; }
+    .maintenance-table tr:last-child td { border-bottom: none; }
+    .maintenance-table .check { color: #22C55E; font-weight: 700; }
+    .maintenance-table .cross { color: var(--text-muted); }
+
+    .payment-methods {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .pay-method {
+      padding: 16px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
+    }
+    .pay-method:hover {
+      border-color: rgba(59,130,246,0.4);
+      transform: translateY(-2px);
+    }
+    .pay-method__logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .stripe-cta {
+      margin-top: 60px;
+      padding: 50px 40px;
+      background: linear-gradient(135deg, rgba(99, 91, 255, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%);
+      border: 1px solid rgba(99, 91, 255, 0.3);
+      border-radius: var(--radius-xl);
+      text-align: center;
+    }
+    .stripe-cta__logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      background: rgba(99, 91, 255, 0.2);
+      border: 1px solid rgba(99, 91, 255, 0.4);
+      border-radius: 100px;
+      color: #A5B4FC;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 720px) {
+      .maintenance-table { font-size: 0.85rem; display: block; overflow-x: auto; }
+      .maintenance-table th, .maintenance-table td { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav__logo">
+          <img src="assets/images/logoskyloop.png" alt="Skyloop">
+        </a>
+        <button class="nav__toggle" aria-label="Menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+        <ul class="nav__menu" id="menu">
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="index.html#contact" class="nav__cta">Démarrer un projet</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main style="padding-top: var(--header-h);">
+
+    <section class="section" style="padding-top: 80px;">
+      <div class="container">
+
+        <div class="section__head reveal">
+          <span class="section__eyebrow">Tarifs transparents</span>
+          <h1 class="section__title">Des formules <span class="gradient">claires et adaptées</span></h1>
+          <p class="section__lead">
+            Choisissez la formule qui correspond à votre besoin. Tarifs HT, ajustables sur devis.
+          </p>
+        </div>
+
+        <!-- Toggle création / maintenance -->
+        <div style="text-align: center;">
+          <div class="tabs reveal" role="tablist">
+            <button class="tab active" data-target="creation" role="tab" aria-selected="true">Création</button>
+            <button class="tab" data-target="maintenance" role="tab" aria-selected="false">Maintenance</button>
+          </div>
+        </div>
+
+        <!-- ===== CREATION ===== -->
+        <div id="creation" class="tab-panel">
+          <div class="pricing">
+
+            <div class="plan reveal">
+              <h3>Site Vitrine</h3>
+              <p class="plan__sub">Présenter votre activité simplement</p>
+              <div class="plan__price"><strong>890€</strong><span>HT — projet</span></div>
+              <ul>
+                <li>Jusqu'à 5 pages personnalisées</li>
+                <li>Design responsive mobile</li>
+                <li>Formulaire de contact</li>
+                <li>Optimisation SEO de base</li>
+                <li>Hébergement OVH compatible</li>
+                <li>1 mois de maintenance offert</li>
+              </ul>
+              <button class="btn btn--ghost stripe-checkout" data-product="vitrine" data-price="89000">Demander un devis</button>
+            </div>
+
+            <div class="plan plan--featured reveal" data-delay="1">
+              <h3>Site Pro / E-commerce</h3>
+              <p class="plan__sub">Développer votre activité en ligne</p>
+              <div class="plan__price"><strong>2 490€</strong><span>HT — projet</span></div>
+              <ul>
+                <li>Pages illimitées + blog / actualités</li>
+                <li>Boutique en ligne (Stripe / PayPal)</li>
+                <li>Espace admin pour gérer vos contenus</li>
+                <li>SEO avancé + Google Analytics</li>
+                <li>Multilingue (option)</li>
+                <li>3 mois de maintenance inclus</li>
+              </ul>
+              <button class="btn btn--accent stripe-checkout" data-product="ecommerce" data-price="249000">Démarrer ce projet</button>
+            </div>
+
+            <div class="plan reveal" data-delay="2">
+              <h3>Outil sur mesure</h3>
+              <p class="plan__sub">Application métier dédiée</p>
+              <div class="plan__price"><strong>Sur devis</strong></div>
+              <ul>
+                <li>Audit fonctionnel complet</li>
+                <li>Maquettes & prototypes interactifs</li>
+                <li>Développement modulaire</li>
+                <li>Hébergement et SLA dédiés</li>
+                <li>Documentation et formation</li>
+                <li>Évolutions et support continus</li>
+              </ul>
+              <a href="index.html#contact" class="btn btn--ghost">Discuter du projet</a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ===== MAINTENANCE ===== -->
+        <div id="maintenance" class="tab-panel" style="display: none;">
+          <div class="pricing">
+
+            <div class="plan reveal">
+              <h3>Essentiel</h3>
+              <p class="plan__sub">Pour rester en ligne en sécurité</p>
+              <div class="plan__price"><strong>49€</strong><span>HT / mois</span></div>
+              <ul>
+                <li>Mises à jour de sécurité</li>
+                <li>Sauvegardes hebdomadaires</li>
+                <li>Surveillance uptime 24/7</li>
+                <li>Support email (48h)</li>
+                <li>Rapport mensuel</li>
+              </ul>
+              <button class="btn btn--ghost stripe-checkout" data-product="maint-essentiel" data-price="4900" data-recurring="true">S'abonner</button>
+            </div>
+
+            <div class="plan plan--featured reveal" data-delay="1">
+              <h3>Business</h3>
+              <p class="plan__sub">Pour les sites avec du trafic</p>
+              <div class="plan__price"><strong>149€</strong><span>HT / mois</span></div>
+              <ul>
+                <li>Tout l'Essentiel inclus</li>
+                <li>Sauvegardes quotidiennes</li>
+                <li>Support prioritaire (24h)</li>
+                <li>2h de modifications / mois</li>
+                <li>Optimisations de performance</li>
+                <li>Analyse SEO mensuelle</li>
+              </ul>
+              <button class="btn btn--accent stripe-checkout" data-product="maint-business" data-price="14900" data-recurring="true">S'abonner</button>
+            </div>
+
+            <div class="plan reveal" data-delay="2">
+              <h3>Premium</h3>
+              <p class="plan__sub">Pour les applications critiques</p>
+              <div class="plan__price"><strong>349€</strong><span>HT / mois</span></div>
+              <ul>
+                <li>Tout le Business inclus</li>
+                <li>Support sous 4h ouvrées</li>
+                <li>5h de modifications / mois</li>
+                <li>Astreinte sur demande</li>
+                <li>Audit sécurité trimestriel</li>
+                <li>Hébergement haute dispo</li>
+              </ul>
+              <button class="btn btn--ghost stripe-checkout" data-product="maint-premium" data-price="34900" data-recurring="true">S'abonner</button>
+            </div>
+
+          </div>
+
+          <table class="maintenance-table reveal" style="margin-top: 50px;">
+            <thead>
+              <tr>
+                <th>Inclus dans la maintenance</th>
+                <th style="text-align: center;">Essentiel</th>
+                <th style="text-align: center;">Business</th>
+                <th style="text-align: center;">Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Mises à jour de sécurité</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;" class="check">✓</td><td style="text-align:center;" class="check">✓</td></tr>
+              <tr><td>Sauvegardes</td><td style="text-align:center;">Hebdo</td><td style="text-align:center;">Quotidiennes</td><td style="text-align:center;">Temps réel</td></tr>
+              <tr><td>Support</td><td style="text-align:center;">48h</td><td style="text-align:center;">24h</td><td style="text-align:center;">4h</td></tr>
+              <tr><td>Modifications mensuelles</td><td style="text-align:center;" class="cross">—</td><td style="text-align:center;">2h</td><td style="text-align:center;">5h</td></tr>
+              <tr><td>Astreinte 24/7</td><td style="text-align:center;" class="cross">—</td><td style="text-align:center;" class="cross">—</td><td style="text-align:center;" class="check">✓</td></tr>
+              <tr><td>Audit sécurité</td><td style="text-align:center;" class="cross">—</td><td style="text-align:center;">Annuel</td><td style="text-align:center;">Trimestriel</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Stripe info -->
+        <div class="stripe-cta reveal">
+          <span class="stripe-cta__logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.479 9.883c-1.626-.604-2.512-1.067-2.512-1.803 0-.622.511-.977 1.423-.977 1.667 0 3.379.642 4.558 1.22l.665-4.111c-.935-.446-2.847-1.177-5.49-1.177-1.87 0-3.425.488-4.536 1.4-1.155.954-1.752 2.334-1.752 4.003 0 3.024 1.848 4.319 4.858 5.412 1.937.703 2.587 1.203 2.587 1.973 0 .746-.643 1.178-1.806 1.178-1.464 0-3.879-.717-5.464-1.638l-.674 4.155C5.737 19.32 7.961 20 10.273 20c1.972 0 3.616-.467 4.728-1.35 1.243-.984 1.886-2.439 1.886-4.347 0-3.094-1.889-4.382-4.408-5.42z"/></svg>
+            Paiement sécurisé via Stripe
+          </span>
+          <h2>Prêt à signer ? Le paiement est simple et sécurisé</h2>
+          <p style="max-width: 580px; margin: 0 auto 28px;">
+            Dès que nous validons ensemble votre projet, vous recevez un lien de paiement Stripe sécurisé.
+            Carte bancaire, virement SEPA, prélèvements automatiques pour les abonnements maintenance.
+            Aucun frais caché, aucun engagement long terme.
+          </p>
+
+          <div class="payment-methods">
+            <div class="pay-method">
+              <div class="pay-method__logo" style="background: linear-gradient(135deg, #635BFF 0%, #4F46E5 100%); color: white;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.479 9.883c-1.626-.604-2.512-1.067-2.512-1.803 0-.622.511-.977 1.423-.977 1.667 0 3.379.642 4.558 1.22l.665-4.111c-.935-.446-2.847-1.177-5.49-1.177-1.87 0-3.425.488-4.536 1.4-1.155.954-1.752 2.334-1.752 4.003 0 3.024 1.848 4.319 4.858 5.412 1.937.703 2.587 1.203 2.587 1.973 0 .746-.643 1.178-1.806 1.178-1.464 0-3.879-.717-5.464-1.638l-.674 4.155C5.737 19.32 7.961 20 10.273 20c1.972 0 3.616-.467 4.728-1.35 1.243-.984 1.886-2.439 1.886-4.347 0-3.094-1.889-4.382-4.408-5.42z"/></svg>
+              </div>
+              <div>
+                <strong style="display:block; color: var(--text-primary); font-size: 0.9rem;">Stripe</strong>
+                <span style="color: var(--text-muted); font-size: 0.8rem;">CB · Apple Pay · Google Pay</span>
+              </div>
+            </div>
+            <div class="pay-method">
+              <div class="pay-method__logo" style="background: rgba(59,130,246,0.15); color: var(--brand-blue-light); border: 1px solid rgba(59,130,246,0.3);">SEPA</div>
+              <div>
+                <strong style="display:block; color: var(--text-primary); font-size: 0.9rem;">Virement SEPA</strong>
+                <span style="color: var(--text-muted); font-size: 0.8rem;">Pour les entreprises</span>
+              </div>
+            </div>
+            <div class="pay-method">
+              <div class="pay-method__logo" style="background: rgba(255,107,71,0.15); color: var(--brand-coral); border: 1px solid rgba(255,107,71,0.3);">x3</div>
+              <div>
+                <strong style="display:block; color: var(--text-primary); font-size: 0.9rem;">Échelonnement</strong>
+                <span style="color: var(--text-muted); font-size: 0.8rem;">Possible en 3x sans frais</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="index.html#contact" class="btn btn--primary btn--lg" style="margin-top: 32px;">Obtenir un devis personnalisé</a>
+        </div>
+
+        <p style="text-align: center; color: var(--text-muted); margin-top: 30px; font-size: 0.85rem;">
+          Tous les tarifs sont indiqués en € HT (TVA 20% non applicable, en attente d'assujettissement) · Acompte de 30% à la signature · Solde à la livraison
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom" style="border-top: none; padding-top: 0;">
+        <span>© <span id="current-year"></span> Skyloop. Tous droits réservés.</span>
+        <span><a href="index.html">Accueil</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="mailto:contact@skyloop.fr">contact@skyloop.fr</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // ---- Onglets Création / Maintenance ----
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.tab-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const target = tab.dataset.target;
+        panels.forEach(p => { p.style.display = (p.id === target) ? 'block' : 'none'; });
+      });
+    });
+
+    // ---- Stripe Checkout (préparation, à activer avec votre clé publique) ----
+    // POUR ACTIVER STRIPE :
+    // 1. Créez un compte sur https://dashboard.stripe.com
+    // 2. Récupérez votre clé publique (pk_live_... ou pk_test_...)
+    // 3. Créez les produits/prix dans le dashboard Stripe
+    // 4. Remplacez STRIPE_PUBLIC_KEY ci-dessous
+    // 5. Décommentez le chargement de Stripe.js
+    // 6. Mappez chaque data-product à un priceId Stripe dans le mapping ci-dessous
+    //
+    // Voir le README pour la mise en place complète.
+
+    const STRIPE_PUBLIC_KEY = 'pk_live_REPLACE_ME';
+
+    // Mapping produit -> priceId Stripe (à créer côté dashboard)
+    const STRIPE_PRICES = {
+      'vitrine':         'price_REPLACE_VITRINE',
+      'ecommerce':       'price_REPLACE_ECOMMERCE',
+      'maint-essentiel': 'price_REPLACE_MAINT_ESS',
+      'maint-business':  'price_REPLACE_MAINT_BUSINESS',
+      'maint-premium':   'price_REPLACE_MAINT_PREMIUM'
+    };
+
+    document.querySelectorAll('.stripe-checkout').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const product = btn.dataset.product;
+
+        // Si Stripe n'est pas encore configuré -> bascule vers contact
+        if (STRIPE_PUBLIC_KEY === 'pk_live_REPLACE_ME' || !STRIPE_PRICES[product] || STRIPE_PRICES[product].includes('REPLACE')) {
+          window.location.href = 'index.html#contact';
+          return;
+        }
+
+        // Une fois configuré : redirection Stripe Checkout
+        // (nécessite Stripe.js chargé : <script src="https://js.stripe.com/v3/"></script>)
+        try {
+          const stripe = window.Stripe(STRIPE_PUBLIC_KEY);
+          const { error } = await stripe.redirectToCheckout({
+            lineItems: [{ price: STRIPE_PRICES[product], quantity: 1 }],
+            mode: btn.dataset.recurring === 'true' ? 'subscription' : 'payment',
+            successUrl: window.location.origin + '/success.html',
+            cancelUrl: window.location.href
+          });
+          if (error) {
+            alert('Erreur Stripe : ' + error.message);
+          }
+        } catch (e) {
+          window.location.href = 'index.html#contact';
+        }
+      });
+    });
+  </script>
+
+  <!-- Décommentez cette ligne après configuration Stripe :
+  <script src="https://js.stripe.com/v3/"></script>
+  -->
+
+</body>
+</html>

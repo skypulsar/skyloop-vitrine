@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#060B18">
+  <title>Réalisations — Skyloop</title>
+  <meta name="description" content="Découvrez les projets web et outils métier conçus par Skyloop : GestenProd, Compound, logigrammes interactifs et plus encore.">
+  <link rel="icon" type="image/png" href="assets/images/logoskyloop.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .project-detail { padding: 60px 0; border-bottom: 1px solid var(--border); }
+    .project-detail:last-of-type { border-bottom: none; }
+    .project-header { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 48px; }
+    .project-screen {
+      position: relative;
+      background: linear-gradient(135deg, #0F1B30 0%, #1E3A8A 100%);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-strong);
+      overflow: hidden;
+      min-height: 280px;
+    }
+    .project-screen::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .ui-mockup {
+      position: relative;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    }
+    .ui-mockup-bar {
+      display: flex; align-items: center; gap: 6px;
+      padding: 10px 14px;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+    .ui-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .ui-dot--r { background: #FF6B47; }
+    .ui-dot--y { background: #FFC845; }
+    .ui-dot--g { background: #22C55E; }
+    .ui-content { padding: 18px; min-height: 200px; }
+    .ui-row { display: flex; gap: 12px; margin-bottom: 10px; }
+    .ui-block { background: linear-gradient(90deg, var(--brand-blue) 0%, transparent 100%); height: 12px; border-radius: 4px; opacity: 0.5; }
+    .ui-block--lg { height: 60px; flex: 1; opacity: 0.25; background: linear-gradient(135deg, rgba(59,130,246,0.4) 0%, rgba(255,107,71,0.2) 100%); border-radius: 8px; }
+    .ui-block--card { background: var(--bg-card); flex: 1; height: 80px; border-radius: 8px; border: 1px solid var(--border); padding: 12px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 28px; }
+    .feature-card { padding: 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); }
+    .feature-card strong { color: var(--text-primary); display:block; margin-bottom: 6px; font-size: 0.95rem; }
+    .feature-card span { color: var(--text-secondary); font-size: 0.9rem; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tech-pill {
+      padding: 6px 14px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: var(--brand-blue-light);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    @media (max-width: 860px) {
+      .project-header { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container">
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="index.html" class="nav__logo">
+          <img src="assets/images/logoskyloop.png" alt="Skyloop">
+        </a>
+        <button class="nav__toggle" aria-label="Menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+        <ul class="nav__menu" id="menu">
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="index.html#contact" class="nav__cta">Démarrer un projet</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main style="padding-top: var(--header-h);">
+
+    <section class="section" style="padding-top: 80px;">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="section__eyebrow">Portfolio</span>
+          <h1 class="section__title">Nos <span class="gradient">réalisations</span></h1>
+          <p class="section__lead">
+            Des projets concrets, en production, qui résolvent de vrais problèmes métier.
+          </p>
+        </div>
+
+        <!-- ============ GestenProd ============ -->
+        <article class="project-detail" id="gestenprod">
+          <div class="project-header reveal">
+            <div>
+              <div class="work__tags" style="margin-bottom: 14px;">
+                <span class="work__tag">Logistique portuaire</span>
+                <span class="work__tag">B2B</span>
+                <span class="work__tag">Production</span>
+              </div>
+              <h2>GestenProd</h2>
+              <p>Plateforme complète de gestion de production logistique pour le terminal portuaire de Marseille. Gestion des navires, équipes, parc véhicules, déchargements, KPI consolidés et reporting automatisé.</p>
+              <div class="tech-stack">
+                <span class="tech-pill">PHP 8</span>
+                <span class="tech-pill">MySQL</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">PhpSpreadsheet</span>
+                <span class="tech-pill">OVH</span>
+              </div>
+            </div>
+
+            <div class="project-screen">
+              <div class="ui-mockup">
+                <div class="ui-mockup-bar">
+                  <span class="ui-dot ui-dot--r"></span>
+                  <span class="ui-dot ui-dot--y"></span>
+                  <span class="ui-dot ui-dot--g"></span>
+                </div>
+                <div class="ui-content">
+                  <div class="ui-row" style="margin-bottom: 18px;">
+                    <div class="ui-block" style="width: 30%;"></div>
+                    <div class="ui-block" style="width: 50%; opacity: 0.25;"></div>
+                  </div>
+                  <div class="ui-row">
+                    <div class="ui-block--card">
+                      <div style="font-size:0.7rem; color: var(--text-muted);">NAVIRES J</div>
+                      <div style="font-size:1.4rem; font-weight:700; color: var(--brand-blue-light); margin-top:4px;">12</div>
+                    </div>
+                    <div class="ui-block--card">
+                      <div style="font-size:0.7rem; color: var(--text-muted);">VEHICULES</div>
+                      <div style="font-size:1.4rem; font-weight:700; color: var(--brand-coral); margin-top:4px;">3 240</div>
+                    </div>
+                    <div class="ui-block--card">
+                      <div style="font-size:0.7rem; color: var(--text-muted);">EQUIPES</div>
+                      <div style="font-size:1.4rem; font-weight:700; color: #22C55E; margin-top:4px;">8</div>
+                    </div>
+                  </div>
+                  <div class="ui-row" style="margin-top: 18px;">
+                    <div class="ui-block--lg"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="features-grid reveal">
+            <div class="feature-card">
+              <strong>Gestion navires</strong>
+              <span>Planification arrivées, déchargement par zones, suivi temps réel</span>
+            </div>
+            <div class="feature-card">
+              <strong>Multi-rôles</strong>
+              <span>Admin, dirigeant, responsable, employé, agence intérim, comptabilité</span>
+            </div>
+            <div class="feature-card">
+              <strong>KPI consolidés</strong>
+              <span>Tableaux de bord en temps réel, exports Excel programmés</span>
+            </div>
+            <div class="feature-card">
+              <strong>Sécurité</strong>
+              <span>Authentification, .htaccess, gestion fines des permissions</span>
+            </div>
+            <div class="feature-card">
+              <strong>Notifications</strong>
+              <span>Alertes mail automatiques (avaries, anomalies, planning)</span>
+            </div>
+            <div class="feature-card">
+              <strong>API JSON</strong>
+              <span>Endpoints sécurisés pour intégration avec d'autres systèmes</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ Compound ============ -->
+        <article class="project-detail" id="compound">
+          <div class="project-header reveal">
+            <div class="project-screen" style="order: -1;">
+              <div class="ui-mockup">
+                <div class="ui-mockup-bar">
+                  <span class="ui-dot ui-dot--r"></span>
+                  <span class="ui-dot ui-dot--y"></span>
+                  <span class="ui-dot ui-dot--g"></span>
+                </div>
+                <div class="ui-content">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+                    <div class="ui-block" style="width: 40%;"></div>
+                    <div style="font-size: 0.7rem; padding: 4px 10px; background: rgba(34,197,94,0.15); color: #22C55E; border-radius: 6px;">● LIVE</div>
+                  </div>
+                  <!-- chart simulé -->
+                  <svg viewBox="0 0 320 120" style="width:100%; height: 100px;">
+                    <defs>
+                      <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.5"/>
+                        <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0,90 L40,70 L80,80 L120,40 L160,55 L200,30 L240,45 L280,20 L320,35 L320,120 L0,120 Z" fill="url(#g1)"/>
+                    <path d="M0,90 L40,70 L80,80 L120,40 L160,55 L200,30 L240,45 L280,20 L320,35" fill="none" stroke="#3B82F6" stroke-width="2"/>
+                    <path d="M0,100 L40,90 L80,95 L120,75 L160,80 L200,65 L240,75 L280,55 L320,68" fill="none" stroke="#FF6B47" stroke-width="2" stroke-dasharray="4 3"/>
+                  </svg>
+                  <div class="ui-row" style="margin-top: 14px; gap: 8px;">
+                    <div class="ui-block" style="width: 60%; height: 8px;"></div>
+                    <div class="ui-block" style="width: 40%; height: 8px; opacity: 0.3;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="work__tags" style="margin-bottom: 14px;">
+                <span class="work__tag">KPI</span>
+                <span class="work__tag">Données métier</span>
+                <span class="work__tag">API JSON</span>
+              </div>
+              <h2>Module Compound & KPI</h2>
+              <p>Suivi du parc, gestion des avaries, capacités d'expédition et tableaux de bord KPI exportables. L'ensemble est connecté en temps réel et accessible aussi via API JSON pour des intégrations tierces.</p>
+              <div class="tech-stack">
+                <span class="tech-pill">PHP</span>
+                <span class="tech-pill">JSON</span>
+                <span class="tech-pill">Excel</span>
+                <span class="tech-pill">Charts</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="features-grid reveal">
+            <div class="feature-card">
+              <strong>Avaries</strong>
+              <span>Import Excel, suivi photo, notifications automatiques par mail</span>
+            </div>
+            <div class="feature-card">
+              <strong>Capacités expédition</strong>
+              <span>Gestion fine des capacités par zone et par mode</span>
+            </div>
+            <div class="feature-card">
+              <strong>KPI exportables</strong>
+              <span>Statistiques Marseille consolidées, export Excel en un clic</span>
+            </div>
+            <div class="feature-card">
+              <strong>Transferts</strong>
+              <span>Suivi des transferts inter-zones, historique complet</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ Logigrammes ============ -->
+        <article class="project-detail" id="logigrammes">
+          <div class="project-header reveal">
+            <div>
+              <div class="work__tags" style="margin-bottom: 14px;">
+                <span class="work__tag">Documentation</span>
+                <span class="work__tag">UX</span>
+                <span class="work__tag">Onboarding</span>
+              </div>
+              <h2>Logigrammes interactifs</h2>
+              <p>Documentation visuelle des rôles et procédures internes (admin, dirigeant, responsable, employé, agence intérim, comptabilité). Format HTML interactif et PDF imprimable, pour une compréhension immédiate des workflows.</p>
+              <div class="tech-stack">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS animé</span>
+                <span class="tech-pill">PDF</span>
+                <span class="tech-pill">Responsive</span>
+              </div>
+            </div>
+
+            <div class="project-screen">
+              <div class="ui-mockup">
+                <div class="ui-mockup-bar">
+                  <span class="ui-dot ui-dot--r"></span>
+                  <span class="ui-dot ui-dot--y"></span>
+                  <span class="ui-dot ui-dot--g"></span>
+                </div>
+                <div class="ui-content" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <div style="padding: 10px 24px; background: var(--gradient-primary); color: white; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">Connexion</div>
+                  <div style="width: 2px; height: 20px; background: var(--brand-blue-light); opacity: 0.5;"></div>
+                  <div style="display: flex; gap: 12px;">
+                    <div style="padding: 8px 16px; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); color: var(--brand-blue-light); border-radius: 8px; font-size: 0.75rem;">Admin</div>
+                    <div style="padding: 8px 16px; background: rgba(255,107,71,0.15); border: 1px solid rgba(255,107,71,0.3); color: var(--brand-coral); border-radius: 8px; font-size: 0.75rem;">Employé</div>
+                  </div>
+                  <div style="width: 2px; height: 20px; background: var(--brand-coral); opacity: 0.5;"></div>
+                  <div style="padding: 10px 24px; background: var(--gradient-accent); color: white; border-radius: 8px; font-size: 0.8rem; font-weight: 600;">Tableau de bord</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="features-grid reveal">
+            <div class="feature-card">
+              <strong>6 profils documentés</strong>
+              <span>Un logigramme par rôle, mis à jour en continu</span>
+            </div>
+            <div class="feature-card">
+              <strong>HTML + PDF</strong>
+              <span>Consultation web ou impression au format A4</span>
+            </div>
+            <div class="feature-card">
+              <strong>Onboarding rapide</strong>
+              <span>Nouveaux arrivants opérationnels en quelques minutes</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CTA -->
+        <div class="cta-banner reveal" style="margin-top: 60px;">
+          <h2>Votre projet sera le prochain</h2>
+          <p>Discutons de votre besoin et construisons ensemble la solution qui change la donne.</p>
+          <a href="index.html#contact" class="btn btn--accent btn--lg">Démarrer un projet</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom" style="border-top: none; padding-top: 0;">
+        <span>© <span id="current-year"></span> Skyloop. Tous droits réservés.</span>
+        <span><a href="index.html">Accueil</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="mailto:contact@skyloop.fr">contact@skyloop.fr</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
