@@ -1428,3 +1428,115 @@ code, kbd, samp, pre {
     scroll-behavior: auto !important;
   }
 }
+
+/* ============ INTRO OVERLAY ============ */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  opacity: 1;
+  animation: intro-fadeout 0.4s var(--ease-out) 1.0s forwards;
+}
+
+.intro-overlay__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(59,130,246,0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59,130,246,0.12) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 0%, transparent 70%);
+  opacity: 0;
+  animation: intro-grid-in 0.6s var(--ease-out) 0.2s forwards;
+}
+
+.intro-overlay__brand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  animation: intro-brand-in 0.5s var(--ease-out) 0.1s forwards;
+}
+
+.intro-overlay__logo {
+  width: 220px;
+  max-width: 60vw;
+  height: auto;
+  filter: drop-shadow(0 0 30px rgba(59,130,246,0.4));
+}
+
+.intro-overlay__line {
+  width: 200px;
+  max-width: 50vw;
+  height: 1px;
+  position: relative;
+  overflow: hidden;
+}
+.intro-overlay__line::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, var(--blue-2) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: intro-line-trace 0.7s var(--ease-out) 0.3s forwards;
+}
+
+.intro-overlay__caption {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0;
+  animation: intro-caption-in 0.4s var(--ease-out) 0.55s forwards;
+}
+
+@keyframes intro-fadeout {
+  to { opacity: 0; visibility: hidden; }
+}
+@keyframes intro-brand-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes intro-grid-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes intro-line-trace {
+  to { transform: translateX(100%); }
+}
+@keyframes intro-caption-in {
+  from { opacity: 0; }
+  to   { opacity: 0.8; }
+}
+
+/* Intro skip — état appliqué quand on saute */
+.intro-overlay--skip {
+  animation: intro-fadeout 0.2s var(--ease-out) forwards !important;
+}
+.intro-overlay--skip * {
+  animation-duration: 0.1s !important;
+}
+
+/* Mobile : raccourci -30% */
+@media (max-width: 720px) {
+  .intro-overlay { animation-delay: 0.7s; animation-duration: 0.3s; }
+  .intro-overlay__brand { animation-delay: 0.05s; animation-duration: 0.4s; }
+  .intro-overlay__grid { animation-delay: 0.15s; animation-duration: 0.5s; }
+  .intro-overlay__line::before { animation-delay: 0.2s; animation-duration: 0.5s; }
+  .intro-overlay__caption { animation-delay: 0.4s; animation-duration: 0.3s; }
+  .intro-overlay__logo { width: 180px; }
+}
+
+/* Reduced motion : skip total */
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay { display: none !important; }
+}

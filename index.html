@@ -40,6 +40,24 @@
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/style.css">
 
+  <!-- Intro animation guard (s'exécute avant le rendu du body) -->
+  <script>
+    (function () {
+      try {
+        var seen = sessionStorage.getItem('skyloop-intro-seen');
+        var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (seen === '1' || reduced) {
+          document.documentElement.dataset.introSkip = '1';
+        } else {
+          sessionStorage.setItem('skyloop-intro-seen', '1');
+        }
+      } catch (e) { /* private mode / storage off : on laisse jouer */ }
+    })();
+  </script>
+  <style>
+    html[data-intro-skip="1"] .intro-overlay { display: none !important; }
+  </style>
+
   <!-- JSON-LD Organization -->
   <script type="application/ld+json">
   {
@@ -69,6 +87,16 @@
   </script>
 </head>
 <body>
+
+  <!-- =================== INTRO OVERLAY =================== -->
+  <div class="intro-overlay" id="intro-overlay" aria-hidden="true">
+    <div class="intro-overlay__grid"></div>
+    <div class="intro-overlay__brand">
+      <img src="assets/images/skyloop-fd-sombre.png" alt="" class="intro-overlay__logo" width="220" height="48">
+      <div class="intro-overlay__line" aria-hidden="true"></div>
+      <span class="intro-overlay__caption">Web · Logistics</span>
+    </div>
+  </div>
 
   <!-- =================== HEADER =================== -->
   <header class="header" id="header">

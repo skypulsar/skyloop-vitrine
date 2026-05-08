@@ -6,6 +6,44 @@
 (function () {
   'use strict';
 
+  /* ---- Intro overlay (1ère visite session uniquement) ---- */
+  const intro = document.getElementById('intro-overlay');
+  if (intro) {
+    const skipNow = () => {
+      if (!intro.classList.contains('intro-overlay--skip')) {
+        intro.classList.add('intro-overlay--skip');
+      }
+    };
+
+    // Skip sur clic ou touche
+    const onSkip = () => {
+      skipNow();
+      cleanup();
+    };
+    const cleanup = () => {
+      window.removeEventListener('keydown', onSkip);
+      window.removeEventListener('mousedown', onSkip);
+      window.removeEventListener('touchstart', onSkip);
+    };
+    window.addEventListener('keydown', onSkip, { once: true });
+    window.addEventListener('mousedown', onSkip, { once: true });
+    window.addEventListener('touchstart', onSkip, { once: true, passive: true });
+
+    // Retire l'overlay du DOM dès que l'animation de fadeout se termine
+    intro.addEventListener('animationend', (e) => {
+      if (e.animationName === 'intro-fadeout') {
+        cleanup();
+        if (intro.parentNode) intro.parentNode.removeChild(intro);
+      }
+    });
+
+    // Filet de sécurité : si l'animation ne se déclenche jamais (browser exotique), retire après 2.5s
+    setTimeout(() => {
+      if (intro.parentNode) intro.parentNode.removeChild(intro);
+    }, 2500);
+  }
+
+
   /* ---- Header scroll effect ---- */
   const header = document.querySelector('.header');
   if (header) {
