@@ -200,20 +200,22 @@
   const yearEl = document.querySelector('#current-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---- Activation flottement des chips après leur entrée ---- */
-  document.querySelectorAll('.hero__chip').forEach(chip => {
-    chip.addEventListener('animationend', (ev) => {
-      if (ev.animationName === 'sl-chip-in') chip.classList.add('in');
-    }, { once: true });
-  });
+  /* ---- Parallax léger sur le dashboard hero (desktop) ---- */
+  const dashboard = document.querySelector('.dashboard');
+  if (dashboard && window.matchMedia('(min-width: 880px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let ticking = false;
+    document.addEventListener('mousemove', (e) => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const x = (e.clientX / window.innerWidth - 0.5);
+        const y = (e.clientY / window.innerHeight - 0.5);
+        const rotY = -6 + x * 4;
+        const rotX = 2 + y * -3;
+        dashboard.style.transform = `perspective(1400px) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+        ticking = false;
+      });
+    });
+  }
 
-  /* ---- Parallax 3D smooth (lerp) sur la scène hero ---- */
-  const heroStage = document.querySelector('.hero__stage');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (heroStage && !reducedMotion && window.matchMedia('(min-width: 880px)').matches) {
-    let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
-    let rafId = null;
-    const lerp = (a, b, n) => a + (b - a) * n;
-
-    const tick = () => {
-      currentX =
+})();
