@@ -1430,7 +1430,7 @@ code, kbd, samp, pre {
 }
 
 /* ============ INTRO OVERLAY ============ */
-/* Total ~3.0s desktop / ~2.4s mobile · easing soft · micro-moments */
+/* Total ~5.0s desktop / ~4.0s mobile · easing soft · micro-moments */
 
 .intro-overlay {
   position: fixed;
@@ -1442,7 +1442,7 @@ code, kbd, samp, pre {
   justify-content: center;
   pointer-events: auto;
   opacity: 1;
-  animation: intro-fadeout 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 2.4s forwards;
+  animation: intro-fadeout 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 4.4s forwards;
 }
 
 .intro-overlay__grid {
@@ -1543,9 +1543,9 @@ code, kbd, samp, pre {
   animation-delay: 0s !important;
 }
 
-/* Mobile : raccourci 20% (total ~2.4s) */
+/* Mobile : raccourci 20% (total ~4.0s) */
 @media (max-width: 720px) {
-  .intro-overlay { animation-delay: 1.92s; animation-duration: 0.48s; }
+  .intro-overlay { animation-delay: 3.52s; animation-duration: 0.48s; }
   .intro-overlay__grid { animation-delay: 0.16s; animation-duration: 0.8s; }
   .intro-overlay__brand { animation-delay: 0.32s; animation-duration: 0.48s; }
   .intro-overlay__line::before { animation-delay: 0.64s; animation-duration: 0.8s; }

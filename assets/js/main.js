@@ -37,10 +37,10 @@
       }
     });
 
-    // Filet de sécurité : si l'animation ne se déclenche jamais (browser exotique), retire après 4s (durée intro = 3s)
+    // Filet de sécurité : si l'animation ne se déclenche jamais (browser exotique), retire après 6s (durée intro = 5s)
     setTimeout(() => {
       if (intro.parentNode) intro.parentNode.removeChild(intro);
-    }, 4000);
+    }, 6000);
   }
 
 
