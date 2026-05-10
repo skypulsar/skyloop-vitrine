@@ -917,6 +917,75 @@ code, kbd, samp, pre {
 .work__link::after { content: '→'; transition: transform 0.2s var(--ease-out); }
 .work__link:hover::after { transform: translateX(3px); }
 
+.work__client {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  text-decoration: none;
+  width: fit-content;
+  transition: border-color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+}
+.work__client:hover {
+  border-color: rgba(59,130,246,0.35);
+  background: rgba(59,130,246,0.06);
+}
+.work__client-label {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+}
+.work__client-logo {
+  height: 20px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.project-client {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  margin-top: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  text-decoration: none;
+  width: fit-content;
+  transition: border-color 0.2s var(--ease-out), background 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+}
+.project-client:hover {
+  border-color: rgba(59,130,246,0.4);
+  background: rgba(59,130,246,0.07);
+}
+.project-client__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-3);
+}
+.project-client__logo {
+  height: 26px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+.project-client__arrow {
+  color: var(--blue-2);
+  font-size: 0.95rem;
+  transition: transform 0.2s var(--ease-out);
+}
+.project-client:hover .project-client__arrow {
+  transform: translate(3px, -3px);
+}
+
 /* ============ PROCESS TIMELINE ============ */
 .process {
   position: relative;
