@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#060B18">
   <title>Réalisations — Skyloop</title>
-  <meta name="description" content="GestenProd, Compound, Logigrammes interactifs : trois projets Skyloop déployés et en exploitation.">
+  <meta name="description" content="GestenProd, Compound, Logigrammes interactifs, Recherche S3P : quatre projets Skyloop déployés et en exploitation.">
   <link rel="canonical" href="https://vitrine.skyloop.fr/realisations.html">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://vitrine.skyloop.fr/realisations.html">
   <meta property="og:title" content="Réalisations — Skyloop">
-  <meta property="og:description" content="Trois projets Skyloop déployés en production.">
+  <meta property="og:description" content="Quatre projets Skyloop déployés en production.">
   <meta property="og:image" content="https://vitrine.skyloop.fr/assets/images/logoskyloop.png">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
@@ -229,6 +229,70 @@
             <div class="feature-card"><strong>6 profils documentés</strong><span>Un logigramme par rôle, mis à jour en continu</span></div>
             <div class="feature-card"><strong>HTML + PDF</strong><span>Consultation web ou impression A4</span></div>
             <div class="feature-card"><strong>Onboarding rapide</strong><span>Nouveaux arrivants opérationnels en quelques minutes</span></div>
+          </div>
+        </article>
+
+        <article class="project-detail" id="s3p-paluel">
+          <div class="project-header reveal">
+            <div>
+              <span class="section-eyebrow">Moteur de recherche industriel</span>
+              <h2>Recherche S3P</h2>
+              <p style="color:var(--ink-2);">Moteur de recherche interne développé pour le service <strong>S3P de la centrale nucléaire EDF de Paluel</strong> — accès instantané à 40 ans d'historique d'interventions sur les 4 tranches nucléaires. Interfaçage direct avec le logiciel de planification EDF pour retrouver en quelques secondes toute tâche déjà réalisée et capitaliser sur l'expérience accumulée.</p>
+              <a href="https://www.edf.fr" target="_blank" rel="noopener noreferrer" class="project-client" aria-label="Visiter le site EDF">
+                <span class="project-client__label">Client</span>
+                <img src="assets/images/logo-edf.svg" alt="EDF" class="project-client__logo" loading="lazy">
+                <span class="project-client__arrow" aria-hidden="true">↗</span>
+              </a>
+              <div class="tech-stack">
+                <span class="tech-pill">Full-text search</span>
+                <span class="tech-pill">Indexation</span>
+                <span class="tech-pill">PHP</span>
+                <span class="tech-pill">MySQL</span>
+                <span class="tech-pill">Connecteur EDF</span>
+              </div>
+            </div>
+            <div class="project-screen">
+              <svg viewBox="0 0 480 240" fill="none">
+                <rect width="480" height="240" fill="#0A1124"/>
+                <rect width="480" height="32" fill="rgba(0,0,0,0.4)"/>
+                <circle cx="16" cy="16" r="4" fill="rgba(255,255,255,0.2)"/><circle cx="30" cy="16" r="4" fill="rgba(255,255,255,0.2)"/><circle cx="44" cy="16" r="4" fill="rgba(255,255,255,0.2)"/>
+                <text x="60" y="20" fill="rgba(255,255,255,0.4)" font-family="monospace" font-size="10">recherche-s3p / interventions</text>
+                <rect x="20" y="50" width="440" height="36" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(96,165,250,0.3)"/>
+                <circle cx="38" cy="68" r="6" stroke="#60A5FA" stroke-width="1.5" fill="none"/>
+                <line x1="42.5" y1="72.5" x2="48" y2="78" stroke="#60A5FA" stroke-width="1.5"/>
+                <text x="60" y="72" fill="white" font-family="monospace" font-size="12">remplacement vanne primaire tranche 3</text>
+                <rect x="380" y="58" width="70" height="20" rx="5" fill="rgba(59,130,246,0.18)" stroke="rgba(96,165,250,0.4)"/>
+                <text x="415" y="71" text-anchor="middle" fill="#93C5FD" font-family="monospace" font-size="9">1986–2026</text>
+                <text x="20" y="106" fill="rgba(255,255,255,0.55)" font-family="monospace" font-size="10">1 247 résultats — 38 ms</text>
+                <text x="380" y="106" fill="rgba(255,255,255,0.4)" font-family="monospace" font-size="9">tri : pertinence ▾</text>
+                <rect x="20" y="116" width="68" height="18" rx="9" fill="rgba(59,130,246,0.14)" stroke="rgba(96,165,250,0.3)"/>
+                <text x="54" y="128" text-anchor="middle" fill="#93C5FD" font-family="monospace" font-size="9">Tranche 3</text>
+                <rect x="94" y="116" width="78" height="18" rx="9" fill="rgba(255,107,71,0.14)" stroke="rgba(255,142,107,0.3)"/>
+                <text x="133" y="128" text-anchor="middle" fill="#FF8E6B" font-family="monospace" font-size="9">Mécanique</text>
+                <rect x="178" y="116" width="60" height="18" rx="9" fill="rgba(34,197,94,0.14)" stroke="rgba(34,197,94,0.3)"/>
+                <text x="208" y="128" text-anchor="middle" fill="#4ADE80" font-family="monospace" font-size="9">Clôturé</text>
+                <rect x="20" y="146" width="440" height="28" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.07)"/>
+                <rect x="28" y="154" width="4" height="12" fill="#3B82F6"/>
+                <text x="40" y="160" fill="white" font-family="sans-serif" font-size="11" font-weight="500">Maintenance vanne primaire — circuit secondaire</text>
+                <text x="40" y="170" fill="rgba(255,255,255,0.5)" font-family="monospace" font-size="9">Tranche 3 · 2019 · Mécanique · 4 documents</text>
+                <rect x="20" y="180" width="440" height="28" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.07)"/>
+                <rect x="28" y="188" width="4" height="12" fill="#FF8E6B"/>
+                <text x="40" y="194" fill="white" font-family="sans-serif" font-size="11" font-weight="500">Inspection robinetterie — campagne décennale</text>
+                <text x="40" y="204" fill="rgba(255,255,255,0.5)" font-family="monospace" font-size="9">Tranche 2 · 2014 · Inspection · 12 documents</text>
+                <rect x="20" y="214" width="440" height="22" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(255,255,255,0.07)"/>
+                <rect x="28" y="220" width="4" height="10" fill="#3B82F6"/>
+                <text x="40" y="226" fill="white" font-family="sans-serif" font-size="11" font-weight="500">Remplacement joint d'étanchéité</text>
+                <text x="40" y="234" fill="rgba(255,255,255,0.5)" font-family="monospace" font-size="9">Tranche 4 · 2022 · Mécanique · 2 documents</text>
+              </svg>
+            </div>
+          </div>
+          <div class="features-grid reveal">
+            <div class="feature-card"><strong>40 ans d'archives</strong><span>Indexation complète des interventions sur les 4 tranches depuis la mise en service</span></div>
+            <div class="feature-card"><strong>Recherche full-text</strong><span>Requêtes en quelques millisecondes sur des centaines de milliers d'entrées</span></div>
+            <div class="feature-card"><strong>Intégration EDF</strong><span>Connecté au logiciel de planification interne pour récupération automatique</span></div>
+            <div class="feature-card"><strong>Filtres métier</strong><span>Tranche, période, type d'intervention, statut, mots-clés combinés</span></div>
+            <div class="feature-card"><strong>Capitalisation</strong><span>Évite de refaire deux fois la même analyse, réutilisation de l'expérience terrain</span></div>
+            <div class="feature-card"><strong>Sécurité interne</strong><span>Authentification, journalisation, conformité aux exigences EDF</span></div>
           </div>
         </article>
 
