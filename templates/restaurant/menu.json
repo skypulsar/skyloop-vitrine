@@ -1,0 +1,48 @@
+{
+  "restaurant": {
+    "name": "Le Belvédère",
+    "tagline": "Cuisine méditerranéenne, Aix-en-Provence"
+  },
+  "categories": [
+    {
+      "id": "entrees",
+      "name": "Entrées",
+      "items": [
+        { "name": "Burrata de bufala", "description": "Tomates anciennes, basilic frais, huile d'olive AOP", "price": "16 €" },
+        { "name": "Carpaccio de daurade", "description": "Citron confit, fenouil, fleur de sel de Camargue", "price": "18 €" },
+        { "name": "Soupe au pistou", "description": "Légumes de saison, parmesan affiné, pain grillé", "price": "14 €" },
+        { "name": "Tartare de saumon", "description": "Aneth, échalote, citron vert, blinis maison", "price": "17 €" }
+      ]
+    },
+    {
+      "id": "plats",
+      "name": "Plats",
+      "items": [
+        { "name": "Loup de Méditerranée", "description": "Fenouil rôti, citron, riz vénéré", "price": "32 €" },
+        { "name": "Filet de bœuf Charolais", "description": "Sauce béarnaise, pommes grenailles confites", "price": "36 €" },
+        { "name": "Risotto aux truffes", "description": "Parmesan affiné 24 mois, truffe noire de Provence", "price": "28 €" },
+        { "name": "Carré d'agneau du Lubéron", "description": "Croûte d'herbes, ratatouille minute", "price": "34 €" }
+      ]
+    },
+    {
+      "id": "desserts",
+      "name": "Desserts",
+      "items": [
+        { "name": "Tarte au citron meringuée", "description": "Citron de Menton, meringue italienne", "price": "10 €" },
+        { "name": "Fondant au chocolat", "description": "Cœur coulant, glace vanille bourbon", "price": "12 €" },
+        { "name": "Pavlova fruits rouges", "description": "Meringue craquante, crème vanillée, fraises gariguettes", "price": "11 €" },
+        { "name": "Café gourmand", "description": "Mignardises maison & café d'origine", "price": "9 €" }
+      ]
+    },
+    {
+      "id": "boissons",
+      "name": "Boissons",
+      "items": [
+        { "name": "Côtes de Provence rosé", "description": "Domaine Saint-André de Figuière — 75 cl", "price": "32 €" },
+        { "name": "Châteauneuf-du-Pape rouge", "description": "Cuvée tradition — 75 cl", "price": "58 €" },
+        { "name": "Champagne Brut", "description": "Maison familiale — 75 cl", "price": "75 €" },
+        { "name": "Eau plate / pétillante", "description": "Carafe filtrée — 50 cl", "price": "5 €" }
+      ]
+    }
+  ]
+}

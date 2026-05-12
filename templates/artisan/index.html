@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aix Rénov' — Rénovation, maçonnerie & BTP, Aix-en-Provence</title>
+  <meta name="description" content="Artisan BTP à Aix-en-Provence. Maçonnerie, rénovation complète, peinture, isolation. Devis gratuit sous 24h.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Aix Rénov' — Artisan BTP">
+  <meta property="og:description" content="Maçonnerie, rénovation et second œuvre à Aix-en-Provence.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Oswald', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            slate: {
+              950: '#0d141c',
+              900: '#11202e',
+              800: '#1a2e42',
+            },
+            safety: '#f59e0b',
+            safetyDark: '#d97706',
+            chalk: '#f4f0e8',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Oswald', sans-serif; letter-spacing: 0.02em; }
+    .hero-bg {
+      background-image: linear-gradient(rgba(13, 20, 28, 0.6), rgba(13, 20, 28, 0.9)),
+                        url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80&auto=format');
+      background-size: cover;
+      background-position: center;
+    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .diagonal-cut { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 60px)); }
+    .ba-slider {
+      position: relative; overflow: hidden; user-select: none;
+    }
+    .ba-slider .after-img {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;
+      clip-path: polygon(0 0, var(--pos, 50%) 0, var(--pos, 50%) 100%, 0 100%);
+    }
+    .ba-slider .ba-handle {
+      position: absolute; top: 0; bottom: 0; left: var(--pos, 50%);
+      width: 3px; background: #f59e0b; cursor: ew-resize;
+      transform: translateX(-50%);
+    }
+    .ba-slider .ba-handle::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #f59e0b; transform: translate(-50%,-50%);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    }
+    .ba-slider .ba-handle::before {
+      content: '⇄'; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%); color: #0d141c; font-weight: bold; font-size: 14px; z-index: 2;
+    }
+    .skyloop-badge {
+      position: fixed; bottom: 16px; right: 16px; z-index: 60;
+      background: rgba(13,20,28,0.9); backdrop-filter: blur(8px);
+      border: 1px solid rgba(245,158,11,0.4);
+      color: #f59e0b; padding: 8px 14px; border-radius: 100px;
+      font-size: 0.75rem; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .skyloop-badge:hover { background: rgba(245,158,11,0.95); color: #0d141c; }
+    .mobile-call-btn {
+      position: fixed; bottom: 16px; left: 16px; z-index: 60;
+      background: #f59e0b; color: #0d141c; padding: 14px;
+      border-radius: 50%; box-shadow: 0 8px 24px rgba(245,158,11,0.4);
+      display: none;
+    }
+    @media (max-width: 768px) { .mobile-call-btn { display: flex; } }
+  </style>
+</head>
+<body class="bg-slate-950 text-chalk">
+
+  <!-- ===== NAV ===== -->
+  <header class="fixed top-0 inset-x-0 z-40 transition-all" id="nav">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <span class="w-10 h-10 rounded bg-safety flex items-center justify-center">
+          <i data-lucide="hard-hat" class="text-slate-950" width="22" height="22"></i>
+        </span>
+        <span class="font-display text-2xl tracking-wider"><strong>AIX</strong> RÉNOV'</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-wider">
+        <a href="#services" class="hover:text-safety transition">Services</a>
+        <a href="#realisations" class="hover:text-safety transition">Réalisations</a>
+        <a href="#temoignages" class="hover:text-safety transition">Avis</a>
+        <a href="#zone" class="hover:text-safety transition">Zone</a>
+        <a href="#devis" class="bg-safety hover:bg-safetyDark text-slate-950 px-5 py-2.5 rounded transition font-semibold">Devis gratuit</a>
+        <a href="tel:+33442000000" class="text-safety hover:text-chalk transition flex items-center gap-1">
+          <i data-lucide="phone" width="16" height="16"></i> 04 42 00 00 00
+        </a>
+      </nav>
+      <button class="md:hidden text-chalk" id="menu-toggle" aria-label="Menu">
+        <i data-lucide="menu" width="28" height="28"></i>
+      </button>
+    </div>
+    <div class="md:hidden hidden bg-slate-950/95 backdrop-blur px-6 py-4 space-y-3 border-t border-safety/20" id="mobile-menu">
+      <a href="#services" class="block uppercase tracking-wider text-sm">Services</a>
+      <a href="#realisations" class="block uppercase tracking-wider text-sm">Réalisations</a>
+      <a href="#temoignages" class="block uppercase tracking-wider text-sm">Avis</a>
+      <a href="#zone" class="block uppercase tracking-wider text-sm">Zone</a>
+      <a href="#devis" class="block text-safety uppercase tracking-wider text-sm font-semibold">Devis gratuit</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero-bg min-h-screen flex items-center px-6 relative">
+    <div class="max-w-6xl mx-auto w-full reveal">
+      <div class="inline-flex items-center gap-2 bg-safety/15 border border-safety/40 text-safety px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-6">
+        <span class="w-2 h-2 rounded-full bg-safety animate-pulse"></span>
+        Disponible cette semaine
+      </div>
+      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6 uppercase">
+        Vos travaux,<br><span class="text-safety">bien faits.</span><br>
+        <span class="text-3xl md:text-5xl text-chalk/70 font-normal">Du premier coup.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-chalk/75 max-w-2xl mb-10 leading-relaxed">
+        Artisan certifié RGE basé à Aix-en-Provence. Maçonnerie, rénovation complète, peinture, isolation thermique — pour particuliers et professionnels depuis 15 ans.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#devis" class="bg-safety hover:bg-safetyDark text-slate-950 px-8 py-4 rounded font-bold uppercase tracking-wider text-sm transition shadow-xl flex items-center justify-center gap-2">
+          <i data-lucide="file-text" width="18" height="18"></i>
+          Devis gratuit sous 24h
+        </a>
+        <a href="tel:+33442000000" class="bg-transparent border-2 border-chalk/30 hover:border-safety hover:text-safety text-chalk px-8 py-4 rounded font-bold uppercase tracking-wider text-sm transition flex items-center justify-center gap-2">
+          <i data-lucide="phone" width="18" height="18"></i>
+          04 42 00 00 00
+        </a>
+      </div>
+      <div class="flex flex-wrap gap-8 mt-12 pt-12 border-t border-chalk/15">
+        <div>
+          <div class="font-display text-4xl text-safety">15</div>
+          <div class="text-xs uppercase tracking-widest text-chalk/60">Ans d'expérience</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl text-safety">320+</div>
+          <div class="text-xs uppercase tracking-widest text-chalk/60">Chantiers livrés</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl text-safety">RGE</div>
+          <div class="text-xs uppercase tracking-widest text-chalk/60">Certifié Qualibat</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl text-safety">10 ans</div>
+          <div class="text-xs uppercase tracking-widest text-chalk/60">Garantie décennale</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services" class="py-24 px-6 bg-slate-900">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-safety uppercase tracking-[0.3em] text-xs mb-4">Nos prestations</p>
+        <h2 class="font-display text-4xl md:text-6xl uppercase mb-4">Tous corps d'état</h2>
+        <p class="text-chalk/60 max-w-2xl mx-auto">Un seul interlocuteur du devis à la livraison. Coordination des artisans, gestion des matériaux, suivi de chantier intégral.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="reveal group bg-slate-800 hover:bg-slate-800/60 border border-slate-800 hover:border-safety/40 rounded-2xl p-8 transition cursor-pointer">
+          <div class="w-14 h-14 rounded-xl bg-safety/15 text-safety flex items-center justify-center mb-5 group-hover:bg-safety group-hover:text-slate-950 transition">
+            <i data-lucide="brick-wall" width="28" height="28"></i>
+          </div>
+          <h3 class="font-display text-2xl uppercase mb-3">Maçonnerie</h3>
+          <p class="text-chalk/65 text-sm leading-relaxed">Construction, extension, ouverture de mur porteur, terrassement, fondations. Tout type d'ouvrage en béton, pierre ou brique.</p>
+        </div>
+
+        <div class="reveal group bg-slate-800 hover:bg-slate-800/60 border border-slate-800 hover:border-safety/40 rounded-2xl p-8 transition cursor-pointer">
+          <div class="w-14 h-14 rounded-xl bg-safety/15 text-safety flex items-center justify-center mb-5 group-hover:bg-safety group-hover:text-slate-950 transition">
+            <i data-lucide="home" width="28" height="28"></i>
+          </div>
+          <h3 class="font-display text-2xl uppercase mb-3">Rénovation complète</h3>
+          <p class="text-chalk/65 text-sm leading-relaxed">De la cave au grenier : démolition, gros œuvre, second œuvre, finitions. Maître d'œuvre unique pour votre tranquillité.</p>
+        </div>
+
+        <div class="reveal group bg-slate-800 hover:bg-slate-800/60 border border-slate-800 hover:border-safety/40 rounded-2xl p-8 transition cursor-pointer">
+          <div class="w-14 h-14 rounded-xl bg-safety/15 text-safety flex items-center justify-center mb-5 group-hover:bg-safety group-hover:text-slate-950 transition">
+            <i data-lucide="paint-roller" width="28" height="28"></i>
+          </div>
+          <h3 class="font-display text-2xl uppercase mb-3">Peinture & revêtements</h3>
+          <p class="text-chalk/65 text-sm leading-relaxed">Peinture intérieure et extérieure, enduits décoratifs, papier peint, pose de parquet, carrelage, faïence.</p>
+        </div>
+
+        <div class="reveal group bg-slate-800 hover:bg-slate-800/60 border border-slate-800 hover:border-safety/40 rounded-2xl p-8 transition cursor-pointer">
+          <div class="w-14 h-14 rounded-xl bg-safety/15 text-safety flex items-center justify-center mb-5 group-hover:bg-safety group-hover:text-slate-950 transition">
+            <i data-lucide="thermometer-snowflake" width="28" height="28"></i>
+          </div>
+          <h3 class="font-display text-2xl uppercase mb-3">Isolation thermique</h3>
+          <p class="text-chalk/65 text-sm leading-relaxed">ITE, ITI, isolation combles. Éligible MaPrimeRénov' et CEE. Économies d'énergie jusqu'à 35 %.</p>
+        </div>
+
+        <div class="reveal group bg-slate-800 hover:bg-slate-800/60 border border-slate-800 hover:border-safety/40 rounded-2xl p-8 transition cursor-pointer">
+          <div class="w-14 h-14 rounded-xl bg-safety/15 text-safety flex items-center justify-center mb-5 group-hover:bg-safety group-hover:text-slate-950 transition">
+            <i data-lucide="droplets" width="28" height="28"></i>
+          </div>
+          <h3 class="font-display text-2xl uppercase mb-3">Plomberie & sanitaire</h3>
+          <p class="text-chalk/65 text-sm leading-relaxed">Création/rénovation salle de bain, cuisine, chauffage, réseau d'eau, évacuation, raccordement tout-à-l'égout.</p>
+        </div>
+
+        <div class="reveal group bg-slate-800 hover:bg-slate-800/60 border border-slate-800 hover:border-safety/40 rounded-2xl p-8 transition cursor-pointer">
+          <div class="w-14 h-14 rounded-xl bg-safety/15 text-safety flex items-center justify-center mb-5 group-hover:bg-safety group-hover:text-slate-950 transition">
+            <i data-lucide="trees" width="28" height="28"></i>
+          </div>
+          <h3 class="font-display text-2xl uppercase mb-3">Aménagement extérieur</h3>
+          <p class="text-chalk/65 text-sm leading-relaxed">Terrasse, piscine coque, allée carrossable, mur de clôture, portail, paysagisme provençal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RÉALISATIONS (Before/After) ===== -->
+  <section id="realisations" class="py-24 px-6 bg-slate-950">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-safety uppercase tracking-[0.3em] text-xs mb-4">Avant / Après</p>
+        <h2 class="font-display text-4xl md:text-6xl uppercase mb-4">Nos chantiers en images</h2>
+        <p class="text-chalk/60 max-w-2xl mx-auto">Glissez le curseur pour comparer.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="reveal">
+          <div class="ba-slider aspect-[4/3] rounded-xl overflow-hidden border border-slate-800" style="--pos: 50%">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80&auto=format" alt="Avant" class="absolute inset-0 w-full h-full object-cover">
+            <div class="after-img">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80&auto=format" alt="Après" class="w-full h-full object-cover">
+            </div>
+            <div class="ba-handle"></div>
+            <span class="absolute top-3 left-3 bg-slate-950/80 text-chalk text-xs uppercase tracking-wider px-3 py-1 rounded">Avant</span>
+            <span class="absolute top-3 right-3 bg-safety text-slate-950 text-xs uppercase tracking-wider px-3 py-1 rounded font-bold">Après</span>
+          </div>
+          <h3 class="font-display text-xl mt-4 uppercase">Rénovation salon — Villa Aix nord</h3>
+          <p class="text-chalk/60 text-sm">Démolition cloison, parquet chêne massif, peinture, plafond rénové. — 3 semaines</p>
+        </div>
+
+        <div class="reveal">
+          <div class="ba-slider aspect-[4/3] rounded-xl overflow-hidden border border-slate-800" style="--pos: 50%">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80&auto=format" alt="Avant" class="absolute inset-0 w-full h-full object-cover">
+            <div class="after-img">
+              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&q=80&auto=format" alt="Après" class="w-full h-full object-cover">
+            </div>
+            <div class="ba-handle"></div>
+            <span class="absolute top-3 left-3 bg-slate-950/80 text-chalk text-xs uppercase tracking-wider px-3 py-1 rounded">Avant</span>
+            <span class="absolute top-3 right-3 bg-safety text-slate-950 text-xs uppercase tracking-wider px-3 py-1 rounded font-bold">Après</span>
+          </div>
+          <h3 class="font-display text-xl mt-4 uppercase">Salle de bain — Mas du Tholonet</h3>
+          <p class="text-chalk/60 text-sm">Plomberie complète, douche italienne, faïence travertin, sol carrelé. — 2 semaines</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TÉMOIGNAGES ===== -->
+  <section id="temoignages" class="py-24 px-6 bg-slate-900 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-safety uppercase tracking-[0.3em] text-xs mb-4">Ils nous font confiance</p>
+        <h2 class="font-display text-4xl md:text-6xl uppercase">4,9 / 5 sur Google</h2>
+        <div class="flex justify-center gap-1 mt-4 text-safety">
+          <i data-lucide="star" class="fill-current" width="22" height="22"></i>
+          <i data-lucide="star" class="fill-current" width="22" height="22"></i>
+          <i data-lucide="star" class="fill-current" width="22" height="22"></i>
+          <i data-lucide="star" class="fill-current" width="22" height="22"></i>
+          <i data-lucide="star" class="fill-current" width="22" height="22"></i>
+          <span class="ml-2 text-sm text-chalk/60">(127 avis)</span>
+        </div>
+      </div>
+
+      <div class="relative reveal">
+        <div class="overflow-hidden rounded-2xl" id="testimonials-container">
+          <div class="flex transition-transform duration-500" id="testimonials-track">
+            <div class="w-full flex-shrink-0 bg-slate-800 p-10 md:p-14">
+              <i data-lucide="quote" class="text-safety/40 mb-6" width="48" height="48"></i>
+              <p class="text-xl md:text-2xl leading-relaxed text-chalk/90 mb-8">Travail soigné, devis respecté à l'euro près, équipe à l'écoute. Notre rénovation complète a été livrée avec deux jours d'avance. Je recommande sans réserve.</p>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-safety/20 text-safety flex items-center justify-center font-display text-xl">M</div>
+                <div>
+                  <div class="font-semibold">Marie L.</div>
+                  <div class="text-chalk/50 text-sm">Maison 140 m², Le Tholonet — 2025</div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full flex-shrink-0 bg-slate-800 p-10 md:p-14">
+              <i data-lucide="quote" class="text-safety/40 mb-6" width="48" height="48"></i>
+              <p class="text-xl md:text-2xl leading-relaxed text-chalk/90 mb-8">Trois entreprises consultées, Aix Rénov' a fait la différence sur le sérieux et la disponibilité. Cinq mois plus tard, zéro malfaçon, finitions impeccables.</p>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-safety/20 text-safety flex items-center justify-center font-display text-xl">P</div>
+                <div>
+                  <div class="font-semibold">Pierre M.</div>
+                  <div class="text-chalk/50 text-sm">Extension villa, Venelles — 2024</div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full flex-shrink-0 bg-slate-800 p-10 md:p-14">
+              <i data-lucide="quote" class="text-safety/40 mb-6" width="48" height="48"></i>
+              <p class="text-xl md:text-2xl leading-relaxed text-chalk/90 mb-8">Très réactifs sur le SAV un an après les travaux, ce qui est rare. Ils ont fait tout ce qu'il fallait sans discuter. Une boîte à recommander les yeux fermés.</p>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-safety/20 text-safety flex items-center justify-center font-display text-xl">C</div>
+                <div>
+                  <div class="font-semibold">Caroline D.</div>
+                  <div class="text-chalk/50 text-sm">Salle de bain, Aix centre — 2024</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button id="prev-testi" class="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-6 w-12 h-12 rounded-full bg-safety hover:bg-safetyDark text-slate-950 flex items-center justify-center shadow-lg transition" aria-label="Précédent">
+          <i data-lucide="chevron-left" width="22" height="22"></i>
+        </button>
+        <button id="next-testi" class="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-6 w-12 h-12 rounded-full bg-safety hover:bg-safetyDark text-slate-950 flex items-center justify-center shadow-lg transition" aria-label="Suivant">
+          <i data-lucide="chevron-right" width="22" height="22"></i>
+        </button>
+      </div>
+
+      <div class="flex justify-center gap-2 mt-8" id="testi-dots">
+        <button data-i="0" class="w-2 h-2 rounded-full bg-safety transition"></button>
+        <button data-i="1" class="w-2 h-2 rounded-full bg-chalk/20 transition"></button>
+        <button data-i="2" class="w-2 h-2 rounded-full bg-chalk/20 transition"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ZONE INTERVENTION ===== -->
+  <section id="zone" class="py-24 px-6 bg-slate-950">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <p class="text-safety uppercase tracking-[0.3em] text-xs mb-4">Zone d'intervention</p>
+        <h2 class="font-display text-4xl md:text-6xl uppercase mb-6">Bouches-du-Rhône & alentours</h2>
+        <p class="text-chalk/70 mb-8 leading-relaxed">Nous intervenons sur l'ensemble du Pays d'Aix, sur Marseille et le Lubéron. Déplacement gratuit pour devis dans un rayon de 30 km.</p>
+        <ul class="grid grid-cols-2 gap-3 text-chalk/75">
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-safety" width="16" height="16"></i> Aix-en-Provence</li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-safety" width="16" height="16"></i> Le Tholonet</li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-safety" width="16" height="16"></i> Venelles</li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-safety" width="16" height="16"></i> Puyricard</li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-safety" width="16" height="16"></i> Rousset</li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-safety" width="16" height="16"></i> Trets</li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-safety" width="16" height="16"></i> Lambesc</li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-safety" width="16" height="16"></i> Pertuis</li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-safety" width="16" height="16"></i> Saint-Maximin</li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="text-safety" width="16" height="16"></i> Marseille nord</li>
+        </ul>
+      </div>
+      <div class="reveal aspect-square rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 relative">
+        <iframe src="https://www.google.com/maps?q=Aix-en-Provence,+France&z=10&output=embed" width="100%" height="100%" style="border:0; filter: invert(0.92) hue-rotate(180deg) brightness(0.92);" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DEVIS FORM ===== -->
+  <section id="devis" class="py-24 px-6 bg-slate-900">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <p class="text-safety uppercase tracking-[0.3em] text-xs mb-4">Devis gratuit</p>
+        <h2 class="font-display text-4xl md:text-6xl uppercase mb-4">Parlez-nous de votre projet</h2>
+        <p class="text-chalk/60 max-w-2xl mx-auto">Réponse garantie sous 24h ouvrées. Déplacement gratuit pour devis dans le Pays d'Aix.</p>
+      </div>
+
+      <form class="reveal bg-slate-800 rounded-2xl p-8 md:p-10 space-y-5" onsubmit="event.preventDefault(); alert('Demande envoyée — formulaire de démo, à connecter à votre backend.');">
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-chalk/70 mb-2">Nom complet *</label>
+            <input type="text" required class="w-full bg-slate-950 border border-slate-700 focus:border-safety rounded-lg px-4 py-3 text-chalk outline-none transition">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-chalk/70 mb-2">Téléphone *</label>
+            <input type="tel" required class="w-full bg-slate-950 border border-slate-700 focus:border-safety rounded-lg px-4 py-3 text-chalk outline-none transition">
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-chalk/70 mb-2">Email *</label>
+            <input type="email" required class="w-full bg-slate-950 border border-slate-700 focus:border-safety rounded-lg px-4 py-3 text-chalk outline-none transition">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-chalk/70 mb-2">Ville</label>
+            <input type="text" class="w-full bg-slate-950 border border-slate-700 focus:border-safety rounded-lg px-4 py-3 text-chalk outline-none transition">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-chalk/70 mb-2">Type de travaux *</label>
+          <select required class="w-full bg-slate-950 border border-slate-700 focus:border-safety rounded-lg px-4 py-3 text-chalk outline-none transition">
+            <option value="">Sélectionnez...</option>
+            <option>Maçonnerie</option>
+            <option>Rénovation complète</option>
+            <option>Peinture & revêtements</option>
+            <option>Isolation thermique</option>
+            <option>Plomberie & sanitaire</option>
+            <option>Aménagement extérieur</option>
+            <option>Autre / Mixte</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-chalk/70 mb-2">Description du projet</label>
+          <textarea rows="4" class="w-full bg-slate-950 border border-slate-700 focus:border-safety rounded-lg px-4 py-3 text-chalk outline-none transition resize-none" placeholder="Surface, type de bâtiment, délai souhaité..."></textarea>
+        </div>
+        <button type="submit" class="w-full bg-safety hover:bg-safetyDark text-slate-950 px-8 py-4 rounded-lg font-bold uppercase tracking-wider transition flex items-center justify-center gap-2">
+          <i data-lucide="send" width="18" height="18"></i>
+          Demander mon devis gratuit
+        </button>
+        <p class="text-chalk/50 text-xs text-center">Vos données sont confidentielles. Aucun démarchage commercial.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-slate-950 border-t border-safety/15 px-6 py-12">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-8 h-8 rounded bg-safety flex items-center justify-center">
+            <i data-lucide="hard-hat" class="text-slate-950" width="18" height="18"></i>
+          </span>
+          <span class="font-display text-xl tracking-wider"><strong>AIX</strong> RÉNOV'</span>
+        </div>
+        <p class="text-chalk/55 leading-relaxed">Artisan BTP certifié RGE à Aix-en-Provence. 15 ans de savoir-faire.</p>
+      </div>
+      <div>
+        <h4 class="text-chalk uppercase tracking-wider text-xs mb-3 font-semibold">Contact</h4>
+        <p class="text-chalk/60">15 avenue des Belges<br>13100 Aix-en-Provence</p>
+        <p class="text-chalk/60 mt-2">04 42 00 00 00</p>
+      </div>
+      <div>
+        <h4 class="text-chalk uppercase tracking-wider text-xs mb-3 font-semibold">Certifications</h4>
+        <ul class="space-y-1 text-chalk/60">
+          <li>RGE Qualibat</li>
+          <li>Garantie décennale</li>
+          <li>Assurance RC Pro</li>
+          <li>SIRET 123 456 789</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-chalk uppercase tracking-wider text-xs mb-3 font-semibold">Légal</h4>
+        <ul class="space-y-1 text-chalk/60">
+          <li><a href="#" class="hover:text-safety transition">Mentions légales</a></li>
+          <li><a href="#" class="hover:text-safety transition">Confidentialité</a></li>
+          <li><a href="#" class="hover:text-safety transition">CGV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto mt-10 pt-8 border-t border-chalk/10 text-xs text-chalk/40 text-center">
+      © 2026 Aix Rénov'. Tous droits réservés. — Démo template Skyloop.
+    </div>
+  </footer>
+
+  <!-- Mobile call button -->
+  <a href="tel:+33442000000" class="mobile-call-btn" aria-label="Appeler">
+    <i data-lucide="phone" class="text-slate-950" width="24" height="24"></i>
+  </a>
+
+  <!-- Skyloop badge -->
+  <a href="https://vitrine.skyloop.fr/templates.html" class="skyloop-badge">Démo Skyloop — Voir tous les modèles</a>
+
+  <script>
+    // Init Lucide
+    lucide.createIcons();
+
+    // Mobile menu
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('hidden');
+    }));
+
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) nav.classList.add('bg-slate-950/95', 'backdrop-blur', 'shadow-xl');
+      else nav.classList.remove('bg-slate-950/95', 'backdrop-blur', 'shadow-xl');
+    });
+
+    // Reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Before/After sliders
+    document.querySelectorAll('.ba-slider').forEach(slider => {
+      let dragging = false;
+      const setPos = (clientX) => {
+        const r = slider.getBoundingClientRect();
+        const p = Math.max(0, Math.min(100, ((clientX - r.left) / r.width) * 100));
+        slider.style.setProperty('--pos', p + '%');
+      };
+      slider.addEventListener('mousedown', (e) => { dragging = true; setPos(e.clientX); });
+      slider.addEventListener('mousemove', (e) => { if (dragging) setPos(e.clientX); });
+      window.addEventListener('mouseup', () => dragging = false);
+      slider.addEventListener('touchstart', (e) => { dragging = true; setPos(e.touches[0].clientX); });
+      slider.addEventListener('touchmove', (e) => { if (dragging) { e.preventDefault(); setPos(e.touches[0].clientX); } }, { passive: false });
+      slider.addEventListener('touchend', () => dragging = false);
+    });
+
+    // Testimonials slider
+    let testiIdx = 0;
+    const track = document.getElementById('testimonials-track');
+    const total = 3;
+    const dots = document.querySelectorAll('#testi-dots button');
+    function goTo(i) {
+      testiIdx = (i + total) % total;
+      track.style.transform = `translateX(-${testiIdx * 100}%)`;
+      dots.forEach((d, idx) => {
+        d.className = idx === testiIdx
+          ? 'w-2 h-2 rounded-full bg-safety transition'
+          : 'w-2 h-2 rounded-full bg-chalk/20 transition';
+      });
+    }
+    document.getElementById('prev-testi').addEventListener('click', () => goTo(testiIdx - 1));
+    document.getElementById('next-testi').addEventListener('click', () => goTo(testiIdx + 1));
+    dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.i))));
+    setInterval(() => goTo(testiIdx + 1), 7000);
+  </script>
+</body>
+</html>

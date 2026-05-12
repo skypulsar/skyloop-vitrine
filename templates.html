@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#060B18">
+  <title>Modèles — Skyloop</title>
+  <meta name="description" content="Modèles de sites prêts à personnaliser : restaurant, artisan / BTP, profession libérale santé. Démos interactives disponibles.">
+  <link rel="canonical" href="https://vitrine.skyloop.fr/templates.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vitrine.skyloop.fr/templates.html">
+  <meta property="og:title" content="Modèles — Skyloop">
+  <meta property="og:description" content="Trois modèles de démonstration : restaurant, artisan, santé.">
+  <meta property="og:image" content="https://vitrine.skyloop.fr/assets/images/logoskyloop.png">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <link rel="icon" type="image/png" href="assets/images/logoskyloop.png">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-500.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .templates-grid {
+      display: grid;
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .tpl-card {
+      background: var(--bg-elev-1);
+      border: 1px solid var(--hairline);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      transition: border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      align-items: stretch;
+    }
+    .tpl-card:hover {
+      border-color: var(--hairline-strong);
+      transform: translateY(-3px);
+    }
+    .tpl-card:nth-child(even) { grid-template-columns: 1fr 1.1fr; }
+    .tpl-card:nth-child(even) .tpl-card__preview { order: 2; }
+    .tpl-card:nth-child(even) .tpl-card__body { order: 1; }
+
+    .tpl-card__preview {
+      position: relative;
+      min-height: 380px;
+      background-size: cover;
+      background-position: center;
+    }
+    .tpl-card__preview::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(6, 11, 24, 0.1) 0%, rgba(6, 11, 24, 0.55) 100%);
+    }
+    .tpl-card__chip {
+      position: absolute; top: 18px; left: 18px; z-index: 2;
+      padding: 6px 12px;
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+    .tpl-card__chip--resto { background: rgba(200, 168, 119, 0.85); color: #1a1612; }
+    .tpl-card__chip--artisan { background: rgba(245, 158, 11, 0.9); color: #0d141c; }
+    .tpl-card__chip--sante { background: rgba(91, 143, 185, 0.92); color: white; }
+
+    .tpl-card__body {
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .tpl-card__body h3 {
+      font-size: 1.7rem;
+      margin: 12px 0 6px;
+      letter-spacing: -0.02em;
+    }
+    .tpl-card__sub {
+      color: var(--ink-3);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .tpl-card__desc {
+      color: var(--ink-2);
+      line-height: 1.65;
+      margin: 14px 0 18px;
+      font-size: 0.96rem;
+    }
+    .tpl-card__features {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 22px;
+    }
+    .tpl-card__features li {
+      display: flex;
+      gap: 8px;
+      color: var(--ink-2);
+      font-size: 0.88rem;
+      align-items: flex-start;
+    }
+    .tpl-card__features li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 14px; height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2360A5FA' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-top: 4px;
+    }
+    .tpl-card__tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 26px;
+    }
+    .tpl-card__tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--bg-elev-2);
+      border: 1px solid var(--hairline);
+      color: var(--ink-3);
+    }
+    .tpl-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      align-self: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .tpl-card,
+      .tpl-card:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+      .tpl-card:nth-child(even) .tpl-card__preview { order: 0; }
+      .tpl-card:nth-child(even) .tpl-card__body { order: 1; }
+      .tpl-card__preview { min-height: 260px; }
+      .tpl-card__body { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav__logo"><img src="assets/images/skyloop-fd-sombre.png" alt="Skyloop" width="160" height="28"></a>
+        <button class="nav__toggle" aria-label="Menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <ul class="nav__menu" id="menu">
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="templates.html" aria-current="page">Modèles</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="index.html#contact" class="nav__cta">Démarrer un projet</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main style="padding-top: var(--header-h);">
+    <section class="section" style="padding-top: 80px;">
+      <div class="container">
+
+        <div class="section-head section-head--center reveal">
+          <span class="section-eyebrow">Modèles prêts à personnaliser</span>
+          <h1>Des sites <span class="accent" style="background:linear-gradient(135deg,var(--blue-2),var(--coral-2));-webkit-background-clip:text;background-clip:text;color:transparent;">déjà conçus</span> pour votre métier.</h1>
+          <p class="section-lead" style="margin-left:auto;margin-right:auto;">
+            Trois modèles de démonstration entièrement personnalisables — votre site déployé en 7 à 10 jours, à partir des forfaits Skyloop.
+          </p>
+        </div>
+
+        <div class="templates-grid">
+
+          <!-- Template 1 — Restaurant -->
+          <article class="tpl-card reveal">
+            <a href="templates/restaurant/index.html" target="_blank" rel="noopener" class="tpl-card__preview" style="background-image: linear-gradient(rgba(26,22,18,0.4), rgba(26,22,18,0.5)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80&auto=format');" aria-label="Voir la démo Restaurant en plein écran">
+              <span class="tpl-card__chip tpl-card__chip--resto">Restaurant</span>
+            </a>
+            <div class="tpl-card__body">
+              <span class="tpl-card__sub">Modèle nº 1</span>
+              <h3>Le Belvédère — Restaurant gastronomique</h3>
+              <p class="tpl-card__desc">Site élégant pour restaurant, bistrot ou table d'hôtes. Menu dynamique chargé depuis un fichier JSON éditable, galerie lightbox, intégration TheFork / Google Réservation et carte Google Maps.</p>
+              <ul class="tpl-card__features">
+                <li>Hero photo plein écran + double CTA (Menu / Réserver)</li>
+                <li>Menu catégorisé (entrées, plats, desserts, boissons) en JSON</li>
+                <li>Galerie photos avec lightbox interactive</li>
+                <li>Horaires, carte Google intégrée, contact</li>
+                <li>Liens réservation externes (TheFork, Google, téléphone)</li>
+              </ul>
+              <div class="tpl-card__tags">
+                <span class="tpl-card__tag">Tailwind CSS</span>
+                <span class="tpl-card__tag">Menu JSON</span>
+                <span class="tpl-card__tag">Lightbox</span>
+                <span class="tpl-card__tag">SEO restaurant</span>
+              </div>
+              <a href="templates/restaurant/index.html" target="_blank" rel="noopener" class="btn btn--primary tpl-card__cta">
+                Voir la démo en plein écran <span class="arrow">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Template 2 — Artisan / BTP -->
+          <article class="tpl-card reveal">
+            <a href="templates/artisan/index.html" target="_blank" rel="noopener" class="tpl-card__preview" style="background-image: linear-gradient(rgba(13,20,28,0.3), rgba(13,20,28,0.5)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80&auto=format');" aria-label="Voir la démo Artisan en plein écran">
+              <span class="tpl-card__chip tpl-card__chip--artisan">Artisan / BTP</span>
+            </a>
+            <div class="tpl-card__body">
+              <span class="tpl-card__sub">Modèle nº 2</span>
+              <h3>Aix Rénov' — Artisan BTP</h3>
+              <p class="tpl-card__desc">Conçu pour générer des demandes de devis. Hero impactant, comparateur avant/après interactif, témoignages en slider, zone d'intervention détaillée et formulaire de devis complet.</p>
+              <ul class="tpl-card__features">
+                <li>Hero photo de chantier + double CTA (Devis 24h / Téléphone)</li>
+                <li>6 services avec icônes Lucide</li>
+                <li>Galerie avant / après interactive (drag slider)</li>
+                <li>Témoignages en carousel automatique</li>
+                <li>Zone d'intervention + bouton d'appel mobile fixé</li>
+                <li>Formulaire de devis complet</li>
+              </ul>
+              <div class="tpl-card__tags">
+                <span class="tpl-card__tag">Tailwind CSS</span>
+                <span class="tpl-card__tag">Lucide icons</span>
+                <span class="tpl-card__tag">Before/After</span>
+                <span class="tpl-card__tag">Slider</span>
+                <span class="tpl-card__tag">SEO local</span>
+              </div>
+              <a href="templates/artisan/index.html" target="_blank" rel="noopener" class="btn btn--primary tpl-card__cta">
+                Voir la démo en plein écran <span class="arrow">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Template 3 — Profession libérale santé -->
+          <article class="tpl-card reveal">
+            <a href="templates/sante/index.html" target="_blank" rel="noopener" class="tpl-card__preview" style="background-image: linear-gradient(rgba(30,58,82,0.15), rgba(30,58,82,0.4)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80&auto=format');" aria-label="Voir la démo Santé en plein écran">
+              <span class="tpl-card__chip tpl-card__chip--sante">Profession libérale santé</span>
+            </a>
+            <div class="tpl-card__body">
+              <span class="tpl-card__sub">Modèle nº 3</span>
+              <h3>Dr Marie Dubois — Ostéopathe DO</h3>
+              <p class="tpl-card__desc">Site rassurant et conforme aux exigences du secteur santé. Présentation du praticien, consultations détaillées, tarifs transparents, infos pratiques et intégration native du widget Doctolib.</p>
+              <ul class="tpl-card__features">
+                <li>Hero apaisant + CTA « Prendre RDV »</li>
+                <li>Présentation : parcours, formations, photo praticien</li>
+                <li>6 catégories de consultations détaillées</li>
+                <li>Tarifs transparents en tableau</li>
+                <li>Modalités pratiques : horaires, accès, parking</li>
+                <li>Widget Doctolib intégré (iframe / redirection)</li>
+              </ul>
+              <div class="tpl-card__tags">
+                <span class="tpl-card__tag">Tailwind CSS</span>
+                <span class="tpl-card__tag">Doctolib</span>
+                <span class="tpl-card__tag">Accessibilité PMR</span>
+                <span class="tpl-card__tag">RGPD</span>
+              </div>
+              <a href="templates/sante/index.html" target="_blank" rel="noopener" class="btn btn--primary tpl-card__cta">
+                Voir la démo en plein écran <span class="arrow">→</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="cta-banner reveal" style="margin-top: 80px;">
+          <h2>Votre métier n'est pas dans la liste ?</h2>
+          <p>Ces modèles ne sont qu'un point de départ. Chaque site Skyloop est ensuite adapté à votre marque, vos contenus et votre clientèle locale.</p>
+          <a href="index.html#contact" class="btn btn--accent btn--lg">Discuter de votre projet <span class="arrow">→</span></a>
+        </div>
+
+        <p style="text-align:center;color:var(--ink-3);margin-top:30px;font-size:0.82rem;font-family:var(--font-mono);">
+          Démos statiques (Tailwind CSS) — version production : Next.js + Tailwind, déployable sur Vercel ou OVH.
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom" style="border-top:none;padding-top:0;">
+        <span>© <span id="current-year"></span> Skyloop. Tous droits réservés.</span>
+        <span><a href="index.html">Accueil</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="mailto:contact@skyloop.fr">contact@skyloop.fr</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

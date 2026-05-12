@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Belvédère — Cuisine méditerranéenne, Aix-en-Provence</title>
+  <meta name="description" content="Restaurant gastronomique au cœur d'Aix-en-Provence. Cuisine méditerranéenne raffinée, produits locaux, cadre élégant.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Le Belvédère — Cuisine méditerranéenne">
+  <meta property="og:description" content="Restaurant gastronomique au cœur d'Aix-en-Provence.">
+  <meta property="og:type" content="restaurant">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            wine: '#7c2d2d',
+            wineDark: '#5a1f1f',
+            cream: '#f5e6d3',
+            charcoal: '#1a1612',
+            gold: '#c8a877',
+            goldDark: '#a38554',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+    .hero-bg {
+      background-image: linear-gradient(rgba(26, 22, 18, 0.55), rgba(26, 22, 18, 0.75)),
+                        url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80&auto=format');
+      background-size: cover;
+      background-position: center;
+    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .menu-tab-active { background: #c8a877; color: #1a1612; }
+    .lightbox { background: rgba(26, 22, 18, 0.95); }
+    .skyloop-badge {
+      position: fixed; bottom: 16px; right: 16px; z-index: 60;
+      background: rgba(26,22,18,0.85); backdrop-filter: blur(8px);
+      border: 1px solid rgba(200, 168, 119, 0.3);
+      color: #c8a877; padding: 8px 14px; border-radius: 100px;
+      font-size: 0.75rem; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .skyloop-badge:hover { background: rgba(124, 45, 45, 0.9); color: #f5e6d3; }
+  </style>
+</head>
+<body class="bg-charcoal text-cream">
+
+  <!-- ===== NAV ===== -->
+  <header class="fixed top-0 inset-x-0 z-40 transition-all" id="nav">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="#" class="font-serif text-2xl font-bold tracking-wide text-cream">
+        Le Belvédère
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#about" class="hover:text-gold transition">À propos</a>
+        <a href="#menu" class="hover:text-gold transition">Menu</a>
+        <a href="#gallery" class="hover:text-gold transition">Galerie</a>
+        <a href="#visit" class="hover:text-gold transition">Nous trouver</a>
+        <a href="#reserver" class="bg-wine hover:bg-wineDark text-cream px-5 py-2.5 rounded-full transition">Réserver</a>
+      </nav>
+      <button class="md:hidden text-cream" id="menu-toggle" aria-label="Menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="md:hidden hidden bg-charcoal/95 backdrop-blur px-6 py-4 space-y-3 border-t border-gold/20" id="mobile-menu">
+      <a href="#about" class="block hover:text-gold">À propos</a>
+      <a href="#menu" class="block hover:text-gold">Menu</a>
+      <a href="#gallery" class="block hover:text-gold">Galerie</a>
+      <a href="#visit" class="block hover:text-gold">Nous trouver</a>
+      <a href="#reserver" class="block text-gold">Réserver</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero-bg min-h-screen flex items-center justify-center text-center px-6 relative">
+    <div class="max-w-4xl reveal">
+      <p class="text-gold tracking-[0.3em] uppercase text-sm mb-6">Aix-en-Provence depuis 1998</p>
+      <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6">
+        L'art de la table<br><em class="text-gold not-italic">méditerranéenne.</em>
+      </h1>
+      <p class="text-lg md:text-xl text-cream/80 max-w-2xl mx-auto mb-10 font-light">
+        Une cuisine de saison sublimée par les meilleurs produits de Provence, dans le cadre intimiste d'une bastide du XVIIIe siècle.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#menu" class="bg-gold hover:bg-goldDark text-charcoal px-8 py-4 rounded-full font-medium transition shadow-2xl">
+          Voir le menu
+        </a>
+        <a href="#reserver" class="bg-transparent border border-cream/40 hover:border-gold hover:text-gold text-cream px-8 py-4 rounded-full font-medium transition">
+          Réserver une table
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-gold/60">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="py-24 md:py-32 px-6 bg-charcoal">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <p class="text-gold tracking-[0.25em] uppercase text-xs mb-4">Notre histoire</p>
+          <h2 class="font-serif text-4xl md:text-5xl mb-6 leading-tight">Une passion familiale<br><em class="text-gold not-italic">depuis 25 ans.</em></h2>
+          <p class="text-cream/75 leading-relaxed mb-4">
+            Niché entre les collines aixoises et les vignobles de Provence, Le Belvédère est l'œuvre d'une famille passionnée par la gastronomie méditerranéenne. Chaque assiette raconte l'histoire d'un terroir, d'un producteur, d'un savoir-faire.
+          </p>
+          <p class="text-cream/75 leading-relaxed">
+            Notre chef Antoine Roux, formé chez Pic et Bocuse, compose une carte au gré des saisons, en collaboration directe avec les maraîchers, pêcheurs et éleveurs de la région.
+          </p>
+        </div>
+        <div class="reveal">
+          <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=900&q=80&auto=format" alt="Chef en cuisine" class="rounded-2xl shadow-2xl w-full">
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-6 mt-20">
+        <div class="reveal text-center">
+          <div class="aspect-square rounded-2xl overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=600&q=80&auto=format" alt="Antoine Roux, chef" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-xl mb-1">Antoine Roux</h3>
+          <p class="text-gold/80 text-sm tracking-wide">Chef de cuisine</p>
+        </div>
+        <div class="reveal text-center">
+          <div class="aspect-square rounded-2xl overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&q=80&auto=format" alt="Sophie Mercier, sommelière" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-xl mb-1">Sophie Mercier</h3>
+          <p class="text-gold/80 text-sm tracking-wide">Sommelière</p>
+        </div>
+        <div class="reveal text-center">
+          <div class="aspect-square rounded-2xl overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1607631568010-a87245c0daf8?w=600&q=80&auto=format" alt="Léa Bertin, pâtissière" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-xl mb-1">Léa Bertin</h3>
+          <p class="text-gold/80 text-sm tracking-wide">Cheffe pâtissière</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section id="menu" class="py-24 md:py-32 px-6 bg-wineDark/30 relative overflow-hidden">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-gold tracking-[0.25em] uppercase text-xs mb-4">La carte</p>
+        <h2 class="font-serif text-4xl md:text-5xl">Notre menu de saison</h2>
+        <p class="text-cream/70 mt-4 max-w-2xl mx-auto">Renouvelée tous les deux mois en fonction des arrivages et du jardin potager.</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-2 mb-12 reveal" id="menu-tabs"></div>
+
+      <div id="menu-content" class="space-y-1"></div>
+
+      <p class="text-center text-cream/50 text-sm mt-12 font-light italic">Tous les prix sont en euros, service compris. Carte susceptible d'évolution selon les arrivages.</p>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section id="gallery" class="py-24 md:py-32 px-6 bg-charcoal">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-gold tracking-[0.25em] uppercase text-xs mb-4">Galerie</p>
+        <h2 class="font-serif text-4xl md:text-5xl">Plats, salle & jardin</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="gallery-grid">
+        <button data-src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80&auto=format" alt="Plat 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80&auto=format" alt="Plat 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80&auto=format" alt="Salle" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&auto=format" alt="Ambiance" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80&auto=format" alt="Dessert" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1432139509613-5c4255815697?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?w=600&q=80&auto=format" alt="Cave" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&q=80&auto=format" alt="Plat 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=600&q=80&auto=format" alt="Terrasse" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISIT / MAP ===== -->
+  <section id="visit" class="py-24 md:py-32 px-6 bg-charcoal border-t border-gold/10">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+      <div class="reveal">
+        <p class="text-gold tracking-[0.25em] uppercase text-xs mb-4">Nous trouver</p>
+        <h2 class="font-serif text-4xl md:text-5xl mb-8">Au cœur d'Aix-en-Provence</h2>
+
+        <div class="space-y-6 text-cream/80">
+          <div>
+            <h3 class="text-gold font-serif text-lg mb-1">Adresse</h3>
+            <p>12 cours Mirabeau<br>13100 Aix-en-Provence</p>
+          </div>
+
+          <div>
+            <h3 class="text-gold font-serif text-lg mb-2">Horaires d'ouverture</h3>
+            <table class="text-sm">
+              <tr><td class="pr-6 py-1">Mardi — Jeudi</td><td>12h — 14h · 19h — 22h</td></tr>
+              <tr><td class="pr-6 py-1">Vendredi — Samedi</td><td>12h — 14h · 19h — 23h</td></tr>
+              <tr><td class="pr-6 py-1">Dimanche</td><td>12h — 15h (brunch)</td></tr>
+              <tr><td class="pr-6 py-1 text-cream/50">Lundi</td><td class="text-cream/50">Fermé</td></tr>
+            </table>
+          </div>
+
+          <div>
+            <h3 class="text-gold font-serif text-lg mb-1">Contact</h3>
+            <p>
+              <a href="tel:+33442000000" class="hover:text-gold transition">04 42 00 00 00</a><br>
+              <a href="mailto:contact@lebelvedere-aix.fr" class="hover:text-gold transition">contact@lebelvedere-aix.fr</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-gold/20">
+        <iframe src="https://www.google.com/maps?q=cours+Mirabeau+Aix-en-Provence&output=embed" width="100%" height="100%" style="border:0; filter: grayscale(0.3) brightness(0.85);" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESERVATION ===== -->
+  <section id="reserver" class="py-24 md:py-32 px-6 bg-gradient-to-b from-wineDark/40 to-charcoal text-center">
+    <div class="max-w-3xl mx-auto reveal">
+      <p class="text-gold tracking-[0.25em] uppercase text-xs mb-4">Réservation</p>
+      <h2 class="font-serif text-4xl md:text-5xl mb-6">Réservez votre table</h2>
+      <p class="text-cream/75 mb-10 text-lg font-light">
+        Pour une expérience optimale, réservez en ligne via nos partenaires ou contactez-nous directement.
+      </p>
+
+      <div class="grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+        <a href="https://www.thefork.fr" target="_blank" rel="noopener noreferrer" class="bg-cream text-charcoal px-6 py-4 rounded-xl font-medium hover:bg-gold transition flex items-center justify-center gap-2">
+          TheFork
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="bg-cream text-charcoal px-6 py-4 rounded-xl font-medium hover:bg-gold transition flex items-center justify-center gap-2">
+          Google Réservation
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="tel:+33442000000" class="bg-wine hover:bg-wineDark text-cream px-6 py-4 rounded-xl font-medium transition flex items-center justify-center gap-2">
+          Par téléphone
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-charcoal border-t border-gold/15 px-6 py-12">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <h3 class="font-serif text-xl text-gold mb-3">Le Belvédère</h3>
+        <p class="text-cream/60 leading-relaxed">Cuisine méditerranéenne au cœur d'Aix-en-Provence depuis 1998.</p>
+      </div>
+      <div>
+        <h4 class="text-cream uppercase tracking-wider text-xs mb-3">Contact</h4>
+        <p class="text-cream/60">12 cours Mirabeau<br>13100 Aix-en-Provence</p>
+        <p class="text-cream/60 mt-2">04 42 00 00 00</p>
+      </div>
+      <div>
+        <h4 class="text-cream uppercase tracking-wider text-xs mb-3">Réseaux</h4>
+        <ul class="space-y-2 text-cream/60">
+          <li><a href="#" class="hover:text-gold transition">Instagram</a></li>
+          <li><a href="#" class="hover:text-gold transition">Facebook</a></li>
+          <li><a href="#" class="hover:text-gold transition">TripAdvisor</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream uppercase tracking-wider text-xs mb-3">Légal</h4>
+        <ul class="space-y-2 text-cream/60">
+          <li><a href="#" class="hover:text-gold transition">Mentions légales</a></li>
+          <li><a href="#" class="hover:text-gold transition">Politique de confidentialité</a></li>
+          <li><a href="#" class="hover:text-gold transition">CGV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto mt-10 pt-8 border-t border-gold/10 text-xs text-cream/40 text-center">
+      © 2026 Le Belvédère. Tous droits réservés. — Démo template Skyloop.
+    </div>
+  </footer>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lightbox" class="lightbox fixed inset-0 z-50 hidden items-center justify-center p-6 cursor-pointer">
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full rounded-xl shadow-2xl">
+    <button class="absolute top-6 right-6 text-cream bg-charcoal/60 hover:bg-wine rounded-full w-12 h-12 flex items-center justify-center transition" aria-label="Fermer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Skyloop attribution badge -->
+  <a href="https://vitrine.skyloop.fr/templates.html" class="skyloop-badge">Démo Skyloop — Voir tous les modèles</a>
+
+  <script>
+    // Mobile menu
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('hidden');
+    }));
+
+    // Nav background on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('bg-charcoal/90', 'backdrop-blur', 'shadow-lg');
+      } else {
+        nav.classList.remove('bg-charcoal/90', 'backdrop-blur', 'shadow-lg');
+      }
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Load menu from JSON
+    fetch('./menu.json')
+      .then(r => r.json())
+      .then(data => {
+        const tabs = document.getElementById('menu-tabs');
+        const content = document.getElementById('menu-content');
+
+        data.categories.forEach((cat, idx) => {
+          const btn = document.createElement('button');
+          btn.textContent = cat.name;
+          btn.className = 'px-6 py-2.5 rounded-full text-sm font-medium tracking-wide transition border ' +
+            (idx === 0 ? 'menu-tab-active border-gold' : 'border-gold/30 text-cream/70 hover:border-gold hover:text-gold');
+          btn.dataset.cat = cat.id;
+          btn.addEventListener('click', () => showCategory(cat.id));
+          tabs.appendChild(btn);
+        });
+
+        function showCategory(id) {
+          document.querySelectorAll('#menu-tabs button').forEach(b => {
+            if (b.dataset.cat === id) {
+              b.className = 'px-6 py-2.5 rounded-full text-sm font-medium tracking-wide transition border menu-tab-active border-gold';
+            } else {
+              b.className = 'px-6 py-2.5 rounded-full text-sm font-medium tracking-wide transition border border-gold/30 text-cream/70 hover:border-gold hover:text-gold';
+            }
+          });
+          const cat = data.categories.find(c => c.id === id);
+          content.innerHTML = cat.items.map(item => `
+            <div class="flex items-baseline gap-4 py-5 border-b border-gold/15 last:border-0">
+              <div class="flex-1">
+                <h3 class="font-serif text-xl text-cream mb-1">${item.name}</h3>
+                <p class="text-cream/60 text-sm font-light">${item.description}</p>
+              </div>
+              <div class="flex-shrink-0 font-serif text-xl text-gold">${item.price}</div>
+            </div>
+          `).join('');
+        }
+
+        showCategory(data.categories[0].id);
+      })
+      .catch(err => {
+        document.getElementById('menu-content').innerHTML = '<p class="text-cream/60 text-center py-8">Menu en cours de chargement...</p>';
+        console.error('Menu loading error:', err);
+      });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('#gallery-grid button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        lightboxImg.src = btn.dataset.src;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+      });
+    });
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr Marie Dubois — Ostéopathe DO, Aix-en-Provence</title>
+  <meta name="description" content="Cabinet d'ostéopathie à Aix-en-Provence. Soins adultes, enfants, nourrissons, femmes enceintes, sportifs. Prise de RDV en ligne via Doctolib.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Dr Marie Dubois — Ostéopathe DO">
+  <meta property="og:description" content="Cabinet d'ostéopathie à Aix-en-Provence.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Lora', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            ink: '#1e3a52',
+            inkLight: '#3d5a73',
+            paper: '#fbfaf7',
+            paperWarm: '#f4eee4',
+            sky: '#5b8fb9',
+            skyLight: '#a8c9e0',
+            sage: '#8fb89e',
+            sageLight: '#cde0d2',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, .font-serif { font-family: 'Lora', serif; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .hero-gradient {
+      background:
+        radial-gradient(ellipse at top left, rgba(91, 143, 185, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse at bottom right, rgba(143, 184, 158, 0.18) 0%, transparent 60%),
+        #fbfaf7;
+    }
+    .skyloop-badge {
+      position: fixed; bottom: 16px; right: 16px; z-index: 60;
+      background: rgba(30,58,82,0.92); backdrop-filter: blur(8px);
+      color: #f4eee4; padding: 8px 14px; border-radius: 100px;
+      font-size: 0.75rem; text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid rgba(143,184,158,0.4);
+    }
+    .skyloop-badge:hover { background: #5b8fb9; }
+  </style>
+</head>
+<body class="bg-paper text-ink">
+
+  <!-- ===== NAV ===== -->
+  <header class="fixed top-0 inset-x-0 z-40 transition-all" id="nav">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <span class="w-10 h-10 rounded-full bg-sky/15 text-sky flex items-center justify-center">
+          <i data-lucide="leaf" width="22" height="22"></i>
+        </span>
+        <div>
+          <div class="font-serif text-lg leading-tight">Dr Marie Dubois</div>
+          <div class="text-[10px] text-sky uppercase tracking-widest">Ostéopathe DO</div>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-inkLight">
+        <a href="#presentation" class="hover:text-sky transition">Présentation</a>
+        <a href="#consultations" class="hover:text-sky transition">Consultations</a>
+        <a href="#tarifs" class="hover:text-sky transition">Tarifs</a>
+        <a href="#infos" class="hover:text-sky transition">Infos pratiques</a>
+        <a href="#rdv" class="bg-sky hover:bg-ink text-white px-5 py-2.5 rounded-full transition flex items-center gap-1.5">
+          <i data-lucide="calendar" width="14" height="14"></i> Prendre RDV
+        </a>
+      </nav>
+      <button class="md:hidden text-ink" id="menu-toggle" aria-label="Menu">
+        <i data-lucide="menu" width="28" height="28"></i>
+      </button>
+    </div>
+    <div class="md:hidden hidden bg-paper/98 backdrop-blur px-6 py-4 space-y-3 border-t border-skyLight/40" id="mobile-menu">
+      <a href="#presentation" class="block text-inkLight">Présentation</a>
+      <a href="#consultations" class="block text-inkLight">Consultations</a>
+      <a href="#tarifs" class="block text-inkLight">Tarifs</a>
+      <a href="#infos" class="block text-inkLight">Infos pratiques</a>
+      <a href="#rdv" class="block text-sky font-semibold">Prendre RDV</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero-gradient pt-32 pb-20 md:pt-40 md:pb-28 px-6">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-2 bg-sage/15 border border-sage/30 text-sage px-4 py-1.5 rounded-full text-xs uppercase tracking-widest mb-6">
+          <span class="w-2 h-2 rounded-full bg-sage"></span>
+          Nouveaux patients acceptés
+        </div>
+        <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-6 text-ink">
+          Une approche <span class="text-sky">douce</span> et <span class="text-sage">globale</span> de votre santé.
+        </h1>
+        <p class="text-lg text-inkLight mb-10 leading-relaxed max-w-lg">
+          Ostéopathie pour adultes, enfants, nourrissons, femmes enceintes et sportifs. Cabinet au cœur d'Aix-en-Provence, accessible PMR.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="#rdv" class="bg-sky hover:bg-ink text-white px-7 py-4 rounded-full font-medium transition shadow-lg shadow-sky/20 flex items-center justify-center gap-2">
+            <i data-lucide="calendar" width="18" height="18"></i>
+            Prendre rendez-vous
+          </a>
+          <a href="tel:+33442000000" class="bg-white hover:bg-paperWarm text-ink border border-skyLight/60 px-7 py-4 rounded-full font-medium transition flex items-center justify-center gap-2">
+            <i data-lucide="phone" width="18" height="18"></i>
+            04 42 00 00 00
+          </a>
+        </div>
+
+        <div class="flex items-center gap-6 mt-10 pt-8 border-t border-skyLight/40 text-sm text-inkLight">
+          <div class="flex items-center gap-2">
+            <i data-lucide="shield-check" class="text-sage" width="18" height="18"></i>
+            <span>N° ADELI 13 12 34567</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="award" class="text-sage" width="18" height="18"></i>
+            <span>Diplômée DO France</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal relative">
+        <div class="absolute -inset-4 bg-gradient-to-br from-sky/15 to-sage/15 rounded-[2.5rem] -z-10"></div>
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=900&q=80&auto=format" alt="Dr Marie Dubois, ostéopathe" class="rounded-[2rem] shadow-2xl w-full aspect-[4/5] object-cover">
+        <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5 flex items-center gap-3 max-w-xs">
+          <div class="flex -space-x-2">
+            <div class="w-9 h-9 rounded-full bg-sky/20 border-2 border-white flex items-center justify-center text-xs font-semibold text-sky">JD</div>
+            <div class="w-9 h-9 rounded-full bg-sage/20 border-2 border-white flex items-center justify-center text-xs font-semibold text-sage">ML</div>
+            <div class="w-9 h-9 rounded-full bg-paperWarm border-2 border-white flex items-center justify-center text-xs font-semibold text-ink">+</div>
+          </div>
+          <div>
+            <div class="text-xs text-inkLight">Plus de</div>
+            <div class="font-serif text-lg text-ink leading-tight">1 200 patients</div>
+            <div class="text-xs text-sage">depuis 2018</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRÉSENTATION ===== -->
+  <section id="presentation" class="py-24 px-6 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14 reveal">
+        <p class="text-sky uppercase tracking-[0.25em] text-xs mb-3">Mon parcours</p>
+        <h2 class="font-serif text-4xl md:text-5xl text-ink">À propos de moi</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 reveal">
+        <div class="md:col-span-2 space-y-4 text-inkLight leading-relaxed">
+          <p class="text-lg text-ink">Diplômée de l'<strong>Institut de Formation en Ostéopathie de Provence</strong> en 2018, j'exerce à Aix-en-Provence après cinq ans d'expérience en cabinet pluridisciplinaire à Marseille.</p>
+          <p>Ma pratique s'articule autour d'une <strong>approche tissulaire douce</strong>, particulièrement adaptée aux nourrissons, femmes enceintes et personnes sensibles. Pour les sportifs et adultes actifs, j'intègre des techniques structurelles et myofasciales selon les besoins.</p>
+          <p>Je me forme continuellement : pédiatrie périnatale (2020), ostéopathie viscérale avancée (2022), prise en charge des migraines chroniques (2024).</p>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-paperWarm rounded-xl p-5">
+            <h3 class="font-serif text-lg text-ink mb-3 flex items-center gap-2">
+              <i data-lucide="graduation-cap" class="text-sky" width="20" height="20"></i>
+              Formations
+            </h3>
+            <ul class="text-sm text-inkLight space-y-2">
+              <li>• DO France (IFOP, 2018)</li>
+              <li>• Pédiatrie périnatale (2020)</li>
+              <li>• Ostéopathie viscérale (2022)</li>
+              <li>• Migraines &amp; céphalées (2024)</li>
+            </ul>
+          </div>
+          <div class="bg-paperWarm rounded-xl p-5">
+            <h3 class="font-serif text-lg text-ink mb-3 flex items-center gap-2">
+              <i data-lucide="users" class="text-sage" width="20" height="20"></i>
+              Affiliations
+            </h3>
+            <ul class="text-sm text-inkLight space-y-2">
+              <li>• Registre des Ostéopathes de France</li>
+              <li>• Syndicat français des ostéopathes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONSULTATIONS ===== -->
+  <section id="consultations" class="py-24 px-6 bg-paperWarm/40">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-sky uppercase tracking-[0.25em] text-xs mb-3">Mes consultations</p>
+        <h2 class="font-serif text-4xl md:text-5xl text-ink mb-4">À qui s'adresse l'ostéopathie ?</h2>
+        <p class="text-inkLight max-w-2xl mx-auto">À tous, du nourrisson de quelques jours à la personne âgée. Voici les principaux motifs de consultation au cabinet.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-lg hover:-translate-y-1 transition border border-skyLight/30">
+          <div class="w-12 h-12 rounded-xl bg-sky/15 text-sky flex items-center justify-center mb-5">
+            <i data-lucide="baby" width="24" height="24"></i>
+          </div>
+          <h3 class="font-serif text-xl text-ink mb-2">Nourrissons</h3>
+          <p class="text-sm text-inkLight leading-relaxed">Régurgitations, coliques, plagiocéphalie, troubles du sommeil, suite d'accouchement difficile. Séances de 30 min avec parent présent.</p>
+        </div>
+
+        <div class="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-lg hover:-translate-y-1 transition border border-skyLight/30">
+          <div class="w-12 h-12 rounded-xl bg-sage/15 text-sage flex items-center justify-center mb-5">
+            <i data-lucide="heart-pulse" width="24" height="24"></i>
+          </div>
+          <h3 class="font-serif text-xl text-ink mb-2">Femmes enceintes</h3>
+          <p class="text-sm text-inkLight leading-relaxed">Suivi de grossesse trimestriel, douleurs lombaires, sciatique, préparation à l'accouchement. Techniques douces validées.</p>
+        </div>
+
+        <div class="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-lg hover:-translate-y-1 transition border border-skyLight/30">
+          <div class="w-12 h-12 rounded-xl bg-sky/15 text-sky flex items-center justify-center mb-5">
+            <i data-lucide="dumbbell" width="24" height="24"></i>
+          </div>
+          <h3 class="font-serif text-xl text-ink mb-2">Sportifs</h3>
+          <p class="text-sm text-inkLight leading-relaxed">Préparation et récupération, blessures musculaires, tendinopathies, optimisation de la mobilité. Suivi marathonien et compétiteurs.</p>
+        </div>
+
+        <div class="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-lg hover:-translate-y-1 transition border border-skyLight/30">
+          <div class="w-12 h-12 rounded-xl bg-sage/15 text-sage flex items-center justify-center mb-5">
+            <i data-lucide="user" width="24" height="24"></i>
+          </div>
+          <h3 class="font-serif text-xl text-ink mb-2">Adultes actifs</h3>
+          <p class="text-sm text-inkLight leading-relaxed">Lombalgies, cervicalgies, troubles digestifs, stress, migraines, mâchoire (ATM), suites de chocs.</p>
+        </div>
+
+        <div class="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-lg hover:-translate-y-1 transition border border-skyLight/30">
+          <div class="w-12 h-12 rounded-xl bg-sky/15 text-sky flex items-center justify-center mb-5">
+            <i data-lucide="brain" width="24" height="24"></i>
+          </div>
+          <h3 class="font-serif text-xl text-ink mb-2">Migraines &amp; céphalées</h3>
+          <p class="text-sm text-inkLight leading-relaxed">Prise en charge spécifique des migraines chroniques, céphalées de tension. Protocole sur 3 à 5 séances.</p>
+        </div>
+
+        <div class="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-lg hover:-translate-y-1 transition border border-skyLight/30">
+          <div class="w-12 h-12 rounded-xl bg-sage/15 text-sage flex items-center justify-center mb-5">
+            <i data-lucide="armchair" width="24" height="24"></i>
+          </div>
+          <h3 class="font-serif text-xl text-ink mb-2">Seniors</h3>
+          <p class="text-sm text-inkLight leading-relaxed">Maintien de la mobilité, prévention des chutes, arthrose, troubles fonctionnels liés à l'âge. Approche très douce.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TARIFS ===== -->
+  <section id="tarifs" class="py-24 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <p class="text-sky uppercase tracking-[0.25em] text-xs mb-3">Tarifs</p>
+        <h2 class="font-serif text-4xl md:text-5xl text-ink mb-4">Transparents, sans surprise</h2>
+        <p class="text-inkLight max-w-2xl mx-auto">Tarifs identiques au cabinet et à domicile (dans Aix). Carte vitale non acceptée — remboursement par votre mutuelle.</p>
+      </div>
+
+      <div class="bg-paperWarm rounded-3xl p-2 reveal">
+        <table class="w-full">
+          <tbody>
+            <tr class="border-b border-skyLight/30">
+              <td class="p-5">
+                <h3 class="font-serif text-lg text-ink">Consultation adulte</h3>
+                <p class="text-sm text-inkLight">Séance complète de 45 minutes — anamnèse, examen, traitement</p>
+              </td>
+              <td class="p-5 text-right">
+                <div class="font-serif text-2xl text-sky">65 €</div>
+              </td>
+            </tr>
+            <tr class="border-b border-skyLight/30">
+              <td class="p-5">
+                <h3 class="font-serif text-lg text-ink">Nourrisson (0–2 ans)</h3>
+                <p class="text-sm text-inkLight">Séance douce de 30 min avec présence d'un parent</p>
+              </td>
+              <td class="p-5 text-right">
+                <div class="font-serif text-2xl text-sky">55 €</div>
+              </td>
+            </tr>
+            <tr class="border-b border-skyLight/30">
+              <td class="p-5">
+                <h3 class="font-serif text-lg text-ink">Enfant (3–12 ans)</h3>
+                <p class="text-sm text-inkLight">Séance de 30–40 min adaptée à l'âge</p>
+              </td>
+              <td class="p-5 text-right">
+                <div class="font-serif text-2xl text-sky">55 €</div>
+              </td>
+            </tr>
+            <tr class="border-b border-skyLight/30">
+              <td class="p-5">
+                <h3 class="font-serif text-lg text-ink">Femme enceinte</h3>
+                <p class="text-sm text-inkLight">Suivi trimestriel ou consultation ponctuelle, 45 min</p>
+              </td>
+              <td class="p-5 text-right">
+                <div class="font-serif text-2xl text-sky">65 €</div>
+              </td>
+            </tr>
+            <tr class="border-b border-skyLight/30">
+              <td class="p-5">
+                <h3 class="font-serif text-lg text-ink">Consultation à domicile</h3>
+                <p class="text-sm text-inkLight">Aix centre & 1<sup>ère</sup> couronne — supplément</p>
+              </td>
+              <td class="p-5 text-right">
+                <div class="font-serif text-2xl text-sky">+ 15 €</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="p-5">
+                <h3 class="font-serif text-lg text-ink">Consultation urgente</h3>
+                <p class="text-sm text-inkLight">Sous 48h, soir ou week-end selon disponibilité</p>
+              </td>
+              <td class="p-5 text-right">
+                <div class="font-serif text-2xl text-sky">80 €</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-4 mt-6">
+        <div class="bg-sage/10 border border-sage/30 rounded-xl p-5 flex items-start gap-3">
+          <i data-lucide="credit-card" class="text-sage flex-shrink-0 mt-0.5" width="20" height="20"></i>
+          <div class="text-sm">
+            <strong class="block text-ink">Paiement</strong>
+            <span class="text-inkLight">CB, espèces, chèques</span>
+          </div>
+        </div>
+        <div class="bg-sky/10 border border-sky/30 rounded-xl p-5 flex items-start gap-3">
+          <i data-lucide="file-text" class="text-sky flex-shrink-0 mt-0.5" width="20" height="20"></i>
+          <div class="text-sm">
+            <strong class="block text-ink">Mutuelle</strong>
+            <span class="text-inkLight">Feuille de soins remise</span>
+          </div>
+        </div>
+        <div class="bg-paperWarm border border-skyLight/40 rounded-xl p-5 flex items-start gap-3">
+          <i data-lucide="calendar-x" class="text-inkLight flex-shrink-0 mt-0.5" width="20" height="20"></i>
+          <div class="text-sm">
+            <strong class="block text-ink">Annulation</strong>
+            <span class="text-inkLight">Gratuite 24h avant</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INFOS PRATIQUES ===== -->
+  <section id="infos" class="py-24 px-6 bg-paperWarm/40">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14 reveal">
+        <p class="text-sky uppercase tracking-[0.25em] text-xs mb-3">Infos pratiques</p>
+        <h2 class="font-serif text-4xl md:text-5xl text-ink">Venir au cabinet</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10">
+        <div class="space-y-6 reveal">
+          <div class="bg-white rounded-2xl p-6 border border-skyLight/30">
+            <h3 class="font-serif text-xl text-ink mb-3 flex items-center gap-2">
+              <i data-lucide="map-pin" class="text-sky" width="22" height="22"></i>
+              Adresse
+            </h3>
+            <p class="text-inkLight leading-relaxed">8 boulevard du Roi René<br>13100 Aix-en-Provence<br><span class="text-sm text-sage">Cabinet au rez-de-chaussée, accessible PMR</span></p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-skyLight/30">
+            <h3 class="font-serif text-xl text-ink mb-3 flex items-center gap-2">
+              <i data-lucide="clock" class="text-sky" width="22" height="22"></i>
+              Horaires
+            </h3>
+            <table class="text-sm w-full">
+              <tr class="border-b border-paperWarm"><td class="py-2 text-inkLight">Lundi</td><td class="py-2 text-right text-ink">9h — 19h</td></tr>
+              <tr class="border-b border-paperWarm"><td class="py-2 text-inkLight">Mardi</td><td class="py-2 text-right text-ink">9h — 19h</td></tr>
+              <tr class="border-b border-paperWarm"><td class="py-2 text-inkLight">Mercredi</td><td class="py-2 text-right text-ink">9h — 13h</td></tr>
+              <tr class="border-b border-paperWarm"><td class="py-2 text-inkLight">Jeudi</td><td class="py-2 text-right text-ink">9h — 19h</td></tr>
+              <tr class="border-b border-paperWarm"><td class="py-2 text-inkLight">Vendredi</td><td class="py-2 text-right text-ink">9h — 17h</td></tr>
+              <tr><td class="py-2 text-inkLight">Samedi</td><td class="py-2 text-right text-ink">9h — 12h (sur RDV)</td></tr>
+            </table>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-skyLight/30">
+            <h3 class="font-serif text-xl text-ink mb-3 flex items-center gap-2">
+              <i data-lucide="car" class="text-sky" width="22" height="22"></i>
+              Accès &amp; stationnement
+            </h3>
+            <ul class="text-sm text-inkLight space-y-2">
+              <li>🅿️ Parking Mignet à 80 m (1<sup>ère</sup> heure offerte sur présentation)</li>
+              <li>🚌 Arrêt « Roi René » — lignes 4, 5, 12</li>
+              <li>🚗 Sortie A8 « Aix centre » à 5 min</li>
+              <li>🚲 Pistes cyclables jusqu'au cabinet</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="reveal aspect-square md:aspect-auto md:h-full rounded-2xl overflow-hidden border border-skyLight/30">
+          <iframe src="https://www.google.com/maps?q=boulevard+du+Roi+Rene+Aix-en-Provence&output=embed" width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOCTOLIB / RDV ===== -->
+  <section id="rdv" class="py-24 px-6 bg-gradient-to-br from-sky/8 to-sage/8">
+    <div class="max-w-4xl mx-auto text-center reveal">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-sky text-white mb-6 shadow-lg shadow-sky/30">
+        <i data-lucide="calendar-check" width="32" height="32"></i>
+      </div>
+      <h2 class="font-serif text-4xl md:text-5xl text-ink mb-4">Prendre rendez-vous</h2>
+      <p class="text-inkLight mb-10 max-w-2xl mx-auto text-lg">Réservez votre créneau en ligne via Doctolib — disponible 24h/24, confirmation immédiate par email.</p>
+
+      <a href="https://www.doctolib.fr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-sky hover:bg-ink text-white px-10 py-5 rounded-full font-medium transition shadow-xl shadow-sky/30 text-lg">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 12v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V4.07c3.94.49 7 3.85 7 7.93 0 2.08-.81 3.98-2.1 5.39z"/></svg>
+        Prendre rendez-vous sur Doctolib
+        <i data-lucide="arrow-up-right" width="20" height="20"></i>
+      </a>
+
+      <div class="mt-8 text-sm text-inkLight">
+        ou par téléphone au
+        <a href="tel:+33442000000" class="text-sky font-semibold hover:underline">04 42 00 00 00</a>
+        — du lundi au vendredi, 9h–19h
+      </div>
+
+      <!-- Doctolib iframe placeholder -->
+      <div class="mt-12 bg-white rounded-3xl border border-skyLight/40 p-6 shadow-xl">
+        <p class="text-inkLight text-sm mb-4 italic">Aperçu du widget de réservation Doctolib (intégration iframe — démonstration) :</p>
+        <div class="bg-paperWarm rounded-2xl p-8 md:p-12 grid sm:grid-cols-7 gap-3 text-center text-sm">
+          <div class="hidden sm:block"></div>
+          <div class="font-semibold text-ink text-xs">Lun</div>
+          <div class="font-semibold text-ink text-xs">Mar</div>
+          <div class="font-semibold text-ink text-xs">Mer</div>
+          <div class="font-semibold text-ink text-xs">Jeu</div>
+          <div class="font-semibold text-ink text-xs">Ven</div>
+          <div class="font-semibold text-ink text-xs">Sam</div>
+
+          <div class="text-inkLight text-xs flex items-center justify-end pr-2">9h</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">9:00</div>
+          <div class="bg-paperWarm text-inkLight/40 rounded py-1 text-xs">—</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">9:30</div>
+          <div class="bg-paperWarm text-inkLight/40 rounded py-1 text-xs">—</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">9:15</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">9:00</div>
+
+          <div class="text-inkLight text-xs flex items-center justify-end pr-2">11h</div>
+          <div class="bg-paperWarm text-inkLight/40 rounded py-1 text-xs">—</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">11:00</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">11:30</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">11:15</div>
+          <div class="bg-paperWarm text-inkLight/40 rounded py-1 text-xs">—</div>
+          <div class="bg-paperWarm text-inkLight/40 rounded py-1 text-xs">—</div>
+
+          <div class="text-inkLight text-xs flex items-center justify-end pr-2">14h</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">14:00</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">14:30</div>
+          <div class="bg-paperWarm text-inkLight/40 rounded py-1 text-xs">—</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">14:00</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">14:15</div>
+          <div class="bg-paperWarm text-inkLight/40 rounded py-1 text-xs">—</div>
+
+          <div class="text-inkLight text-xs flex items-center justify-end pr-2">17h</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">17:00</div>
+          <div class="bg-paperWarm text-inkLight/40 rounded py-1 text-xs">—</div>
+          <div class="bg-paperWarm text-inkLight/40 rounded py-1 text-xs">—</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">17:00</div>
+          <div class="bg-sky/15 hover:bg-sky text-sky hover:text-white rounded py-1 text-xs cursor-pointer transition">17:30</div>
+          <div class="bg-paperWarm text-inkLight/40 rounded py-1 text-xs">—</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-ink text-paper px-6 py-12">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-9 h-9 rounded-full bg-paper/15 text-skyLight flex items-center justify-center">
+            <i data-lucide="leaf" width="20" height="20"></i>
+          </span>
+          <div>
+            <div class="font-serif">Dr Marie Dubois</div>
+            <div class="text-[10px] text-skyLight uppercase tracking-widest">Ostéopathe DO</div>
+          </div>
+        </div>
+        <p class="text-paper/60 leading-relaxed">Cabinet d'ostéopathie à Aix-en-Provence. Approche douce et globale.</p>
+      </div>
+      <div>
+        <h4 class="text-paper uppercase tracking-wider text-xs mb-3 font-semibold">Cabinet</h4>
+        <p class="text-paper/60">8 boulevard du Roi René<br>13100 Aix-en-Provence</p>
+        <p class="text-paper/60 mt-2">04 42 00 00 00</p>
+      </div>
+      <div>
+        <h4 class="text-paper uppercase tracking-wider text-xs mb-3 font-semibold">Accès rapide</h4>
+        <ul class="space-y-1 text-paper/60">
+          <li><a href="#consultations" class="hover:text-skyLight transition">Consultations</a></li>
+          <li><a href="#tarifs" class="hover:text-skyLight transition">Tarifs</a></li>
+          <li><a href="#rdv" class="hover:text-skyLight transition">Prendre RDV</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-paper uppercase tracking-wider text-xs mb-3 font-semibold">Légal</h4>
+        <ul class="space-y-1 text-paper/60">
+          <li>N° ADELI 13 12 34567</li>
+          <li>SIREN 800 000 000</li>
+          <li><a href="#" class="hover:text-skyLight transition">Mentions légales</a></li>
+          <li><a href="#" class="hover:text-skyLight transition">Politique RGPD</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto mt-10 pt-8 border-t border-paper/10 text-xs text-paper/40 text-center">
+      © 2026 Cabinet Dr Marie Dubois. — Démo template Skyloop.
+    </div>
+  </footer>
+
+  <a href="https://vitrine.skyloop.fr/templates.html" class="skyloop-badge">Démo Skyloop — Voir tous les modèles</a>
+
+  <script>
+    lucide.createIcons();
+
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('hidden');
+    }));
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) nav.classList.add('bg-paper/95', 'backdrop-blur', 'shadow-sm');
+      else nav.classList.remove('bg-paper/95', 'backdrop-blur', 'shadow-sm');
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
