@@ -988,6 +988,64 @@ code, kbd, samp, pre {
   transform: translate(3px, -3px);
 }
 
+/* ====== Multi-clients (work card & project detail) ====== */
+.work__clients {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  width: fit-content;
+}
+.work__clients-logos {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.work__clients-logos a {
+  display: block;
+  line-height: 0;
+  transition: transform 0.2s var(--ease-out), opacity 0.2s var(--ease-out);
+}
+.work__clients-logos a:hover {
+  transform: translateY(-1px);
+}
+.work__clients-logos a + a {
+  border-left: 1px solid var(--hairline);
+  padding-left: 14px;
+}
+
+.project-clients {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  margin-top: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  width: fit-content;
+}
+.project-clients__logos {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+}
+.project-clients__logos a {
+  display: block;
+  line-height: 0;
+  transition: transform 0.2s var(--ease-out);
+}
+.project-clients__logos a:hover {
+  transform: translateY(-2px);
+}
+.project-clients__logos a + a {
+  border-left: 1px solid var(--hairline);
+  padding-left: 18px;
+}
+
 /* ============ PROCESS TIMELINE ============ */
 .process {
   position: relative;
