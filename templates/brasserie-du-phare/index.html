@@ -3,7 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Brasserie du Phare — Site vitrine</title>
+  <title>Brasserie du Phare — Brassée en bord de mer, Cany-Barville</title>
+  <meta name="description" content="Brasserie artisanale à Cany-Barville sur la Côte d'Albâtre. Bières brassées en bord de mer, boutique en ligne, visites et événements." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Brasserie du Phare — Brassée en bord de mer" />
+  <meta property="og:description" content="Bières artisanales brassées à Cany-Barville, Côte d'Albâtre." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +21,7 @@
     body { font-family: 'DM Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
     * { box-sizing: border-box; }
 
-    /* Tweak-driven palettes */
+    /* Palettes (driven by data-palette on .bp-site) */
     .bp-site[data-palette="maritime"] {
       --bp-paper: #f5ecd6; --bp-paper-deep: #ecdfba; --bp-cream: #fbf4df;
       --bp-ink: #1b3a3a; --bp-ink-soft: #3a4f4f;
@@ -56,7 +60,7 @@
     .bp-site[data-density="compact"] .bp-hero { padding-top: 40px; padding-bottom: 64px; }
     .bp-site[data-density="compact"] .bp-story { padding: 64px 32px; }
 
-    /* Photo filter — adds a warm wash like Polaroid */
+    /* Photo filter — warm wash */
     .bp-site[data-photo="warm"] .bp-hero-visual img,
     .bp-site[data-photo="warm"] .bp-story-img img,
     .bp-site[data-photo="warm"] .bp-about-grid img,
@@ -65,13 +69,9 @@
       filter: sepia(0.18) saturate(1.05) contrast(0.95) brightness(1.02);
     }
 
-    /* App canvas root */
-    #canvas-root { width: 100vw; height: 100vh; }
-
-    /* Layout for the canvas frames */
-    .frame-stack {
-      display: flex; gap: 56px; align-items: flex-start;
-    }
+    /* Full-screen site root */
+    #root { width: 100%; }
+    #root > div { height: 100%; }
   </style>
 </head>
 <body>
@@ -82,154 +82,47 @@
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
-  <!-- Frame + canvas + tweaks starter components -->
-  <script type="text/babel" src="components/browser-window.jsx"></script>
-  <script type="text/babel" src="components/ios-frame.jsx"></script>
-  <script type="text/babel" src="components/design-canvas.jsx"></script>
-  <script type="text/babel" src="components/tweaks-panel.jsx"></script>
-
-  <!-- Data + brewery components -->
+  <!-- Site components (no design-canvas chrome) -->
   <script type="text/babel" src="components/brewery-data.jsx"></script>
   <script type="text/babel" src="components/brewery-pages.jsx"></script>
   <script type="text/babel" src="components/brewery-shop.jsx"></script>
   <script type="text/babel" src="components/brewery-app.jsx"></script>
 
-  <!-- Main App -->
+  <!-- Full-screen mount: the real site, responsive (desktop / mobile via data-mode) -->
   <script type="text/babel">
-    const { useState } = React;
+    function FullSite() {
+      const getMode = () => (window.innerWidth < 768 ? "mobile" : "desktop");
+      const [mode, setMode] = React.useState(getMode());
 
-    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-      "palette": "maritime",
-      "display": "playfair",
-      "stamp": true,
-      "density": "regular",
-      "photo": "warm",
-      "paletteSwatch": [
-        "#1a5d5d",
-        "#f5ecd6",
-        "#8a5a2b"
-      ]
-    }/*EDITMODE-END*/;
-
-    function App() {
-      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-
-      // Apply tweaks as data-attrs on each BrewerySite instance
-      const tweakProps = {
-        "data-palette": t.palette,
-        "data-display": t.display,
-        "data-stamp":   String(t.stamp),
-        "data-density": t.density,
-        "data-photo":   t.photo,
-      };
-
-      // The BrewerySite root applies className="bp-site"; we wrap it with these
-      // data-attrs by passing them via a wrapper div.
-      return (
-        <div>
-          <DesignCanvas>
-            <DCSection
-              id="site"
-              title="Brasserie du Phare — Site vitrine & boutique"
-              subtitle="Site complet : accueil, gamme, fiches produit, panier, checkout. Affichage desktop + mobile, à comparer côte à côte. Naviguez librement dans chaque artboard.">
-              <DCArtboard id="desktop" label="Desktop · 1280 × 820" width={1280} height={820}>
-                <SiteFrame mode="desktop" tweakProps={tweakProps} />
-              </DCArtboard>
-              <DCArtboard id="mobile" label="Mobile · iPhone 15 Pro" width={402} height={874}>
-                <SiteFrame mode="mobile" tweakProps={tweakProps} />
-              </DCArtboard>
-            </DCSection>
-          </DesignCanvas>
-
-          <TweaksPanel>
-            <TweakSection label="Palette" />
-            <TweakColor  label="Ambiance" value={t.paletteSwatch || []}
-                         options={[
-                           ['#1a5d5d', '#f5ecd6', '#8a5a2b'],
-                           ['#c75147', '#f7ecd9', '#d97c41'],
-                           ['#2c5a91', '#eef2f5', '#6b4a2b'],
-                           ['#1f1d1a', '#f1ece0', '#a5713a'],
-                         ]}
-                         onChange={(arr) => {
-                           // map back to palette name
-                           const map = {
-                             '#1a5d5d': 'maritime',
-                             '#c75147': 'sunset',
-                             '#2c5a91': 'marine',
-                             '#1f1d1a': 'charcoal',
-                           };
-                           setTweak({ palette: map[arr[0]] || 'maritime', paletteSwatch: arr });
-                         }} />
-
-            <TweakSection label="Typographie" />
-            <TweakRadio  label="Titres affiche" value={t.display}
-                         options={[
-                           { value: 'serif',     label: 'DM Serif' },
-                           { value: 'cormorant', label: 'Cormorant' },
-                           { value: 'playfair',  label: 'Playfair' },
-                         ]}
-                         onChange={(v) => setTweak('display', v)} />
-
-            <TweakSection label="Mise en page" />
-            <TweakRadio  label="Densité" value={t.density}
-                         options={['regular', 'compact']}
-                         onChange={(v) => setTweak('density', v)} />
-            <TweakToggle label="Tampon « Depuis 2019 »" value={t.stamp}
-                         onChange={(v) => setTweak('stamp', v)} />
-            <TweakRadio  label="Photos" value={t.photo}
-                         options={[
-                           { value: 'natural', label: 'Naturel' },
-                           { value: 'warm',    label: 'Chaud' },
-                         ]}
-                         onChange={(v) => setTweak('photo', v)} />
-          </TweaksPanel>
-        </div>
-      );
-    }
-
-    // Wraps a BrewerySite inside the appropriate device frame, applying
-    // tweak data-attrs to the .bp-site root via a wrapper.
-    function SiteFrame({ mode, tweakProps }) {
-      if (mode === 'desktop') {
-        return (
-          <ChromeWindow
-            tabs={[{ title: 'Brasserie du Phare — Brassée en bord de mer' }]}
-            url="brasserieduphare.fr"
-            width={1280} height={820}>
-            <div style={{ width: '100%', height: '100%' }} {...tweakProps}
-                 ref={(el) => { if (el) { /* applied via wrapper ../ */ } }}>
-              {/* The site itself: pass mode and let it render */}
-              <SiteRoot mode="desktop" tweakProps={tweakProps} />
-            </div>
-          </ChromeWindow>
-        );
-      }
-      return (
-        <IOSDevice width={402} height={874} dark={false}>
-          <SiteRoot mode="mobile" tweakProps={tweakProps} />
-        </IOSDevice>
-      );
-    }
-
-    // Renders the BrewerySite, applying tweak data-attrs directly on the root.
-    // (BrewerySite already adds .bp-site className; we attach tweak attrs via a
-    // useEffect on its container.)
-    function SiteRoot({ mode, tweakProps }) {
-      const ref = React.useRef(null);
       React.useEffect(() => {
-        if (!ref.current) return;
-        const root = ref.current.querySelector('.bp-site');
+        let raf = null;
+        const onResize = () => {
+          if (raf) cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(() => {
+            const m = getMode();
+            setMode(prev => (prev !== m ? m : prev));
+          });
+        };
+        window.addEventListener("resize", onResize);
+        return () => window.removeEventListener("resize", onResize);
+      }, []);
+
+      // Apply the same default style tweaks the design canvas used,
+      // so the site renders identically (palette maritime, Playfair, warm photos).
+      React.useEffect(() => {
+        const root = document.querySelector(".bp-site");
         if (!root) return;
-        Object.entries(tweakProps).forEach(([k, v]) => root.setAttribute(k, v));
-      }, [tweakProps]);
-      return (
-        <div ref={ref} style={{ width: '100%', height: '100%' }}>
-          <BrewerySite mode={mode} />
-        </div>
-      );
+        root.setAttribute("data-palette", "maritime");
+        root.setAttribute("data-display", "playfair");
+        root.setAttribute("data-stamp", "true");
+        root.setAttribute("data-density", "regular");
+        root.setAttribute("data-photo", "warm");
+      });
+
+      return <BrewerySite mode={mode} />;
     }
 
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    ReactDOM.createRoot(document.getElementById("root")).render(<FullSite />);
   </script>
 </body>
 </html>
