@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brasserie Cany — Brasserie artisanale & table normande, Cany-Barville</title>
+  <meta name="description" content="Brasserie artisanale à Cany-Barville : bières brassées sur place et cuisine normande généreuse. Taproom, planches à partager, moules-frites.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Brasserie Cany — Brasserie artisanale">
+  <meta property="og:description" content="Bières maison et table normande à Cany-Barville.">
+  <meta property="og:type" content="restaurant">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Bebas Neue"', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            amber: '#c8842f',
+            amberDark: '#9a5f1f',
+            copper: '#b87333',
+            foam: '#f5ecd9',
+            charcoal: '#1c1814',
+            charcoalLight: '#2a241d',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+    h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.03em; }
+    .hero-bg {
+      background-image: linear-gradient(rgba(28, 24, 20, 0.55), rgba(28, 24, 20, 0.8)),
+                        url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=80&auto=format');
+      background-size: cover;
+      background-position: center;
+    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .menu-tab-active { background: #c8842f; color: #1c1814; }
+    .lightbox { background: rgba(28, 24, 20, 0.95); }
+    .skyloop-badge {
+      position: fixed; bottom: 16px; right: 16px; z-index: 60;
+      background: rgba(28,24,20,0.88); backdrop-filter: blur(8px);
+      border: 1px solid rgba(200, 132, 47, 0.4);
+      color: #c8842f; padding: 8px 14px; border-radius: 100px;
+      font-size: 0.75rem; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .skyloop-badge:hover { background: rgba(200, 132, 47, 0.95); color: #1c1814; }
+  </style>
+</head>
+<body class="bg-charcoal text-foam">
+
+  <!-- ===== NAV ===== -->
+  <header class="fixed top-0 inset-x-0 z-40 transition-all" id="nav">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="font-display text-3xl tracking-wider text-foam">
+        Brasserie<span class="text-amber"> Cany</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-wider">
+        <a href="#about" class="hover:text-amber transition">La brasserie</a>
+        <a href="#menu" class="hover:text-amber transition">Bières &amp; carte</a>
+        <a href="#gallery" class="hover:text-amber transition">Galerie</a>
+        <a href="#visit" class="hover:text-amber transition">Nous trouver</a>
+        <a href="#reserver" class="bg-amber hover:bg-amberDark text-charcoal px-5 py-2.5 rounded-full transition font-semibold">Réserver</a>
+      </nav>
+      <button class="md:hidden text-foam" id="menu-toggle" aria-label="Menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="md:hidden hidden bg-charcoal/95 backdrop-blur px-6 py-4 space-y-3 border-t border-amber/20" id="mobile-menu">
+      <a href="#about" class="block uppercase tracking-wider text-sm hover:text-amber">La brasserie</a>
+      <a href="#menu" class="block uppercase tracking-wider text-sm hover:text-amber">Bières &amp; carte</a>
+      <a href="#gallery" class="block uppercase tracking-wider text-sm hover:text-amber">Galerie</a>
+      <a href="#visit" class="block uppercase tracking-wider text-sm hover:text-amber">Nous trouver</a>
+      <a href="#reserver" class="block uppercase tracking-wider text-sm text-amber">Réserver</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero-bg min-h-screen flex items-center justify-center text-center px-6 relative">
+    <div class="max-w-4xl reveal">
+      <p class="text-amber tracking-[0.3em] uppercase text-sm mb-6">Cany-Barville · Pays de Caux</p>
+      <h1 class="font-display text-6xl md:text-8xl lg:text-9xl leading-[0.9] mb-6">
+        On brasse, <span class="text-amber">on régale.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-foam/80 max-w-2xl mx-auto mb-10 font-light">
+        Six bières brassées sur place et une cuisine normande franche et généreuse. Le rendez-vous des amateurs de houblon au cœur du Pays de Caux.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#menu" class="bg-amber hover:bg-amberDark text-charcoal px-8 py-4 rounded-full font-semibold uppercase tracking-wide transition shadow-2xl">
+          Voir la carte
+        </a>
+        <a href="#reserver" class="bg-transparent border border-foam/40 hover:border-amber hover:text-amber text-foam px-8 py-4 rounded-full font-semibold uppercase tracking-wide transition">
+          Réserver une table
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-amber/60">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="py-24 md:py-32 px-6 bg-charcoal">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <img src="https://images.unsplash.com/photo-1559526324-c1f275fbfa32?w=900&q=80&auto=format" alt="Cuves de brassage" class="rounded-2xl shadow-2xl w-full aspect-[4/3] object-cover">
+        </div>
+        <div class="reveal">
+          <p class="text-amber tracking-[0.25em] uppercase text-xs mb-4">Notre histoire</p>
+          <h2 class="font-display text-5xl md:text-6xl mb-6 leading-none">Brassée ici,<br><span class="text-amber">bue ici.</span></h2>
+          <p class="text-foam/75 leading-relaxed mb-4">
+            Fondée en 2019 dans une ancienne grange cauchoise, la Brasserie Cany brasse ses bières à quelques mètres des tables où vous les dégustez. Eau de la Durdent, malts de Normandie, houblons sélectionnés : tout est pensé pour le terroir.
+          </p>
+          <p class="text-foam/75 leading-relaxed mb-8">
+            Aux fourneaux, une cuisine de bistrot sans chichi : produits locaux, fournisseurs du coin, plats généreux qui accompagnent nos bières à merveille.
+          </p>
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <div class="font-display text-4xl text-amber">6</div>
+              <div class="text-xs uppercase tracking-widest text-foam/60">Bières maison</div>
+            </div>
+            <div>
+              <div class="font-display text-4xl text-amber">100 %</div>
+              <div class="text-xs uppercase tracking-widest text-foam/60">Brassé sur place</div>
+            </div>
+            <div>
+              <div class="font-display text-4xl text-amber">2019</div>
+              <div class="text-xs uppercase tracking-widest text-foam/60">Depuis</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section id="menu" class="py-24 md:py-32 px-6 bg-charcoalLight relative overflow-hidden">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-amber tracking-[0.25em] uppercase text-xs mb-4">Bières &amp; carte</p>
+        <h2 class="font-display text-5xl md:text-6xl">À la pression et dans l'assiette</h2>
+        <p class="text-foam/70 mt-4 max-w-2xl mx-auto">Nos bières évoluent au fil des saisons. Demandez la planche de dégustation pour toutes les goûter.</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-2 mb-12 reveal" id="menu-tabs"></div>
+
+      <div id="menu-content" class="space-y-1"></div>
+
+      <p class="text-center text-foam/50 text-sm mt-12 font-light italic">L'abus d'alcool est dangereux pour la santé, à consommer avec modération. Prix en euros, service compris.</p>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section id="gallery" class="py-24 md:py-32 px-6 bg-charcoal">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-amber tracking-[0.25em] uppercase text-xs mb-4">Galerie</p>
+        <h2 class="font-display text-5xl md:text-6xl">Bières, plats &amp; ambiance</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="gallery-grid">
+        <button data-src="https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=600&q=80&auto=format" alt="Bière pression" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&q=80&auto=format" alt="Trinquer" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&q=80&auto=format" alt="Burger" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1518176258769-f227c798150e?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1518176258769-f227c798150e?w=600&q=80&auto=format" alt="Bières artisanales" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1572448862527-d3c904757de6?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1572448862527-d3c904757de6?w=600&q=80&auto=format" alt="Plat" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&q=80&auto=format" alt="Bière craft" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=80&auto=format" alt="Salle" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+        <button data-src="https://images.unsplash.com/photo-1518099074172-2e47ee6cfdc0?w=1600&q=85&auto=format" class="aspect-square overflow-hidden rounded-xl group">
+          <img src="https://images.unsplash.com/photo-1518099074172-2e47ee6cfdc0?w=600&q=80&auto=format" alt="Planche dégustation" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISIT / MAP ===== -->
+  <section id="visit" class="py-24 md:py-32 px-6 bg-charcoal border-t border-amber/10">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+      <div class="reveal">
+        <p class="text-amber tracking-[0.25em] uppercase text-xs mb-4">Nous trouver</p>
+        <h2 class="font-display text-5xl md:text-6xl mb-8">À Cany-Barville</h2>
+
+        <div class="space-y-6 text-foam/80">
+          <div>
+            <h3 class="text-amber font-display text-2xl mb-1">Adresse</h3>
+            <p>4 rue du Pont<br>76450 Cany-Barville</p>
+          </div>
+
+          <div>
+            <h3 class="text-amber font-display text-2xl mb-2">Horaires</h3>
+            <table class="text-sm">
+              <tr><td class="pr-6 py-1">Mardi — Jeudi</td><td>11h30 — 14h30 · 18h — 23h</td></tr>
+              <tr><td class="pr-6 py-1">Vendredi — Samedi</td><td>11h30 — 1h</td></tr>
+              <tr><td class="pr-6 py-1">Dimanche</td><td>11h30 — 16h</td></tr>
+              <tr><td class="pr-6 py-1 text-foam/50">Lundi</td><td class="text-foam/50">Fermé</td></tr>
+            </table>
+          </div>
+
+          <div>
+            <h3 class="text-amber font-display text-2xl mb-1">Contact</h3>
+            <p>
+              <a href="tel:+33235000000" class="hover:text-amber transition">02 35 00 00 00</a><br>
+              <a href="mailto:contact@brasserie-cany.fr" class="hover:text-amber transition">contact@brasserie-cany.fr</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-amber/20">
+        <iframe src="https://www.google.com/maps?q=Cany-Barville,+France&output=embed" width="100%" height="100%" style="border:0; filter: grayscale(0.3) brightness(0.85);" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESERVATION ===== -->
+  <section id="reserver" class="py-24 md:py-32 px-6 bg-gradient-to-b from-charcoalLight to-charcoal text-center">
+    <div class="max-w-3xl mx-auto reveal">
+      <p class="text-amber tracking-[0.25em] uppercase text-xs mb-4">Réservation</p>
+      <h2 class="font-display text-5xl md:text-6xl mb-6">Réservez votre table</h2>
+      <p class="text-foam/75 mb-10 text-lg font-light">
+        Groupes, anniversaires, soirées dégustation : réservez en ligne ou appelez-nous directement.
+      </p>
+
+      <div class="grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+        <a href="https://www.thefork.fr" target="_blank" rel="noopener noreferrer" class="bg-foam text-charcoal px-6 py-4 rounded-xl font-semibold hover:bg-amber transition flex items-center justify-center gap-2">
+          TheFork
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="bg-foam text-charcoal px-6 py-4 rounded-xl font-semibold hover:bg-amber transition flex items-center justify-center gap-2">
+          Google
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="tel:+33235000000" class="bg-amber hover:bg-amberDark text-charcoal px-6 py-4 rounded-xl font-semibold transition flex items-center justify-center gap-2">
+          Téléphone
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-charcoal border-t border-amber/15 px-6 py-12">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
+      <div>
+        <h3 class="font-display text-2xl text-amber mb-3">Brasserie Cany</h3>
+        <p class="text-foam/60 leading-relaxed">Brasserie artisanale et table normande à Cany-Barville depuis 2019.</p>
+      </div>
+      <div>
+        <h4 class="text-foam uppercase tracking-wider text-xs mb-3">Contact</h4>
+        <p class="text-foam/60">4 rue du Pont<br>76450 Cany-Barville</p>
+        <p class="text-foam/60 mt-2">02 35 00 00 00</p>
+      </div>
+      <div>
+        <h4 class="text-foam uppercase tracking-wider text-xs mb-3">Réseaux</h4>
+        <ul class="space-y-2 text-foam/60">
+          <li><a href="#" class="hover:text-amber transition">Instagram</a></li>
+          <li><a href="#" class="hover:text-amber transition">Facebook</a></li>
+          <li><a href="#" class="hover:text-amber transition">Untappd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-foam uppercase tracking-wider text-xs mb-3">Légal</h4>
+        <ul class="space-y-2 text-foam/60">
+          <li><a href="#" class="hover:text-amber transition">Mentions légales</a></li>
+          <li><a href="#" class="hover:text-amber transition">Confidentialité</a></li>
+          <li><a href="#" class="hover:text-amber transition">CGV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto mt-10 pt-8 border-t border-amber/10 text-xs text-foam/40 text-center">
+      © 2026 Brasserie Cany. Tous droits réservés. — Démo template Skyloop. L'abus d'alcool est dangereux pour la santé.
+    </div>
+  </footer>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lightbox" class="lightbox fixed inset-0 z-50 hidden items-center justify-center p-6 cursor-pointer">
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full rounded-xl shadow-2xl">
+    <button class="absolute top-6 right-6 text-foam bg-charcoal/60 hover:bg-amber rounded-full w-12 h-12 flex items-center justify-center transition" aria-label="Fermer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <a href="https://vitrine.skyloop.fr/templates.html" class="skyloop-badge">Démo Skyloop — Voir tous les modèles</a>
+
+  <script>
+    // Mobile menu
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('hidden');
+    }));
+
+    // Nav background on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) nav.classList.add('bg-charcoal/90', 'backdrop-blur', 'shadow-lg');
+      else nav.classList.remove('bg-charcoal/90', 'backdrop-blur', 'shadow-lg');
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Load menu from JSON
+    fetch('./menu.json')
+      .then(r => r.json())
+      .then(data => {
+        const tabs = document.getElementById('menu-tabs');
+        const content = document.getElementById('menu-content');
+
+        data.categories.forEach((cat, idx) => {
+          const btn = document.createElement('button');
+          btn.textContent = cat.name;
+          btn.className = 'px-6 py-2.5 rounded-full text-sm font-medium tracking-wide transition border ' +
+            (idx === 0 ? 'menu-tab-active border-amber' : 'border-amber/30 text-foam/70 hover:border-amber hover:text-amber');
+          btn.dataset.cat = cat.id;
+          btn.addEventListener('click', () => showCategory(cat.id));
+          tabs.appendChild(btn);
+        });
+
+        function showCategory(id) {
+          document.querySelectorAll('#menu-tabs button').forEach(b => {
+            if (b.dataset.cat === id) {
+              b.className = 'px-6 py-2.5 rounded-full text-sm font-medium tracking-wide transition border menu-tab-active border-amber';
+            } else {
+              b.className = 'px-6 py-2.5 rounded-full text-sm font-medium tracking-wide transition border border-amber/30 text-foam/70 hover:border-amber hover:text-amber';
+            }
+          });
+          const cat = data.categories.find(c => c.id === id);
+          content.innerHTML = cat.items.map(item => `
+            <div class="flex items-baseline gap-4 py-5 border-b border-amber/15 last:border-0">
+              <div class="flex-1">
+                <h3 class="font-display text-2xl text-foam mb-1 tracking-wide">${item.name}</h3>
+                <p class="text-foam/60 text-sm font-light">${item.description}</p>
+              </div>
+              <div class="flex-shrink-0 font-display text-2xl text-amber">${item.price}</div>
+            </div>
+          `).join('');
+        }
+
+        showCategory(data.categories[0].id);
+      })
+      .catch(err => {
+        document.getElementById('menu-content').innerHTML = '<p class="text-foam/60 text-center py-8">Carte en cours de chargement...</p>';
+        console.error('Menu loading error:', err);
+      });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('#gallery-grid button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        lightboxImg.src = btn.dataset.src;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+      });
+    });
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+      }
+    });
+  </script>
+</body>
+</html>
