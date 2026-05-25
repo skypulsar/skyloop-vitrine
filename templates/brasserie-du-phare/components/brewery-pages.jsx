@@ -182,7 +182,7 @@ function HomePage({ go, addToCart }) {
             </div>
           </div>
           <div className="bp-hero-visual">
-            <img src="assets/photos/bottles-color.jpg" alt="Bouteilles de la Brasserie du Phare" />
+            <img src="assets/photos/bottles-three.jpeg" alt="Bouteilles de la Brasserie du Phare" />
             <div className="bp-hero-stamp">
               <span>Depuis</span>
               <strong>2019</strong>
