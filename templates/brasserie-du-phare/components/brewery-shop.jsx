@@ -135,41 +135,15 @@ function ContactPage() {
       <div className="bp-contact-grid">
         <div>
           <div className="bp-map">
-            {/* Stylized map placeholder */}
-            <svg width="100%" height="100%" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" style={{ display: "block" }}>
-              <rect width="600" height="600" fill="#dbe9e3"/>
-              {/* sea */}
-              <path d="M0 0 L600 0 L600 130 Q500 160 380 140 Q260 120 0 160 Z" fill="#9cc8c0"/>
-              {/* fields */}
-              <g opacity="0.5">
-                {Array.from({length: 10}).map((_,i) => (
-                  <line key={i} x1="0" y1={200 + i*40} x2="600" y2={210 + i*40} stroke="#c5a878" strokeWidth="0.5"/>
-                ))}
-              </g>
-              {/* roads */}
-              <path d="M -10 480 Q 200 380, 600 460" stroke="#fff" strokeWidth="6" fill="none"/>
-              <path d="M -10 480 Q 200 380, 600 460" stroke="#e8d9b0" strokeWidth="2" fill="none" strokeDasharray="6 6"/>
-              <path d="M 300 600 L 320 380 L 280 200 L 250 0" stroke="#fff" strokeWidth="4" fill="none"/>
-              <path d="M 100 0 Q 250 250, 200 600" stroke="#fff" strokeWidth="3" fill="none"/>
-              {/* village squares */}
-              <rect x="280" y="350" width="12" height="12" fill="#8a5a2b"/>
-              <rect x="295" y="345" width="10" height="14" fill="#8a5a2b"/>
-              <rect x="310" y="358" width="14" height="10" fill="#8a5a2b"/>
-              <rect x="270" y="365" width="10" height="10" fill="#8a5a2b"/>
-              {/* labels */}
-              <text x="20" y="60" fontFamily="serif" fontSize="14" fill="#1a5d5d" fontStyle="italic">La Manche</text>
-              <text x="380" y="500" fontFamily="serif" fontSize="14" fill="#3a4f4f">Vallée de la Durdent</text>
-              <text x="80" y="200" fontFamily="serif" fontSize="14" fill="#3a4f4f">vers Fécamp</text>
-              <text x="450" y="280" fontFamily="serif" fontSize="14" fill="#3a4f4f">vers Dieppe</text>
-              {/* pin */}
-              <g transform="translate(310 340)">
-                <circle cx="0" cy="14" r="14" fill="#1a5d5d" opacity="0.18"/>
-                <path d="M 0 -28 C -12 -28, -16 -16, -12 -8 L 0 8 L 12 -8 C 16 -16, 12 -28, 0 -28 Z" fill="#c75147" stroke="#7E2E1F" strokeWidth="1.5"/>
-                <circle cx="0" cy="-18" r="5" fill="#fbf4df"/>
-              </g>
-              <text x="330" y="335" fontFamily="serif" fontSize="16" fontWeight="700" fill="#1a5d5d">Cany-Barville</text>
-              <text x="330" y="354" fontFamily="serif" fontSize="12" fontStyle="italic" fill="#3a4f4f">Brasserie du Phare</text>
-            </svg>
+            <iframe
+              title="Carte — Brasserie du Phare, Cany-Barville"
+              src="https://www.google.com/maps?q=18+bis+Route+de+F%C3%A9camp,+76450+Cany-Barville&output=embed"
+              width="100%" height="100%"
+              style={{ border: 0, display: "block" }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen>
+            </iframe>
           </div>
         </div>
 
