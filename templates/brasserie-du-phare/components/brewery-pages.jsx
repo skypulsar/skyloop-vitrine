@@ -509,7 +509,7 @@ function HistoirePage({ go }) {
         </div>
         <div className="bp-brewer">
           <img src="assets/photos/brewers.jpeg" alt="" style={{ objectPosition: "75% center" }} />
-          <h4>Sylvie</h4>
+          <h4>Sarah Morand</h4>
           <div className="role">Brasseuse · responsable cave</div>
           <p>S'occupe des sours et des bières fruitées. Va chercher les fruits chez les producteurs du Pays de Caux à chaque saison.</p>
         </div>
